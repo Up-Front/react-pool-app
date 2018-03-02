@@ -11,7 +11,9 @@ export default function configureStore(initialState) {
         rootReducer,
         initialState,
         compose(
-            reactReduxFirebase(firebase, config),
+            reactReduxFirebase(firebase, {
+                userProfile: 'users',
+            }),
         )
     )
     return store;
