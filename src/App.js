@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import styled, {keyframes} from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+import Dashboard from './components/Dashboard';
 
 const rotate360 = keyframes`
   from {
@@ -36,10 +37,10 @@ const Segment = styled.section`
   padding: 10px;
   background:white;
   display: flex;
-  justify-content: ${props=>props.spaceBetween ? 'space-between' : 'center'};
-  ${props=>props.selfStart? 'align-self: flex-start;' : ''}
+  justify-content: ${props => props.spaceBetween ? 'space-between' : 'center'};
+  ${props => props.selfStart ? 'align-self: flex-start;' : ''}
   align-items: center;
-  flex-direction:${props=>props.row? 'row' : 'column'};
+  flex-direction:${props => props.row ? 'row' : 'column'};
   border-radius:8px;
   width:100%;
   box-sizing: border-box;
@@ -51,20 +52,21 @@ const FullScreen = styled.section`
   justify-content:center;
   align-items:center;
 `
-const Loading =  ({history})=>(<Rotate><span role='img' aria-label='left hand'>👈</span><span role='img' aria-label='8-ball'>🎱</span><span role='img' aria-label='right hand'>👉</span></Rotate>)
-const  Header = ({history})=>(<code>{history.location.pathname}</code>)
+const Loading = ({ history }) => (<Rotate><span role='img' aria-label='left hand'>👈</span><span role='img' aria-label='8-ball'>🎱</span><span role='img' aria-label='right hand'>👉</span></Rotate>)
+const Header = ({ history }) => (<code>{history.location.pathname}</code>)
 
-const Page = ({history})=>(
+
+const Page = ({ history }) => (
   <Wrapper>
     <Segment>
-      <Header history={history}/>
+      <Header history={history} />
       <Link to='/'>/</Link>
       <Link to='/login'>login</Link>
       <Link to='/dashboard'>dashboard</Link>
       <Link to='/leaderboard'>leaderboard</Link>
     </Segment>
     <FullScreen>
-    <Loading key='loader'/>
+      <Loading key='loader' />
     </FullScreen>
   </Wrapper>
 )
@@ -73,13 +75,13 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
-      <Route exact path="/" component={Page}/>
-      <Route path="/login" component={Page}/>
-      <Route path="/leaderboard" component={Page}/>
-      <Route path="/dashboard" component={Page}/>
-      </React.Fragment>
-  </Router>
-  );
+          <Route exact path="/" component={Page} />
+          <Route path="/login" component={Page} />
+          <Route path="/leaderboard" component={Page} />
+          <Route path="/dashboard" component={Dashboard} />
+        </React.Fragment>
+      </Router>
+    );
   }
 }
 
