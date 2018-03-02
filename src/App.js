@@ -31,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-          <Rotate>👈 🎱 👉</Rotate>
+          <Rotate><span role='img' aria-label='left hand'>👈</span><span role='img' aria-label='8-ball'>🎱</span><span role='img' aria-label='right hand'>👉</span></Rotate>
       </Wrapper>
     );
   }
