@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import styled, {keyframes} from 'styled-components'
 import './App.css';
 
