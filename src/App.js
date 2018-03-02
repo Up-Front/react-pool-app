@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import styled, {keyframes} from 'styled-components'
 import './App.css';
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Rotate = styled.div`
+  display: inline-block;
+  animation: ${rotate360} 2s linear infinite;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+`;
+
+const Wrapper = styled.section`
+  background: papayawhip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Wrapper>
+          <Rotate>👈 🎱 👉</Rotate>
+      </Wrapper>
     );
   }
 }
