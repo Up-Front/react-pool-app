@@ -6,8 +6,13 @@ import {
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Template from './components/shared/components/Template';
+import { Provider } from 'react-redux'
+import configureStore from './store'
 import Lottie from 'react-lottie';
 import * as animationData from './pool.json'
+
+const initialState = window.__INITIAL_STATE__; // set initial state here
+const store = configureStore(initialState);
 
 const rotate360 = keyframes`
   from {
@@ -34,7 +39,7 @@ const Page = ({ history }) => (
 )
  const defaultOptions = {
   loop: false,
-  autoplay: true, 
+  autoplay: true,
   animationData: animationData
 };
 
@@ -42,16 +47,18 @@ const Login = ()=>(<Lottie options={defaultOptions} /> )
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Template>
-          <React.Fragment>
-            <Route exact path="/" component={Page} />
-            <Route path="/login" component={Login} />
-            <Route path="/leaderboard" component={Page} />
-            <Route path="/dashboard" component={Dashboard} />
-          </React.Fragment>
-        </Template>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Template>
+            <React.Fragment>
+              <Route exact path="/" component={Page} />
+              <Route path="/login" component={Login} />
+              <Route path="/leaderboard" component={Page} />
+              <Route path="/dashboard" component={Dashboard} />
+            </React.Fragment>
+          </Template>
+        </Router>
+      </Provider>
     );
   }
 }
