@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.section`
-  background: papayawhip;
+  background: #243949;
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
   display: flex;
   align-items: center;
   height:100%;
