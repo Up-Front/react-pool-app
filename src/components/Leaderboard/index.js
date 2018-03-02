@@ -4,12 +4,12 @@ import { compose } from 'redux'
 import { firebaseConnect } from 'react-redux-firebase'
 import { UserList, User } from '../UserList'
 
-const Leaderboard = ({firesbase, users, matches, presence}) => {
-  console.log(users,matches)
+const Leaderboard = ({firesbase, scores, users, presence}) => {
+  if(scores) scores.reverse()
   return (
     <div>
         <UserList>
-          { users && users.map(({key, value : user }) => (<User online={presence[key]} key={key} {...user}/>)) }
+          { scores && scores.map(({key, value : score },position) => (<User position={position} score={score} online={presence[key]} key={key} {...users[key]}/>)) }
         </UserList>
     </div>
 )
@@ -18,13 +18,13 @@ const Leaderboard = ({firesbase, users, matches, presence}) => {
 export default compose(
   firebaseConnect((props) => [
     { path: 'presence' },
-    { path: 'users' },
-    { path: 'matches' },
+    { path: 'users', queryParams: [ 'orderByChild=displayName'] },
+    { path: 'scores', queryParams: [ 'orderByValue']},
     
   ]),
   connect((state, props) => ({
     presence: state.firebase.data.presence || {},
-    users: state.firebase.ordered.users,
-    matches: state.firebase.ordered.matches
+    users: state.firebase.data.users,
+    scores: state.firebase.ordered.scores
   }))
 )(Leaderboard)
