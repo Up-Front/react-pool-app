@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components'
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Template from './components/shared/components/Template';
