@@ -1,0 +1,12 @@
+root = true
+
+[*.{css,js}]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+end_of_line = lf
+quote_type = single
+curly_bracket_next_line = false
+spaces_around_operators = true
