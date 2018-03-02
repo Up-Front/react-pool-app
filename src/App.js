@@ -5,13 +5,12 @@ import {
   Route
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
+import Login from './components/Login';
 import Leaderboard from './components/Leaderboard';
 import Template from './components/shared/components/Template';
 import CreateMatch from './components/CreateMatch';
 import { Provider } from 'react-redux'
 import configureStore from './store'
-import Lottie from 'react-lottie';
-import * as animationData from './pool.json'
 
 const initialState = window.__INITIAL_STATE__; // set initial state here
 const store = configureStore(initialState);
@@ -39,13 +38,7 @@ const Loading = ({ history }) => (<Rotate><span role='img' aria-label='left hand
 const Page = ({ history }) => (
   <Loading key='loader' />
 )
-const defaultOptions = {
-  loop: false,
-  autoplay: true,
-  animationData: animationData
-};
 
-const Login = () => (<Lottie options={defaultOptions} />)
 class App extends Component {
   render() {
     return (

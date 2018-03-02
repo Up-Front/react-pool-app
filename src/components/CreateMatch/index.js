@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { firebaseConnect } from 'react-redux-firebase'
 import List from './components/List';
-
-const users = [
-    {
-        id: '1',
-        name: 'Steven',
-
-    },
-    {
-        id: '2',
-        name: 'Maurits'
-    }
-];
+import { User } from './../UserList/';
 
 
 class CreateMatch extends Component {
@@ -19,7 +11,6 @@ class CreateMatch extends Component {
         super(props);
         this.state = {
             search: '',
-            users,
             filteredUsers: [],
         };
     }
@@ -28,7 +19,8 @@ class CreateMatch extends Component {
         if (!filterTerm) {
             return [];
         }
-        return this.state.users.filter((user) => (user.name.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1));
+        return this.props.users
+            .filter((user) => (user.value.displayName.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1))
     }
 
     handleChange = (event) => {
@@ -44,10 +36,25 @@ class CreateMatch extends Component {
         return (
             <div>
                 <input onChange={this.handleChange} value={this.state.search} type="text" />
-                <List users={this.state.filteredUsers} />
+                <List>
+                    {this.state.filteredUsers && this.state.filteredUsers.map(({ key, value: user }) => (<User online={this.props.presence[key]} key={key} {...user} />))}
+                </List>
             </div>
         );
     }
 };
 
-export default CreateMatch;
+
+export default compose(
+    firebaseConnect((props) => [
+        { path: 'presence' },
+        { path: 'users' },
+        { path: 'matches' },
+
+    ]),
+    connect((state, props) => ({
+        presence: state.firebase.data.presence || {},
+        users: state.firebase.ordered.users,
+        matches: state.firebase.ordered.matches
+    }))
+)(CreateMatch);

@@ -1,20 +1,12 @@
 import React from 'react';
 
-const List = (props) => {
-    const showUserList = (users = []) => {
-        return users.map((user) => (
-            <li key={user.id}>
-                {user.name}
-            </li>
-        )
-        );
-    }
 
+const List = (props) => {
     return (
         <div>
             <h4>choose your victim!</h4>
             <ul>
-                {showUserList(props.users)}
+                {props.children}
             </ul>
         </div >
     );
