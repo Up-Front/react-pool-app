@@ -4,8 +4,9 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
 import Template from './components/shared/components/Template';
+import Dashboard from './components/Dashboard';
+import CreateMatch from './components/CreateMatch';
 
 const rotate360 = keyframes`
   from {
@@ -40,6 +41,7 @@ class App extends Component {
             <Route path="/login" component={Page} />
             <Route path="/leaderboard" component={Page} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/create-match" component={CreateMatch} />
           </React.Fragment>
         </Template>
       </Router>
