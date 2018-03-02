@@ -4,7 +4,7 @@ import { Wrapper, Header, FullScreen } from './components/Styles';
 
 const Template = (props) => (
     <Wrapper>
-        <Header>
+        <Header row spaceBetween>
             <Link to='/'>/</Link>
             <Link to='/login'>login</Link>
             <Link to='/dashboard'>dashboard</Link>

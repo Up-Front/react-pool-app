@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
+import Leaderboard from './components/Leaderboard';
 import Template from './components/shared/components/Template';
 import { Provider } from 'react-redux'
 import configureStore from './store'
@@ -53,7 +54,7 @@ class App extends Component {
             <React.Fragment>
               <Route exact path="/" component={Page} />
               <Route path="/login" component={Login} />
-              <Route path="/leaderboard" component={Page} />
+              <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/dashboard" component={Dashboard} />
             </React.Fragment>
           </Template>
