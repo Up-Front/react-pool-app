@@ -1,10 +1,10 @@
-export const config = {
-    apiKey: 'AIzaSyDxUxS9rBtrhrwrRZvum8j2_GlLmD72aOI',
-    authDomain: 'react-pool-app.firebaseapp.com',
-    databaseURL: 'https://react-pool-app.firebaseio.com',
-    projectId: 'react-pool-app',
-    storageBucket: 'react-pool-app.appspot.com',
-    messagingSenderId: '762987440824'
-}
+var config = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: "pool-app-227b8.firebaseapp.com",
+  databaseURL: "https://pool-app-227b8.firebaseio.com",
+  projectId: "pool-app-227b8",
+  storageBucket: "pool-app-227b8.appspot.com",
+  messagingSenderId: "545535474966"
+};
 
-export default { config }
+export default config;
