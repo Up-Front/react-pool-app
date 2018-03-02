@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components'
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Template from './components/shared/components/Template';
 import { Provider } from 'react-redux'
 import configureStore from './store'
+import Lottie from 'react-lottie';
+import * as animationData from './pool.json'
 
 const initialState = window.__INITIAL_STATE__; // set initial state here
 const store = configureStore(initialState);
@@ -36,6 +37,13 @@ const Loading = ({ history }) => (<Rotate><span role='img' aria-label='left hand
 const Page = ({ history }) => (
   <Loading key='loader' />
 )
+ const defaultOptions = {
+  loop: false,
+  autoplay: true,
+  animationData: animationData
+};
+
+const Login = ()=>(<Lottie options={defaultOptions} /> )
 class App extends Component {
   render() {
     return (
@@ -44,7 +52,7 @@ class App extends Component {
           <Template>
             <React.Fragment>
               <Route exact path="/" component={Page} />
-              <Route path="/login" component={Page} />
+              <Route path="/login" component={Login} />
               <Route path="/leaderboard" component={Page} />
               <Route path="/dashboard" component={Dashboard} />
             </React.Fragment>
