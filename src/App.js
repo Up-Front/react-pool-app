@@ -6,6 +6,7 @@ import {
   Link
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
+import Template from './components/shared/components/Template';
 
 const rotate360 = keyframes`
   from {
@@ -24,62 +25,24 @@ const Rotate = styled.div`
   font-size: 1.2rem;
 `;
 
-const Wrapper = styled.section`
-  background: papayawhip;
-  display: flex;
-  align-items: center;
-  height:100%;
-  flex-direction:column;
-  padding:0;
-`;
-
-const Segment = styled.section`
-  padding: 10px;
-  background:white;
-  display: flex;
-  justify-content: ${props => props.spaceBetween ? 'space-between' : 'center'};
-  ${props => props.selfStart ? 'align-self: flex-start;' : ''}
-  align-items: center;
-  flex-direction:${props => props.row ? 'row' : 'column'};
-  border-radius:8px;
-  width:100%;
-  box-sizing: border-box;
-`
-
-const FullScreen = styled.section`
-  flex:1;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-`
 const Loading = ({ history }) => (<Rotate><span role='img' aria-label='left hand'>👈</span><span role='img' aria-label='8-ball'>🎱</span><span role='img' aria-label='right hand'>👉</span></Rotate>)
-const Header = ({ history }) => (<code>{history.location.pathname}</code>)
 
 
 const Page = ({ history }) => (
-  <Wrapper>
-    <Segment>
-      <Header history={history} />
-      <Link to='/'>/</Link>
-      <Link to='/login'>login</Link>
-      <Link to='/dashboard'>dashboard</Link>
-      <Link to='/leaderboard'>leaderboard</Link>
-    </Segment>
-    <FullScreen>
-      <Loading key='loader' />
-    </FullScreen>
-  </Wrapper>
+  <Loading key='loader' />
 )
 class App extends Component {
   render() {
     return (
       <Router>
-        <React.Fragment>
-          <Route exact path="/" component={Page} />
-          <Route path="/login" component={Page} />
-          <Route path="/leaderboard" component={Page} />
-          <Route path="/dashboard" component={Dashboard} />
-        </React.Fragment>
+        <Template>
+          <React.Fragment>
+            <Route exact path="/" component={Page} />
+            <Route path="/login" component={Page} />
+            <Route path="/leaderboard" component={Page} />
+            <Route path="/dashboard" component={Dashboard} />
+          </React.Fragment>
+        </Template>
       </Router>
     );
   }
