@@ -24,10 +24,23 @@ export const UserList = styled.div`
   padding:10px;
 `
 
-export const User = ({avatarUrl, displayName, email, online}) => <Avatar>
-  <div><AvatarImage height='64' width='64' src={avatarUrl}/></div>
-  <div>
-    <strong>{online? '✳️' : '✴️'}{displayName}</strong>
-    <div>{email}</div>
-  </div>
-</Avatar>
+export const User = ({ avatarUrl, displayName, email, online, handleClick }) => {
+  const handleClickEvent = (event) => {
+    if (typeof handleClick === 'function') {
+      handleClick({
+        avatarUrl,
+        displayName,
+        email
+      });
+    }
+  }
+  return (
+    <Avatar onClick={handleClickEvent}>
+      <div><AvatarImage height='64' width='64' src={avatarUrl} /></div>
+      <div>
+        <strong>{online ? '✳️' : '✴️'}{displayName}</strong>
+        <div>{email}</div>
+      </div>
+    </Avatar>
+  );
+}

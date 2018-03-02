@@ -4,15 +4,14 @@ import { compose } from 'redux'
 import { firebaseConnect } from 'react-redux-firebase'
 import { UserList, User } from '../UserList'
 
-const Leaderboard = ({firesbase, users, matches, presence}) => {
-  console.log(users,matches)
+const Leaderboard = ({ firesbase, users, matches, presence }) => {
   return (
     <div>
-        <UserList>
-          { users && users.map(({key, value : user }) => (<User online={presence[key]} key={key} {...user}/>)) }
-        </UserList>
+      <UserList>
+        {users && users.map(({ key, value: user }) => (<User online={presence[key]} key={key} {...user} />))}
+      </UserList>
     </div>
-)
+  )
 };
 
 export default compose(
@@ -20,7 +19,7 @@ export default compose(
     { path: 'presence' },
     { path: 'users' },
     { path: 'matches' },
-    
+
   ]),
   connect((state, props) => ({
     presence: state.firebase.data.presence || {},

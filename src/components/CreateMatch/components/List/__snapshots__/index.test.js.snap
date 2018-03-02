@@ -21,9 +21,7 @@ ShallowWrapper {
         <h4>
           choose your victim!
 </h4>,
-        <ul>
-          
-</ul>,
+        <ul />,
       ],
     },
     "ref": null,
@@ -44,10 +42,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [],
+          "children": undefined,
         },
         "ref": null,
-        "rendered": Array [],
+        "rendered": null,
         "type": "ul",
       },
     ],
@@ -63,9 +61,7 @@ ShallowWrapper {
           <h4>
             choose your victim!
 </h4>,
-          <ul>
-            
-</ul>,
+          <ul />,
         ],
       },
       "ref": null,
@@ -86,10 +82,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [],
+            "children": undefined,
           },
           "ref": null,
-          "rendered": Array [],
+          "rendered": null,
           "type": "ul",
         },
       ],

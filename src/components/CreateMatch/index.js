@@ -12,7 +12,10 @@ class CreateMatch extends Component {
         this.state = {
             search: '',
             filteredUsers: [],
+            selectedOpponent: null,
         };
+
+        this.selectOpponent = this.selectOpponent.bind(this);
     }
 
     filterUsers = (filterTerm) => {
@@ -32,12 +35,32 @@ class CreateMatch extends Component {
         });
     }
 
+    selectOpponent = (user) => {
+        this.setState({
+            selectedOpponent: user,
+            filteredUsers: [],
+        });
+    }
+
+    showOpponent = () => {
+        if (this.state.selectedOpponent) {
+            return (
+                <div>
+                    {this.state.selectedOpponent.displayName}
+                </div>
+            );
+        }
+    }
+
     render() {
         return (
             <div>
+                {this.showOpponent()}
                 <input onChange={this.handleChange} value={this.state.search} type="text" />
                 <List>
-                    {this.state.filteredUsers && this.state.filteredUsers.map(({ key, value: user }) => (<User online={this.props.presence[key]} key={key} {...user} />))}
+                    {this.state.filteredUsers && this.state.filteredUsers.map(
+                        ({ key, value: user }) => (<User handleClick={this.selectOpponent} online={this.props.presence[key]} key={key} {...user} />)
+                    )}
                 </List>
             </div>
         );

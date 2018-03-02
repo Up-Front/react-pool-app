@@ -28,6 +28,8 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "firebase-tools": "^3.17.4"
+    "firebase-tools": "^3.17.4",
+    "jest-cli": "^20.0.4",
+    "redux-mock-store": "^1.5.1"
   }
 }
