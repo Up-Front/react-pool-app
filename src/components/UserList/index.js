@@ -24,10 +24,11 @@ export const UserList = styled.div`
   padding:10px;
 `
 
-export const User = ({ avatarUrl, displayName, email, online, handleClick }) => {
+export const User = ({ avatarUrl, displayName, email, online, handleClick, uid }) => {
   const handleClickEvent = (event) => {
     if (typeof handleClick === 'function') {
       handleClick({
+        uid,
         avatarUrl,
         displayName,
         email

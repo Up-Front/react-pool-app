@@ -65,6 +65,10 @@ class CreateMatch extends Component {
         }
     }
 
+    createMatch = () => {
+        this.props.firebase.push('/matches', { user1: this.props.auth, user2: this.state.selectedOpponent })
+    }
+
     render() {
         return (
             <div>
@@ -73,9 +77,11 @@ class CreateMatch extends Component {
                 <input onChange={this.handleChange} value={this.state.search} type="text" />
                 <List>
                     {this.state.filteredUsers && this.state.filteredUsers.map(
-                        ({ key, value: user }) => (<User handleClick={this.selectOpponent} online={this.props.presence[key]} key={key} {...user} />)
+                        ({ key, value: user }) => (<User handleClick={this.selectOpponent} online={this.props.presence[key]} key={key} uid={key} {...user} />)
                     )}
                 </List>
+
+                <button onClick={this.createMatch} disabled={!this.state.selectedOpponent}>create show down</button>
             </div>
         );
     }
