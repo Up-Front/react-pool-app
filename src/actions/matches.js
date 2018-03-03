@@ -2,11 +2,11 @@ import { database } from './../store';
 import matchModel from './../models/matches';
 
 // set match
-export const addMatch = (userA, userB) => {
+export const addMatch = (users) => {
     let key = database.ref('/matches').push().key;
     let model = matchModel({
-        userA: userA.uid,
-        userB: userB.uid
+        competitors: users
     });
     return database.ref('/matches/' + key).set(model);
 }
+

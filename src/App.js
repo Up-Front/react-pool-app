@@ -51,7 +51,7 @@ class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/dashboard" component={Dashboard} />
-              <Route path="/match/:matchid" component={Match} />
+              <Route path="/match/:matchId" component={Match} />
               <Route path="/create-match" component={CreateMatch} />
             </React.Fragment>
           </Template>
