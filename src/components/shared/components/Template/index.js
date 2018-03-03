@@ -9,6 +9,7 @@ const Template = (props) => (
             <Link to='/login'>login</Link>
             <Link to='/dashboard'>dashboard</Link>
             <Link to='/leaderboard'>leaderboard</Link>
+            <Link to='/create-match'>challenge!</Link>
         </Header>
         <FullScreen>
             {props.children}
