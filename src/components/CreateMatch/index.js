@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { addMatch } from './../../actions/matches';
 import List from './components/List';
 import { User } from './../UserList/';
+import { SelectOpponent } from './styles';
+
 
 
 class CreateMatch extends Component {
@@ -13,6 +16,7 @@ class CreateMatch extends Component {
             search: '',
             filteredUsers: [],
             selectedOpponent: null,
+            matchCreated: false,
         };
 
         this.selectOpponent = this.selectOpponent.bind(this);
@@ -66,7 +70,13 @@ class CreateMatch extends Component {
     }
 
     createMatch = () => {
-        this.props.firebase.push('/matches', { user1: this.props.auth, user2: this.state.selectedOpponent })
+        addMatch(this.props.auth, this.state.selectedOpponent)
+            .then(() => {
+                this.setState({
+                    matchCreated: true,
+                });
+                console.log('match created');
+            });
     }
 
     render() {
@@ -74,14 +84,17 @@ class CreateMatch extends Component {
             <div>
                 {this.showUser()}
                 {this.showOpponent()}
-                <input onChange={this.handleChange} value={this.state.search} type="text" />
-                <List>
-                    {this.state.filteredUsers && this.state.filteredUsers.map(
-                        ({ key, value: user }) => (<User handleClick={this.selectOpponent} online={this.props.presence[key]} key={key} uid={key} {...user} />)
-                    )}
-                </List>
 
-                <button onClick={this.createMatch} disabled={!this.state.selectedOpponent}>create show down</button>
+                <SelectOpponent matchCreated={this.state.matchCreated}>
+                    <input onChange={this.handleChange} value={this.state.search} type="text" />
+                    <List>
+                        {this.state.filteredUsers && this.state.filteredUsers.map(
+                            ({ key, value: user }) => (<User handleClick={this.selectOpponent} online={this.props.presence[key]} key={key} uid={key} {...user} />)
+                        )}
+                    </List>
+
+                    <button onClick={this.createMatch} disabled={!this.state.selectedOpponent}>create show down</button>
+                </SelectOpponent>
             </div>
         );
     }

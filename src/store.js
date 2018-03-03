@@ -5,7 +5,7 @@ import config from './config'
 import { reactReduxFirebase } from 'react-redux-firebase'
 
 firebase.initializeApp(config);
-
+export const database = firebase.database();
 
 
 
