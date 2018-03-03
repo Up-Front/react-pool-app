@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { compose } from 'redux'
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { addMatch } from './../../actions/matches';
 import List from './components/List';
@@ -21,6 +21,7 @@ class CreateMatch extends Component {
 
         this.selectOpponent = this.selectOpponent.bind(this);
     }
+
 
     filterUsers = (filterTerm) => {
         if (!filterTerm) {

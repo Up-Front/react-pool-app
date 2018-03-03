@@ -1,6 +1,3 @@
-import firebase from './../store';
-//const firebase = require('firebase');
-
 export default ({
     userA,
     userB,
