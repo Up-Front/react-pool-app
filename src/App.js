@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Leaderboard from './components/Leaderboard';
 import Template from './components/shared/components/Template';
+import Match from './components/Match';
 import { Provider } from 'react-redux'
 import configureStore from './store'
 
@@ -49,6 +50,7 @@ class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/dashboard" component={Dashboard} />
+              <Route path="/match/:matchid" component={Match} />
             </React.Fragment>
           </Template>
         </Router>
