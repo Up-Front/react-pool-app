@@ -6,7 +6,7 @@ const Avatar = styled.div`
   display:flex;
   align-items:center;
   justify-content:flex-start;
-  background:${props=>props.position===0 ? 'linear-gradient(to right, #f9d423 0%, #ff4e50 100%)' : 'white'};
+  background:${props => props.position === 0 ? 'linear-gradient(to right, #f9d423 0%, #ff4e50 100%)' : 'white'};
   padding: 10px;
   border-radius:8px;
 `
@@ -33,11 +33,29 @@ export const Score = styled.div`
   text-align:center;
 `
 
-export const User = ({avatarUrl, displayName, email, online, score, position}) => <FadeIn delay={`${position ? position/5.0 : 0}s`}><Pulse iterationCount="infinite" duration={position===0 ? '1s' : '0s'}><Avatar position={position}>
-  {score && <Score>{score}</Score> }
-  <div><AvatarImage height='64' width='64' src={avatarUrl}/></div>
-  <div>
-    <strong>{online? '✳️' : '✴️'}{displayName}</strong>
-    <div>{email}</div>
-  </div>
-</Avatar></Pulse></FadeIn>
+export const User = ({ avatarUrl, displayName, email, online, handleClick, uid, score, position }) => {
+  const handleClickEvent = (event) => {
+    if (typeof handleClick === 'function') {
+      handleClick({
+        uid,
+        avatarUrl,
+        displayName,
+        email
+      });
+    }
+  }
+  return (
+    <FadeIn delay={`${position ? position / 5.0 : 0}s`}>
+      <Pulse iterationCount="infinite" duration={position === 0 ? '1s' : '0s'}>
+        <Avatar onClick={handleClickEvent} position={position}>
+          <div><AvatarImage height='64' width='64' src={avatarUrl} /></div>
+          <div>
+            <strong>{online ? '✳️' : '✴️'}{displayName}</strong>
+            <div>{email}</div>
+          </div>
+        </Avatar>
+      </Pulse>
+    </FadeIn>
+  );
+}
+
