@@ -7,17 +7,28 @@ import { GetMatch } from './../../actions/matches';
 class Match extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            match: {}
+    }
+
+    renderMatch() {
+        if ((isLoaded(this.props.matches) && !isEmpty(this.props.matches))) {
+            const match = this.props.matches[this.props.match.params.matchId];
+
+            return Object.keys(match.competitors).map(function (key) {
+                const competitor = match.competitors[key];
+                return (
+                    <div key={key}>
+                        {competitor.displayName}
+                    </div>
+                );
+            });
         }
     }
 
-
     render() {
-        console.log(this.props);
         return (
             <div>
                 Match info
+                {this.renderMatch()}
             </div >
         );
     }
