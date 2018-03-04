@@ -5,4 +5,6 @@ export const MatchWrapper = styled.li`
     padding: 10px;
     width: 100%;
     border: 1px solid white;
+
+    background-color: ${props => props.contested ? 'red' : ''};
 `;
