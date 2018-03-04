@@ -5,7 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 import Leaderboard from './components/Leaderboard';
 import Template from './components/shared/components/Template';
 import CreateMatch from './components/CreateMatch';
