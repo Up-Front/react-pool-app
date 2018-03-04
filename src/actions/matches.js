@@ -10,3 +10,8 @@ export const addMatch = (users) => {
     return database.ref('/matches/' + key).set(model);
 }
 
+export const declareWinner = (matchId, winner, declarer) => {
+    console.log('s', declarer.uid);
+    let key = database.ref(`/matches/${matchId}/winners/${declarer.uid}`).push().key;
+    return database.ref(`/matches/${matchId}/winners/${declarer.uid}`).set({ winner: winner.uid });
+}

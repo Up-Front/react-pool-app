@@ -1,51 +1,46 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { firebaseConnect, isLoaded, isEmpty, populate } from 'react-redux-firebase';
-import { GetMatch } from './../../actions/matches';
+import Competitor from './components/Competitor';
+import { declareWinner } from './../../actions/matches';
 
-class Match extends Component {
-    constructor(props) {
-        super(props);
+const Match = ({ match, auth, matchId }) => {
+
+    /**
+     * user can only declare winner, if he is 1 of the competitors
+     * and only 1 time
+     */
+    const handleDeclareWinner = (competitor) => {
+        declareWinner(matchId, competitor, auth)
+            .then((res) => {
+                console.log('declared winner');
+            });
     }
 
-    renderMatch() {
-        if ((isLoaded(this.props.matches) && !isEmpty(this.props.matches))) {
-            const match = this.props.matches[this.props.match.params.matchId];
+    /**
+     * check if the authUsaer is a competitor in this match
+     */
+    const checkAuthIsCompetitor = () => {
+        let isCompetitor = false;
+        Object.keys(match.competitors).forEach((key) => {
+            const competitor = match.competitors[key];
+            if (competitor.uid === auth.uid) {
+                isCompetitor = true;
+            }
+        });
+        return isCompetitor;
+    }
 
-            return Object.keys(match.competitors).map(function (key) {
+    return (
+        <div>
+            {Object.keys(match.competitors).map((key) => {
                 const competitor = match.competitors[key];
                 return (
-                    <div key={key}>
-                        {competitor.displayName}
-                    </div>
+                    <Competitor key={competitor.uid} checkAuthIsCompetitor={checkAuthIsCompetitor()} competitor={competitor} handleClick={handleDeclareWinner} />
                 );
-            });
-        }
-    }
+            })
+            }
+        </div >
+    );
 
-    render() {
-        return (
-            <div>
-                Match info
-                {this.renderMatch()}
-            </div >
-        );
-    }
 }
 
-const populates = [
-    { child: 'competitors', root: 'users' } // replace owner with user object
-];
-
-
-const enhance = compose(
-    firebaseConnect((props) => [
-        { path: '/matches', queryParams: ['orderByKey', 'limitToFirst=1', `equalTo=${props.match.params.matchId}`], populates }
-    ]),
-    connect(({ firebase }) => ({
-        matches: populate(firebase, 'matches', populates),
-    }))
-);
-
-export default enhance(Match);
+export default Match;
