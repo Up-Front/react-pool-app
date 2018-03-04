@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import Competitor from './components/Competitor';
-import { declareWinner } from './../../actions/matches';
+import { declareWinner, removeMatch } from './../../actions/matches';
 import { MatchWrapper } from './styles';
 
 class Match extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            isContested: false,
-            winner: null,
-        };
-
         this.handleDeclareWinner = this.handleDeclareWinner.bind(this);
+        this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
     }
 
     checkMatchStatus(match) {
@@ -89,13 +84,31 @@ class Match extends Component {
         return isCompetitor;
     }
 
+    handleRemoveMatch() {
+        removeMatch(this.props.matchId)
+            .then(() => {
+                console.log('match removed');
+            });
+    }
+
+    removeMatchTemplate(winner) {
+        if (!winner) {
+            return (
+                <button onClick={this.handleRemoveMatch}>
+                    remove match
+                </button>
+            );
+        }
+    }
+
     render() {
-        const contestedText = this.state.isContested ? 'this match result is contested' : '';
 
         let { isContested, winner } = this.checkMatchStatus(this.props.match);
+        const contestedText = isContested ? 'this match result is contested' : '';
         return (
             <MatchWrapper contested={isContested}>
                 <strong>{contestedText}</strong>
+                {this.removeMatchTemplate(winner)}
                 {
                     Object.keys(this.props.match.competitors).map((key) => {
                         const competitor = this.props.match.competitors[key];
@@ -107,6 +120,7 @@ class Match extends Component {
                                 checkAuthIsCompetitor={this.checkAuthIsCompetitor(this.props.match.competitors)}
                                 competitor={competitor}
                                 hasVote={hasVote}
+                                winner={winner}
                                 handleClick={this.handleDeclareWinner}
                             />
                         );

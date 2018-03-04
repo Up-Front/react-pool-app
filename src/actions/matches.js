@@ -7,9 +7,13 @@ export const addMatch = (users) => {
     let model = matchModel({
         competitors: users
     });
-    return database.ref('/matches/' + key).set(model);
+    return database.ref(`/matches/${key}`).set(model);
 }
 
 export const declareWinner = (matchId, winner, declarer) => {
     return database.ref(`/matches/${matchId}/winners/${declarer.uid}`).set(winner.uid);
+}
+
+export const removeMatch = (matchId) => {
+    return database.ref(`/matches/${matchId}`).remove();
 }

@@ -1,7 +1,8 @@
 export default ({
-    competitors = [],
     createdAt = new Date().getTime(),
-    winners = [] }) => {
+    winners = [],
+    competitors = [],
+}) => {
 
     return {
         createdAt,
