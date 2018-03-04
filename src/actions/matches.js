@@ -2,11 +2,18 @@ import { database } from './../store';
 import matchModel from './../models/matches';
 
 // set match
-export const addMatch = (userA, userB) => {
+export const addMatch = (users) => {
     let key = database.ref('/matches').push().key;
     let model = matchModel({
-        userA: userA.uid,
-        userB: userB.uid
+        competitors: users
     });
-    return database.ref('/matches/' + key).set(model);
+    return database.ref(`/matches/${key}`).set(model);
+}
+
+export const declareWinner = (matchId, winner, declarer) => {
+    return database.ref(`/matches/${matchId}/winners/${declarer.uid}`).set(winner.uid);
+}
+
+export const removeMatch = (matchId) => {
+    return database.ref(`/matches/${matchId}`).remove();
 }

@@ -71,7 +71,7 @@ class CreateMatch extends Component {
     }
 
     createMatch = () => {
-        addMatch(this.props.auth, this.state.selectedOpponent)
+        addMatch([this.props.auth.uid, this.state.selectedOpponent.uid])
             .then(() => {
                 this.setState({
                     matchCreated: true,
