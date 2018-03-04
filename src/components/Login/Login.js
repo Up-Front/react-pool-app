@@ -40,28 +40,23 @@ export const Button = styled.button`
 `;
 
 export const LoginPage = ({firebase, auth}) => {
+  const isLoggedIn = (isLoaded(auth) && !isEmpty(auth));
+
+  let button;
+  let welcomeMessage;
+  if (isLoggedIn) {
+    button = <Button onClick={() => firebase.logout()}>Log out</Button>;
+    welcomeMessage = <FadeIn delay='0.5s'><span>Welcome, </span><strong>{auth.displayName}</strong></FadeIn>
+  } else {
+    button = <Button onClick={() => firebase.login({provider: 'google', type: 'popup'})}>Log in</Button>;
+    welcomeMessage = <div>You are not logged in</div>
+  }
+
   return (
     <div>
       <Login>
-        {isLoaded(auth) && isEmpty(auth)
-          ? <Button
-            onClick={() => firebase.login({provider: 'google', type: 'popup'})}
-          >
-            Log in
-          </Button>
-          :
-          <Button
-            onClick={() => firebase.logout()}
-          >
-            Log out
-          </Button>
-        }
-        {
-          isLoaded(auth) && isEmpty(auth)
-            ? null
-            : <FadeIn delay='0.5s'><span>Welcome, </span><strong>{auth.displayName}</strong></FadeIn>
-        }
-
+        {button}
+        {welcomeMessage}
       </Login>
       <Lottie options={defaultOptions}/>
     </div>
