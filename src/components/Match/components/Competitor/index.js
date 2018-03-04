@@ -1,8 +1,14 @@
 import React from 'react';
 
-const Competitor = ({ competitor, checkAuthIsCompetitor, ...props }) => {
+const Competitor = ({ competitor, checkAuthIsCompetitor, hasVote, ...props }) => {
     const handleClick = () => {
         props.handleClick(competitor);
+    }
+
+    const authVote = () => {
+        if (hasVote) {
+            return 'your winner';
+        }
     }
 
     const showWinnerButton = () => {
@@ -14,6 +20,7 @@ const Competitor = ({ competitor, checkAuthIsCompetitor, ...props }) => {
         <div>
             {competitor.displayName}
             {showWinnerButton()}
+            {authVote()}
         </div>
     );
 }

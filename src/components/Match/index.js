@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Competitor from './components/Competitor';
 import { declareWinner } from './../../actions/matches';
+import { MatchWrapper } from './styles';
 
 const Match = ({ match, auth, matchId }) => {
 
@@ -13,6 +14,20 @@ const Match = ({ match, auth, matchId }) => {
             .then((res) => {
                 console.log('declared winner');
             });
+    }
+
+    /** 
+     * check if the auth has voted for the competitor
+     * so we can show that on the component
+     * the votes are in the match.winners property
+    */
+    const checkAuthVote = (competitor) => {
+        if (match.winners && match.winners[auth.uid]) {
+            if (match.winners[auth.uid] === competitor.uid) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -30,15 +45,22 @@ const Match = ({ match, auth, matchId }) => {
     }
 
     return (
-        <div>
+        <MatchWrapper>
             {Object.keys(match.competitors).map((key) => {
                 const competitor = match.competitors[key];
+                const hasVote = checkAuthVote(competitor);
                 return (
-                    <Competitor key={competitor.uid} checkAuthIsCompetitor={checkAuthIsCompetitor()} competitor={competitor} handleClick={handleDeclareWinner} />
+                    <Competitor
+                        key={competitor.uid}
+                        checkAuthIsCompetitor={checkAuthIsCompetitor()}
+                        competitor={competitor}
+                        hasVote={hasVote}
+                        handleClick={handleDeclareWinner}
+                    />
                 );
             })
             }
-        </div >
+        </MatchWrapper >
     );
 
 }

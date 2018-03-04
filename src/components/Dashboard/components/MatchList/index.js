@@ -2,19 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect, isLoaded, isEmpty, populate } from 'react-redux-firebase';
-
 import Match from './../../../Match';
 
 class MatchList extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
         if (isLoaded(this.props.matches) && !isEmpty(this.props.matches)) {
-            console.log(this.props.matches);
             return (
                 <div>
                     {
