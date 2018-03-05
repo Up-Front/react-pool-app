@@ -9,51 +9,17 @@ class Match extends Component {
         super(props);
         this.handleDeclareWinner = this.handleDeclareWinner.bind(this);
         this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
+
     }
 
-    checkMatchStatus(match) {
-        let winner;
-        let first = true;
-        let isContested = false;
 
-        if (match && match.winners) {
-
-            // if there are not the same amount of winners as competitors than there is nothing to do
-            if (Object.keys(match.winners).length !== Object.keys(match.competitors).length) {
-                return {};
-            }
-
-
-            Object.keys(match.winners).forEach((key) => {
-                if (first) {
-                    winner = match.winners[key];
-                    first = false;
-                }
-                if (winner !== match.winners[key]) {
-                    // a contested result\
-                    isContested = true;
-                }
-            });
-
-        }
-
-        if (!isContested) {
-            return { isContested: false, winner };
-        } else {
-            return { isContested, winner: null }
-        }
-    }
 
     /**
      * user can only declare winner, if he is 1 of the competitors
      * and only 1 time
      */
     handleDeclareWinner(competitor) {
-        declareWinner(this.props.matchId, competitor, this.props.auth)
-            .then((res) => {
-                console.log('declared winner');
-
-            });
+        declareWinner(this.props.matchId, this.props.match, competitor, this.props.auth)
     }
 
     /** 
@@ -102,13 +68,11 @@ class Match extends Component {
     }
 
     render() {
-
-        let { isContested, winner } = this.checkMatchStatus(this.props.match);
-        const contestedText = isContested ? 'this match result is contested' : '';
+        const contestedText = this.props.isContested ? 'this match result is contested' : '';
         return (
-            <MatchWrapper contested={isContested}>
+            <MatchWrapper contested={this.props.match.isContested}>
                 <strong>{contestedText}</strong>
-                {this.removeMatchTemplate(winner)}
+                {this.removeMatchTemplate(this.props.match.winner)}
                 {
                     Object.keys(this.props.match.competitors).map((key) => {
                         const competitor = this.props.match.competitors[key];
@@ -120,7 +84,7 @@ class Match extends Component {
                                 checkAuthIsCompetitor={this.checkAuthIsCompetitor(this.props.match.competitors)}
                                 competitor={competitor}
                                 hasVote={hasVote}
-                                winner={winner}
+                                winner={this.props.match.winner}
                                 handleClick={this.handleDeclareWinner}
                             />
                         );
