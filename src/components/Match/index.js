@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Competitor from './components/Competitor';
 import { declareWinner, removeMatch } from './../../actions/matches';
 import { MatchWrapper } from './styles';
@@ -60,7 +61,7 @@ class Match extends Component {
     removeMatchTemplate(winner) {
         if (!winner) {
             return (
-                <button onClick={this.handleRemoveMatch}>
+                <button className="deletebutton" onClick={this.handleRemoveMatch}>
                     remove match
                 </button>
             );
@@ -95,5 +96,11 @@ class Match extends Component {
     }
 
 }
+
+Match.propTypes = {
+    matchId: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
+};
 
 export default Match;

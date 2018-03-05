@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const Competitor = ({ competitor, checkAuthIsCompetitor, hasVote, winner, ...props }) => {
     const isWinner = winner === competitor.uid ? true : false;
@@ -9,7 +11,9 @@ const Competitor = ({ competitor, checkAuthIsCompetitor, hasVote, winner, ...pro
 
     const authVote = () => {
         if (hasVote && !winner) {
-            return 'your winner';
+            return (
+                <div className="winner">your winner</div>
+            );
         }
     }
 
@@ -18,7 +22,6 @@ const Competitor = ({ competitor, checkAuthIsCompetitor, hasVote, winner, ...pro
             return <button onClick={handleClick}>declare winner</button>
         }
     }
-
 
     if (isWinner) {
         return (
@@ -39,4 +42,11 @@ const Competitor = ({ competitor, checkAuthIsCompetitor, hasVote, winner, ...pro
     );
 }
 
+Competitor.propTypes = {
+    checkAuthIsCompetitor: PropTypes.bool,
+    competitor: PropTypes.object.isRequired,
+    hasVote: PropTypes.bool,
+    winner: PropTypes.string,
+    handleClick: PropTypes.func.isRequired
+};
 export default Competitor;
