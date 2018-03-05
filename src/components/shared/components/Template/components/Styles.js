@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.section`
-  background: #243949;
-  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
   display: flex;
   align-items: center;
   height:100%;
   flex-direction:column;
   padding:0;
+  background: ${props => props.theme.background};
+  background-image: ${props => props.theme.backgroundImage};
+  font-size: ${props => props.theme.fontSize};
 `;
 
 export const Header = styled.header`
