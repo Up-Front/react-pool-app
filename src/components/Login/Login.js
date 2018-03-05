@@ -11,7 +11,7 @@ import {FadeIn} from 'animate-css-styled-components';
 const defaultOptions = {
   loop: false,
   autoplay: true,
-  animationData: animationData
+  animationData,
 };
 
 const Login = styled.div`
