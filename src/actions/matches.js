@@ -12,10 +12,9 @@ export const addMatch = (users) => {
 
 export const declareWinner = (matchId, match, winner, declarer) => {
     if (!match.winners) {
-        match.winners = [];
+        match.winners = {};
     }
     let winners = Object.assign({}, match.winners, { [declarer.uid]: winner.uid });
-
     match = Object.assign({}, match, { winners });
     const { competitors, ...update } = setMatchStatus(matchId, match);
     return database.ref(`/matches/${matchId}`).update(update);
@@ -29,12 +28,16 @@ export const setMatchStatus = (matchId, match) => {
     let winner;
     let first = true;
     let isContested = false;
-    if (match && match.winners) {
 
+    if (match) {
+        if (!match.winners) {
+            match.winners = {};
+        }
         // if there are not the same amount of winners as competitors than there is nothing to do
         if (Object.keys(match.winners).length !== Object.keys(match.competitors).length) {
             return match;
         }
+
 
 
         Object.keys(match.winners).forEach((key) => {

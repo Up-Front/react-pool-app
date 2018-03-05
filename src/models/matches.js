@@ -3,7 +3,7 @@ export default ({
     finishedAt = null,
     winner = null,
     isContested = false,
-    winners = [],
+    winners = {},
     competitors = [],
 }) => {
 

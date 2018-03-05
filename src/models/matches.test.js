@@ -7,8 +7,11 @@ describe('Match model', () => {
         const checkModel = {
             competitors: [1, 2],
             createdAt: 3,
+            finishedAt: 4,
+            isContested: false,
+            winner: 3,
             winners: [],
-        }
+        };
 
         const model = matches(checkModel);
         expect(model).toEqual(checkModel);
@@ -22,6 +25,6 @@ describe('Match model', () => {
 
         const model = matches(checkModel);
         expect(model.createdAt).not.toBeNull();
-        expect(model.winners).toHaveLength(0);
+        expect(model.winners).toEqual({});
     });
 });
