@@ -9,6 +9,7 @@ import Login from './components/Login/Login';
 import Leaderboard from './components/Leaderboard';
 import Template from './components/shared/components/Template';
 import CreateMatch from './components/CreateMatch';
+import WinnerWarning from './components/WinnerWarning';
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components';
 import { theme } from './components/shared/theme';
@@ -48,6 +49,7 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <Template>
+              <WinnerWarning />
               <React.Fragment>
                 <Route exact path="/" component={Page} />
                 <Route path="/login" component={Login} />
