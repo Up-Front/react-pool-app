@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+import Authorization from './components/shared/components/Authorization';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login/Login';
 import Leaderboard from './components/Leaderboard';
@@ -51,9 +52,9 @@ class App extends Component {
               <React.Fragment>
                 <Route exact path="/" component={Page} />
                 <Route path="/login" component={Login} />
-                <Route path="/leaderboard" component={Leaderboard} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/create-match" component={CreateMatch} />
+                <Route path="/leaderboard" component={Authorization(Leaderboard)} />
+                <Route path="/dashboard" component={Authorization(Dashboard)} />
+                <Route path="/create-match" component={Authorization(CreateMatch)} />
               </React.Fragment>
             </Template>
           </Router>
