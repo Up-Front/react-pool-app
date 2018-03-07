@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firebaseConnect } from 'react-redux-firebase';
 import { BounceIn } from 'animate-css-styled-components';
 import { WinnerWarningWrapper, WinnerWarningCenter, BoomText, BoomTextShadow } from './styles';
 import Avatar from './components/Avatar';
@@ -35,9 +38,9 @@ const WinnerWarning = (props) => {
         return (
             <WinnerWarningWrapper>
                 <WinnerWarningCenter>
-                    <audio autoPlay="autoplay" src={`/sound/victory/${victoryName}.mp3`} type="audio/mpeg" />
+                    <audio autoPlay="autoplay" src={"/sound/victory/" + victoryName + ".mp3"} type="audio/mpeg" />
                     <BounceIn delay=".5s" duration="1s">
-                        <Avatar />
+                        <Avatar auth={props.auth} />
                     </BounceIn>
                     <BounceIn delay=".7s" duration=".5s">
                         <BoomText>
@@ -54,4 +57,13 @@ const WinnerWarning = (props) => {
     return ('');
 }
 
-export default WinnerWarning;
+const enhance = compose(
+    firebaseConnect((props) => [
+        { path: 'auth' },
+    ]),
+    connect(({ firebase }) => ({
+        auth: firebase.auth,
+    }))
+);
+
+export default enhance(WinnerWarning);
