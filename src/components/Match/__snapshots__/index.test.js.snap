@@ -41,13 +41,13 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <strong />,
         <button
           className="deletebutton"
           onClick={[Function]}
 >
           remove match
 </button>,
+        <strong />,
         Array [
           <Competitor
             checkAuthIsCompetitor={true}
@@ -84,17 +84,6 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "",
-        },
-        "ref": null,
-        "rendered": "",
-        "type": "strong",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
           "children": "remove match",
           "className": "deletebutton",
           "onClick": [Function],
@@ -102,6 +91,17 @@ ShallowWrapper {
         "ref": null,
         "rendered": "remove match",
         "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": "strong",
       },
       Object {
         "instance": null,
@@ -149,13 +149,13 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <strong />,
           <button
             className="deletebutton"
             onClick={[Function]}
 >
             remove match
 </button>,
+          <strong />,
           Array [
             <Competitor
               checkAuthIsCompetitor={true}
@@ -192,17 +192,6 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "",
-          },
-          "ref": null,
-          "rendered": "",
-          "type": "strong",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
             "children": "remove match",
             "className": "deletebutton",
             "onClick": [Function],
@@ -210,6 +199,17 @@ ShallowWrapper {
           "ref": null,
           "rendered": "remove match",
           "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "strong",
         },
         Object {
           "instance": null,

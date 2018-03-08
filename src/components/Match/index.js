@@ -60,7 +60,7 @@ class Match extends Component {
             });
     }
 
-    removeMatchTemplate(winner) {
+    showDeleteButton(winner) {
         if (!winner) {
             return (
                 <button className="deletebutton" onClick={this.handleRemoveMatch}>
@@ -74,6 +74,7 @@ class Match extends Component {
         const contestedText = this.props.isContested ? 'this match result is contested' : '';
         return (
             <MatchWrapper contested={this.props.match.isContested}>
+                {this.showDeleteButton(this.props.match.winner)}
                 <strong>{contestedText}</strong>
                 {
                     Object.values(this.props.match.competitors).map(competitor => {
