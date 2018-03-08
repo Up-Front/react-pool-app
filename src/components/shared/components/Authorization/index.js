@@ -2,30 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { Redirect } from 'react-router-dom';
 
-
-const Authorization = (Component) => {
+const Authorization = Component => {
     const BaseAuth = ({ auth, ...props }) => {
-        console.log(auth);
         if (isLoaded(auth) && !isEmpty(auth)) {
             return <Component auth={auth} {...props} />
         } else if (isLoaded(auth) && isEmpty(auth)) {
-            props.history.push('/login');
-            return null;
+            return <Redirect to="/login" push />;
         }
-        return '';
+        return null;
     }
-    const enhance = compose(
+    return compose(
         firebaseConnect((props) => [
             { path: 'auth' },
         ]),
         connect(({ firebase }) => ({
             auth: firebase.auth,
         }))
-    );
-    return enhance(BaseAuth);
+    )(BaseAuth);
 }
 
 export default Authorization;
-
-
