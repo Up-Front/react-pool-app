@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-const List = (props) => {
+const List = props => {
     return (
         <div>
             <h4>choose your victim!</h4>

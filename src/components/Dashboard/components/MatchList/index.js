@@ -10,10 +10,9 @@ class MatchList extends Component {
             return (
                 <div>
                     {
-                        Object.keys(this.props.matches).map((key) => {
-                            const match = this.props.matches[key];
+                        Object.entries(this.props.matches).map(([matchId, match]) => {
                             return (
-                                <Match key={key} matchId={key} match={match} auth={this.props.auth} />
+                                <Match key={matchId} matchId={matchId} match={match} auth={this.props.auth} />
                             );
                         })
                     }

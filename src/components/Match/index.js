@@ -42,8 +42,7 @@ class Match extends Component {
      */
     checkAuthIsCompetitor(competitors) {
         let isCompetitor = false;
-        Object.keys(competitors).forEach((key) => {
-            const competitor = competitors[key];
+        Object.values(competitors).forEach(competitor => {
             if (competitor.uid === this.props.auth.uid) {
                 isCompetitor = true;
             }
@@ -55,6 +54,9 @@ class Match extends Component {
         removeMatch(this.props.matchId)
             .then(() => {
                 console.log('match removed');
+            })
+            .catch(() => {
+                console.log('something went oops');
             });
     }
 
@@ -73,18 +75,14 @@ class Match extends Component {
         return (
             <MatchWrapper contested={this.props.match.isContested}>
                 <strong>{contestedText}</strong>
-                {this.removeMatchTemplate(this.props.match.winner)}
                 {
-                    Object.keys(this.props.match.competitors).map((key) => {
-                        const competitor = this.props.match.competitors[key];
-                        const hasVote = this.checkAuthVote(competitor);
-
+                    Object.values(this.props.match.competitors).map(competitor => {
                         return (
                             <Competitor
                                 key={competitor.uid}
                                 checkAuthIsCompetitor={this.checkAuthIsCompetitor(this.props.match.competitors)}
                                 competitor={competitor}
-                                hasVote={hasVote}
+                                hasVote={this.checkAuthVote(competitor)}
                                 winner={this.props.match.winner}
                                 handleClick={this.handleDeclareWinner}
                             />
@@ -94,7 +92,6 @@ class Match extends Component {
             </MatchWrapper >
         );
     }
-
 }
 
 Match.propTypes = {
