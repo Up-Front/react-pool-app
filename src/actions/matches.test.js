@@ -67,6 +67,7 @@ describe('Match actions', () => {
         const checkModel = {
             competitors: { 1: 1, 2: 2 },
             createdAt: 3,
+            winners: {}
         };
 
         const expectedResult = {};
