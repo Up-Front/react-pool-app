@@ -26,27 +26,24 @@ export const setMatchStatus = (matchId, match) => {
     let first = true;
     let isContested = false;
 
-    if (match) {
-        // if there are not the same amount of winners as competitors than there is nothing to do
-        if (Object.keys(match.winners).length !== Object.keys(match.competitors).length) {
-            return match;
+    // if there are not the same amount of winners as competitors than there is nothing to do
+    if (Object.keys(match.winners).length !== Object.keys(match.competitors).length) {
+        return match;
+    }
+    Object.values(match.winners).forEach((value) => {
+        if (first) {
+            winner = value;
+            first = false;
         }
-
-        Object.values(match.winners).forEach((value) => {
-            if (first) {
-                winner = value;
-                first = false;
-            }
-            if (winner !== value) {
-                // a contested result
-                isContested = true;
-            }
-        });
-
-        if (!isContested) {
-            return Object.assign({}, match, { isContested: false, winner, finishedAt: new Date().getTime() });
-        } else {
-            return Object.assign({}, match, { isContested: true, winner: null, finishedAt: null });
+        if (winner !== value) {
+            // a contested result
+            isContested = true;
         }
+    });
+
+    if (!isContested) {
+        return Object.assign({}, match, { isContested: false, winner, finishedAt: new Date().getTime() });
+    } else {
+        return Object.assign({}, match, { isContested: true, winner: null, finishedAt: null });
     }
 }

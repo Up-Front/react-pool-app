@@ -10,10 +10,7 @@ class Match extends Component {
         super(props);
         this.handleDeclareWinner = this.handleDeclareWinner.bind(this);
         this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
-
     }
-
-
 
     /**
      * user can only declare winner, if he is 1 of the competitors
@@ -38,7 +35,7 @@ class Match extends Component {
     }
 
     /**
-     * check if the authUsaer is a competitor in this match
+     * check if the authUser is a competitor in this match
      */
     checkAuthIsCompetitor(competitors) {
         let isCompetitor = false;
@@ -64,7 +61,7 @@ class Match extends Component {
         return (
             <button className="deletebutton" onClick={this.handleRemoveMatch}>
                 remove match
-                </button>
+            </button>
         );
     }
 

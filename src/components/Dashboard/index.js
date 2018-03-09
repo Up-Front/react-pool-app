@@ -4,7 +4,6 @@ import MatchList from './components/MatchList';
 const Dashboard = () => (
     <div>
         <MatchList />
-
     </div>
 );
 
