@@ -102,13 +102,11 @@ export default compose(
         { path: 'presence' },
         { path: 'users' },
         { path: 'auth' },
-        { path: 'matches' },
 
     ]),
     connect((state, props) => ({
         presence: state.firebase.data.presence || {},
         users: state.firebase.ordered.users,
-        auth: state.firebase.auth,
-        matches: state.firebase.ordered.matches
+        auth: state.firebase.auth
     }))
 )(CreateMatch);
