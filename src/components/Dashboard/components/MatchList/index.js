@@ -37,7 +37,10 @@ const populates = [
 ];
 
 const enhance = compose(
-  firebaseConnect(props => [{ path: '/matches', populates }, { path: 'auth' }]),
+  firebaseConnect(props => [
+    { path: '/matches', queryParams: ['orderByChild=finishedAt'], populates },
+    { path: 'auth' }
+  ]),
   connect((state, props) => ({
     matches: populate(state.firebase, 'matches', populates),
     auth: state.firebase.auth
