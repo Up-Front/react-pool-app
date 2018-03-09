@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Competitor component render of winner 1`] = `
+ReactWrapper {
+  "length": 1,
+  Symbol(enzyme.__unrendered__): <Competitor
+    competitor={
+        Object {
+            "displayName": "Bob de Bouwer",
+            "uid": "1",
+          }
+    }
+    handleClick={[Function]}
+    winner="1"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "competitor": Object {
+        "displayName": "Bob de Bouwer",
+        "uid": "1",
+      },
+      "handleClick": [Function],
+      "winner": "1",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": <div>
+        <strong>
+                Bob de Bouwer
+                👑
+        </strong>
+</div>,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <strong>
+          Bob de Bouwer
+           👑
+</strong>,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": <strong>
+            Bob de Bouwer
+            👑
+</strong>,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Bob de Bouwer",
+              " 👑",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Bob de Bouwer",
+            " 👑",
+          ],
+          "type": "strong",
+        },
+      ],
+      "type": "div",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "competitor": Object {
+          "displayName": "Bob de Bouwer",
+          "uid": "1",
+        },
+        "handleClick": [Function],
+        "winner": "1",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": <div>
+          <strong>
+                    Bob de Bouwer
+                    👑
+          </strong>
+</div>,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <strong>
+            Bob de Bouwer
+             👑
+</strong>,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": <strong>
+              Bob de Bouwer
+              👑
+</strong>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Bob de Bouwer",
+                " 👑",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Bob de Bouwer",
+              " 👑",
+            ],
+            "type": "strong",
+          },
+        ],
+        "type": "div",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Competitor component renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Competitor
+    competitor={
+        Object {
+            "displayName": "Bob de Bouwer",
+            "uid": "1",
+          }
+    }
+    handleClick={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "Bob de Bouwer",
+        undefined,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      "Bob de Bouwer",
+      undefined,
+      undefined,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "Bob de Bouwer",
+          undefined,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        "Bob de Bouwer",
+        undefined,
+        undefined,
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

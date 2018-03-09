@@ -29,10 +29,11 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "firebase-mock": "^2.0.29",
-    "firebase-tools": "^3.17.4",
-    "jest-cli": "^20.0.4",
-    "jest-styled-components": "^5.0.0",
-    "redux-mock-store": "^1.5.1"
+    "firebase-mock": "˜2.0.29",
+    "firebase-tools": "˜3.17.4",
+    "jest-cli": "˜20.0.4",
+    "jest-styled-components": "˜5.0.0",
+    "redux-mock-store": "˜1.5.1",
+    "sinon": "˜4.4.2"
   }
 }

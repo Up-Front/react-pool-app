@@ -1,15 +1,18 @@
 export default ({
-    userA,
-    userB,
     createdAt = new Date().getTime(),
-    winnerA = null,
-    winnerB = null }) => {
+    finishedAt = null,
+    winner = null,
+    isContested = false,
+    winners = {},
+    competitors = [],
+}) => {
 
     return {
         createdAt,
-        userA,
-        userB,
-        winnerA, //both users need to point to a winner, when they are the same the winner is known, else contested
-        winnerB,
+        finishedAt,
+        winner,
+        isContested,
+        competitors,
+        winners, //all users need to point to a winner, when they are the same the winner is known, else contested
     }
 }

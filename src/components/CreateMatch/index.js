@@ -7,8 +7,6 @@ import List from './components/List';
 import { User } from './../UserList/';
 import { SelectOpponent } from './styles';
 
-
-
 class CreateMatch extends Component {
     constructor(props) {
         super(props);
@@ -18,12 +16,10 @@ class CreateMatch extends Component {
             selectedOpponent: null,
             matchCreated: false,
         };
-
         this.selectOpponent = this.selectOpponent.bind(this);
     }
 
-
-    filterUsers = (filterTerm) => {
+    filterUsers = filterTerm => {
         if (!filterTerm) {
             return [];
         }
@@ -34,7 +30,7 @@ class CreateMatch extends Component {
             ))
     }
 
-    handleChange = (event) => {
+    handleChange = event => {
         const search = event.target.value;
         const users = this.filterUsers(search);
         this.setState({
@@ -43,7 +39,7 @@ class CreateMatch extends Component {
         });
     }
 
-    selectOpponent = (user) => {
+    selectOpponent = user => {
         this.setState({
             selectedOpponent: user,
             filteredUsers: [],
@@ -71,7 +67,7 @@ class CreateMatch extends Component {
     }
 
     createMatch = () => {
-        addMatch(this.props.auth, this.state.selectedOpponent)
+        addMatch([this.props.auth.uid, this.state.selectedOpponent.uid])
             .then(() => {
                 this.setState({
                     matchCreated: true,
@@ -102,7 +98,7 @@ class CreateMatch extends Component {
 };
 
 export default compose(
-    firebaseConnect((props) => [
+    firebaseConnect(props => [
         { path: 'presence' },
         { path: 'users' },
         { path: 'auth' },
