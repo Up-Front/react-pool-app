@@ -66,10 +66,7 @@ class Match extends Component {
     }
 
     checkForWinner(match) {
-        if (match.winner) {
-            return true;
-        }
-        return false;
+        return !!match.winner;
     }
 
     render() {

@@ -3,15 +3,15 @@ import matchModel from './../models/matches';
 
 // set match
 export const addMatch = users => {
-    let matchId = database.ref('/matches').push().key;
-    let model = matchModel({
+    const matchId = database.ref('/matches').push().key;
+    const model = matchModel({
         competitors: users
     });
     return database.ref(`/matches/${matchId}`).set(model);
 }
 
 export const declareWinner = (matchId, match, winner, declarer) => {
-    let winners = Object.assign({}, match.winners, { [declarer.uid]: winner.uid });
+    const winners = Object.assign({}, match.winners, { [declarer.uid]: winner.uid });
     match = Object.assign({}, match, { winners });
     const { competitors, ...update } = setMatchStatus(matchId, match);
     return database.ref(`/matches/${matchId}`).update(update);
