@@ -62,7 +62,7 @@ describe('Match component', () => {
             match={match}
         />);
 
-        const result = wrapper.instance().checkForWinner(match);
+        const result = wrapper.instance().hasWinner(match);
         expect(result).toEqual(true);
 
         expect(wrapper.find('.deletebutton').length).toEqual(0);

@@ -65,7 +65,7 @@ class Match extends Component {
         );
     }
 
-    checkForWinner(match) {
+    hasWinner(match) {
         return !!match.winner;
     }
 
@@ -73,7 +73,7 @@ class Match extends Component {
         const contestedText = this.props.isContested ? 'this match result is contested' : '';
         return (
             <MatchWrapper contested={this.props.match.isContested}>
-                {!this.checkForWinner(this.props.match) ? this.showDeleteButton() : ''}
+                {!this.hasWinner(this.props.match) ? this.showDeleteButton() : ''}
                 <strong>{contestedText}</strong>
                 {
                     Object.values(this.props.match.competitors).map(competitor => {
