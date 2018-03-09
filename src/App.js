@@ -50,7 +50,7 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <Template>
-              <WinnerWarning hidden="hidden" />
+              <WinnerWarning />
               <React.Fragment>
                 <Route exact path="/" component={Page} />
                 <Route path="/login" component={Login} />
