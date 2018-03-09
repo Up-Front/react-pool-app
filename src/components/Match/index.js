@@ -60,21 +60,26 @@ class Match extends Component {
             });
     }
 
-    showDeleteButton(winner) {
-        if (!winner) {
-            return (
-                <button className="deletebutton" onClick={this.handleRemoveMatch}>
-                    remove match
+    showDeleteButton() {
+        return (
+            <button className="deletebutton" onClick={this.handleRemoveMatch}>
+                remove match
                 </button>
-            );
+        );
+    }
+
+    checkForWinner(match) {
+        if (match.winner) {
+            return true;
         }
+        return false;
     }
 
     render() {
         const contestedText = this.props.isContested ? 'this match result is contested' : '';
         return (
             <MatchWrapper contested={this.props.match.isContested}>
-                {this.showDeleteButton(this.props.match.winner)}
+                {!this.checkForWinner(this.props.match) ? this.showDeleteButton() : ''}
                 <strong>{contestedText}</strong>
                 {
                     Object.values(this.props.match.competitors).map(competitor => {
