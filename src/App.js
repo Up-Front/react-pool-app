@@ -5,11 +5,13 @@ import {
   Route
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 import Leaderboard from './components/Leaderboard';
 import Template from './components/shared/components/Template';
 import CreateMatch from './components/CreateMatch';
 import { Provider } from 'react-redux'
+import { ThemeProvider } from 'styled-components';
+import { theme } from './components/shared/theme';
 import configureStore from './store'
 
 const initialState = window.__INITIAL_STATE__; // set initial state here
@@ -42,19 +44,21 @@ const Page = ({ history }) => (
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <Router>
-          <Template>
-            <React.Fragment>
-              <Route exact path="/" component={Page} />
-              <Route path="/login" component={Login} />
-              <Route path="/leaderboard" component={Leaderboard} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/create-match" component={CreateMatch} />
-            </React.Fragment>
-          </Template>
-        </Router>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Router>
+            <Template>
+              <React.Fragment>
+                <Route exact path="/" component={Page} />
+                <Route path="/login" component={Login} />
+                <Route path="/leaderboard" component={Leaderboard} />
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/create-match" component={CreateMatch} />
+              </React.Fragment>
+            </Template>
+          </Router>
+        </Provider>
+      </ThemeProvider>
     );
   }
 }
