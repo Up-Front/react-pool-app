@@ -77,16 +77,19 @@ class Match extends Component {
                 <strong>{contestedText}</strong>
                 {
                     Object.values(this.props.match.competitors).map(competitor => {
-                        return (
-                            <Competitor
-                                key={competitor.uid}
-                                checkAuthIsCompetitor={this.checkAuthIsCompetitor(this.props.match.competitors)}
-                                competitor={competitor}
-                                hasVote={this.checkAuthVote(competitor)}
-                                winner={this.props.match.winner}
-                                handleClick={this.handleDeclareWinner}
-                            />
-                        );
+                        if (competitor && competitor.uid) {
+                            return (
+                                <Competitor
+                                    key={competitor.uid}
+                                    checkAuthIsCompetitor={this.checkAuthIsCompetitor(this.props.match.competitors)}
+                                    competitor={competitor}
+                                    hasVote={this.checkAuthVote(competitor)}
+                                    winner={this.props.match.winner}
+                                    handleClick={this.handleDeclareWinner}
+                                />
+                            );
+                        }
+                        return '';
                     })
                 }
             </MatchWrapper >

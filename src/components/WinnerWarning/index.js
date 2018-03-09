@@ -8,23 +8,14 @@ import Avatar from './components/Avatar';
 
 class WinnerWarning extends Component {
 
-    componentDidMount() {
-        var matchesRef = this.props.firebase.database().ref('matches/').orderByChild('finishedAt');
-        matchesRef.on('child_changed', function (data) {
-            console.log(data.val());
-        });
-    }
-
     calculateStreak(gameList) {
         let streak = 1;
         gameList.split('').reduceRight((prev, current) => {
             if (current === prev) {
                 streak++;
-                return current;
             }
-            return;
+            return prev;
         });
-
         return streak;
     }
 
@@ -40,6 +31,7 @@ class WinnerWarning extends Component {
     }
 
     render() {
+        console.log(this.props.matches);
         let victoryName = this.setVictoryName(this.calculateStreak('WWWLLLLLLLLLWWLWWWW'));
         if (!this.props.hidden) {
             return (
@@ -68,11 +60,11 @@ class WinnerWarning extends Component {
 const enhance = compose(
     firebaseConnect((props) => [
         { path: 'auth' },
-        { path: 'matches', queryParams: ['orderByChild=finishedAt', 'limitToFirst=1'] },
+        { path: 'matches', type: 'child_changed', queryParams: ['limitToFirst=1'] },
     ]),
     connect(({ firebase }) => ({
         auth: firebase.auth,
-        matches: firebase.ordered.matches
+        matches: firebase.data.matches
     }))
 );
 
