@@ -64,15 +64,12 @@ export const removeMatch = (matchId, match) => {
     updateData[`users/${competitor.uid}/matches/${matchId}`] = null;
   });
 
-  testt();
   return ref.update(updateData, function(error) {
     if (error) {
       console.log('Error updating data:', error);
     }
   });
 };
-
-export const testt = () => {};
 
 export const updateWinnerData = (matchId, match) => {
   let updateData = {};
