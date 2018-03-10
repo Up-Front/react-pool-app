@@ -55,7 +55,7 @@ class Match extends Component {
   }
 
   handleRemoveMatch() {
-    removeMatch(this.props.matchId)
+    removeMatch(this.props.matchId, this.props.match)
       .then(() => {
         console.log('match removed');
       })
