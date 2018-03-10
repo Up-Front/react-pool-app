@@ -16,12 +16,7 @@ class Match extends Component {
    * and only 1 time
    */
   handleDeclareWinner(competitor) {
-    declareWinner(
-      this.props.matchId,
-      this.props.match,
-      competitor,
-      this.props.auth
-    );
+    declareWinner(this.props.matchId, this.props.match, competitor, this.props.auth);
   }
 
   /**
@@ -30,10 +25,7 @@ class Match extends Component {
    * the votes are in the match.winners property
    */
   checkAuthVote(competitor) {
-    if (
-      this.props.match.winners &&
-      this.props.match.winners[this.props.auth.uid]
-    ) {
+    if (this.props.match.winners && this.props.match.winners[this.props.auth.uid]) {
       if (this.props.match.winners[this.props.auth.uid] === competitor.uid) {
         return true;
       }
@@ -77,13 +69,10 @@ class Match extends Component {
   }
 
   render() {
-    const contestedText = this.props.isContested
-      ? 'this match result is contested'
-      : '';
+    const contestedText = this.props.isContested ? 'this match result is contested' : '';
     return (
       <MatchWrapper contested={this.props.match.isContested}>
-        {!this.hasWinner(this.props.match) &&
-        this.checkAuthIsCompetitor(this.props.match)
+        {!this.hasWinner(this.props.match) && this.checkAuthIsCompetitor(this.props.match)
           ? this.showDeleteButton()
           : ''}
         <strong>{contestedText}</strong>
@@ -91,9 +80,7 @@ class Match extends Component {
           return (
             <Competitor
               key={competitor.uid}
-              checkAuthIsCompetitor={this.checkAuthIsCompetitor(
-                this.props.match
-              )}
+              checkAuthIsCompetitor={this.checkAuthIsCompetitor(this.props.match)}
               competitor={competitor}
               hasVote={this.checkAuthVote(competitor)}
               winner={this.props.match.winner}
@@ -109,7 +96,7 @@ class Match extends Component {
 Match.propTypes = {
   matchId: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
 export default Match;

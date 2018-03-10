@@ -8,13 +8,16 @@ export const addMatch = users => {
   const matchId = database.ref('/matches').push().key;
 
   const model = matchModel({
-    competitors: users
+    competitors: users,
   });
   let updateData = {};
   updateData[`matches/${matchId}`] = model;
+
+  //also update the match data for the competitors
   users.forEach(userId => {
     updateData[`users/${userId}/matches/${matchId}`] = true;
   });
+
   return ref.update(updateData, function(error) {
     if (error) {
       console.log('Error updating data:', error);
@@ -28,7 +31,7 @@ export const declareWinner = (matchId, match, winner, declarer) => {
   const ref = database.ref('/');
   let updateData = {};
   const winners = Object.assign({}, match.winners, {
-    [declarer.uid]: winner.uid
+    [declarer.uid]: winner.uid,
   });
   match = Object.assign({}, match, { winners });
   match = setMatchStatus(matchId, match);
@@ -37,7 +40,11 @@ export const declareWinner = (matchId, match, winner, declarer) => {
   updateData[`matches/${matchId}/isContested`] = match.isContested;
 
   if (match.winner) {
-    updateData = Object.assign({}, updateData, updateWinnerData(matchId, match));
+    updateData = Object.assign(
+      {},
+      updateData,
+      updateWinnerData(matchId, match)
+    );
   }
 
   return ref.update(updateData, function(error) {
@@ -47,7 +54,27 @@ export const declareWinner = (matchId, match, winner, declarer) => {
   });
 };
 
-const updateWinnerData = (matchId, match) => {
+//the match needs to be removed from /matches
+//and the different users
+export const removeMatch = (matchId, match) => {
+  const ref = database.ref('/');
+  let updateData = {};
+  updateData[`matches/${matchId}`] = null;
+  Object.values(match.competitors).map(competitor => {
+    updateData[`users/${competitor.uid}/matches/${matchId}`] = null;
+  });
+
+  testt();
+  return ref.update(updateData, function(error) {
+    if (error) {
+      console.log('Error updating data:', error);
+    }
+  });
+};
+
+export const testt = () => {};
+
+export const updateWinnerData = (matchId, match) => {
   let updateData = {};
   updateData[`matches/${matchId}/winner`] = match.winner;
   updateData[`matches/${matchId}/finishedAt`] = match.finishedAt;
@@ -62,26 +89,11 @@ const updateWinnerData = (matchId, match) => {
     }
 
     updateData[`users/${competitor.uid}/matches/${matchId}`] = result;
-    updateData[`users/${competitor.uid}/streak`] = competitor.streak = streak + result;
+    updateData[`users/${competitor.uid}/streak`] = competitor.streak =
+      streak + result;
   });
 
   return updateData;
-};
-
-//the match needs to be removed from /matches
-//and the different users
-export const removeMatch = (matchId, match) => {
-  const ref = database.ref('/');
-  let updateData = {};
-  updateData[`matches/${matchId}`] = null;
-  Object.values(match.competitors).map(competitor => {
-    updateData[`users/${competitor.uid}/matches/${matchId}`] = null;
-  });
-  return ref.update(updateData, function(error) {
-    if (error) {
-      console.log('Error updating data:', error);
-    }
-  });
 };
 
 export const setMatchStatus = (matchId, match) => {
@@ -90,7 +102,9 @@ export const setMatchStatus = (matchId, match) => {
   let isContested = false;
 
   // if there are not the same amount of winners as competitors than there is nothing to do
-  if (Object.keys(match.winners).length !== Object.keys(match.competitors).length) {
+  if (
+    Object.keys(match.winners).length !== Object.keys(match.competitors).length
+  ) {
     return match;
   }
   Object.values(match.winners).forEach(value => {
@@ -108,13 +122,13 @@ export const setMatchStatus = (matchId, match) => {
     return Object.assign({}, match, {
       isContested: false,
       winner,
-      finishedAt: new Date().getTime()
+      finishedAt: new Date().getTime(),
     });
   } else {
     return Object.assign({}, match, {
       isContested: true,
       winner: null,
-      finishedAt: null
+      finishedAt: null,
     });
   }
 };
