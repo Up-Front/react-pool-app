@@ -27,9 +27,12 @@ export const ModalRemoveButton = ClearButtonStyle.extend`
 `;
 
 export const ModalFooter = styled.div`
+  padding: 5px;
   height: 50px;
+  line-height: 40px;
   border-top: 1px solid ${props => props.theme.borderColor};
   background-color: ${props => props.theme.headerBackgroundColor};
+  text-align: right;
 `;
 
 export const ModalHeader = styled.div`
