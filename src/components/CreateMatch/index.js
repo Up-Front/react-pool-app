@@ -7,6 +7,7 @@ import Modal from './../shared/components/Modal';
 import List from './components/List';
 import { User } from './../UserList/';
 import { SelectOpponent, FloatButton } from './styles';
+import { Button } from './../shared/styles';
 
 class CreateMatch extends Component {
   constructor(props) {
@@ -94,12 +95,12 @@ class CreateMatch extends Component {
         closeModal={this.handleCloseModal}
         key="CreateMatch"
         footer={
-          <button
+          <Button
             onClick={this.createMatch}
             disabled={!this.state.selectedOpponent}
           >
             create show down
-          </button>
+          </Button>
         }
       >
         <div>
