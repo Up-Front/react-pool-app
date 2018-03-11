@@ -7,5 +7,8 @@ export const theme = {
   backgroundImage: 'linear-gradient(to top, #243949 70%, #517fa4 100%)',
 
   headerBackgroundColor: 'rgba(0, 0, 0, 0.7)',
-  headerFontColor: '#FFF'
+  headerFontColor: '#FFF',
+
+  buttonColor: 'DarkOrange',
+  buttonFontColor: '#FFF'
 };
