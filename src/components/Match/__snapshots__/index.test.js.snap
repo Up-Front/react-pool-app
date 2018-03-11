@@ -41,12 +41,12 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <button
+        <styled.button
           className="deletebutton"
           onClick={[Function]}
 >
-          remove match
-</button>,
+          x
+</styled.button>,
         <strong />,
         Array [
           <Competitor
@@ -82,15 +82,15 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": "remove match",
+          "children": "x",
           "className": "deletebutton",
           "onClick": [Function],
         },
         "ref": null,
-        "rendered": "remove match",
-        "type": "button",
+        "rendered": "x",
+        "type": [Function],
       },
       Object {
         "instance": null,
@@ -149,12 +149,12 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <button
+          <styled.button
             className="deletebutton"
             onClick={[Function]}
 >
-            remove match
-</button>,
+            x
+</styled.button>,
           <strong />,
           Array [
             <Competitor
@@ -190,15 +190,15 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
-            "children": "remove match",
+            "children": "x",
             "className": "deletebutton",
             "onClick": [Function],
           },
           "ref": null,
-          "rendered": "remove match",
-          "type": "button",
+          "rendered": "x",
+          "type": [Function],
         },
         Object {
           "instance": null,
