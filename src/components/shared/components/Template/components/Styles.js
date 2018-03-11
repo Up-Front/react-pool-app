@@ -25,7 +25,11 @@ export const Header = styled.header`
   padding: 10px;
   width: 100%;
   height: 50px;
-  background: black;
+  background-color: ${props => props.theme.headerBackgroundColor};
+
+  & a {
+    color: ${props => props.theme.headerFontColor};
+  }
 `;
 
 export const HeaderLogo = styled.h1``;
