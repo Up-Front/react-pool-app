@@ -1,10 +1,10 @@
 import React from 'react';
-import { FloatButton } from './styles';
 import MatchList from './components/MatchList';
+import CreateMatch from './../CreateMatch';
 
 const Dashboard = () => [
-  <MatchList key="MatchList" />,
-  <FloatButton key="FloatButton">+</FloatButton>
+  <CreateMatch key="CreateMatch" />,
+  <MatchList key="MatchList" />
 ];
 
 export default Dashboard;
