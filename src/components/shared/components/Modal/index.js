@@ -9,6 +9,12 @@ import {
 } from './styles';
 
 class Modal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleRemoveModal = this.handleRemoveModal.bind(this);
+  }
+
   handleRemoveModal() {
     this.props.closeModal();
   }
