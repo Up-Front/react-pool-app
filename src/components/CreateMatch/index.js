@@ -17,7 +17,7 @@ class CreateMatch extends Component {
       filteredUsers: [],
       selectedOpponent: null,
       matchCreated: false,
-      openModal: true
+      openModal: false
     };
     this.selectOpponent = this.selectOpponent.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
