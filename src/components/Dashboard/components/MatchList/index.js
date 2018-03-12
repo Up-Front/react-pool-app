@@ -15,16 +15,18 @@ class MatchList extends Component {
     if (isLoaded(this.props.matches) && !isEmpty(this.props.matches)) {
       return (
         <MatchListWrapper>
-          {Object.entries(this.props.matches).map(([matchId, match]) => {
-            return (
-              <Match
-                key={matchId}
-                matchId={matchId}
-                match={match}
-                auth={this.props.auth}
-              />
-            );
-          })}
+          {Object.entries(this.props.matches)
+            .reverse()
+            .map(([matchId, match]) => {
+              return (
+                <Match
+                  key={matchId}
+                  matchId={matchId}
+                  match={match}
+                  auth={this.props.auth}
+                />
+              );
+            })}
         </MatchListWrapper>
       );
     } else {
