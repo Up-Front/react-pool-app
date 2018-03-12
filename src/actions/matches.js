@@ -8,7 +8,7 @@ export const addMatch = users => {
   const matchId = database.ref('/matches').push().key;
 
   const model = matchModel({
-    competitors: users,
+    competitors: users
   });
   let updateData = {};
   updateData[`matches/${matchId}`] = model;
@@ -31,7 +31,7 @@ export const declareWinner = (matchId, match, winner, declarer) => {
   const ref = database.ref('/');
   let updateData = {};
   const winners = Object.assign({}, match.winners, {
-    [declarer.uid]: winner.uid,
+    [declarer.uid]: winner.uid
   });
   match = Object.assign({}, match, { winners });
   match = setMatchStatus(matchId, match);
@@ -94,17 +94,34 @@ export const updateWinnerData = (matchId, match) => {
 };
 
 export const setMatchStatus = (matchId, match) => {
-  let winner;
-  let first = true;
-  let isContested = false;
-
   // if there are not the same amount of winners as competitors than there is nothing to do
   if (
     Object.keys(match.winners).length !== Object.keys(match.competitors).length
   ) {
     return match;
   }
-  Object.values(match.winners).forEach(value => {
+  const { winner, isContested } = checkWinner(match.winners);
+
+  if (!isContested) {
+    return Object.assign({}, match, {
+      isContested: false,
+      winner,
+      finishedAt: new Date().getTime()
+    });
+  } else {
+    return Object.assign({}, match, {
+      isContested: true,
+      winner: null,
+      finishedAt: null
+    });
+  }
+};
+
+export const checkWinner = winnerVotes => {
+  let first = true;
+  let winner;
+  let isContested = false;
+  Object.values(winnerVotes).forEach(value => {
     if (first) {
       winner = value;
       first = false;
@@ -112,20 +129,12 @@ export const setMatchStatus = (matchId, match) => {
     if (winner !== value) {
       // a contested result
       isContested = true;
+      winner = null;
     }
   });
 
-  if (!isContested) {
-    return Object.assign({}, match, {
-      isContested: false,
-      winner,
-      finishedAt: new Date().getTime(),
-    });
-  } else {
-    return Object.assign({}, match, {
-      isContested: true,
-      winner: null,
-      finishedAt: null,
-    });
-  }
+  return {
+    winner,
+    isContested
+  };
 };
