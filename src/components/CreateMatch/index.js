@@ -68,6 +68,7 @@ class CreateMatch extends Component {
         this.setState({
           matchCreated: true
         });
+        this.handleCloseModal();
         console.log('match created');
       }
     );
