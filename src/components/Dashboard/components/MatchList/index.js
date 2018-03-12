@@ -13,6 +13,8 @@ import { MatchListWrapper } from './styles';
 class MatchList extends Component {
   /**
    * check if the authUser is a competitor in this match
+   * TODO: this needs to be refactored to a seperate file, because this function is used in multiple places.
+   * but will cause a big merge conflict when done now
    */
   checkAuthIsCompetitor(competitors) {
     let isCompetitor = false;
