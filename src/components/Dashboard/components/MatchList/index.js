@@ -11,12 +11,28 @@ import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
 
 class MatchList extends Component {
+  /**
+   * check if the authUser is a competitor in this match
+   */
+  checkAuthIsCompetitor(competitors) {
+    let isCompetitor = false;
+    Object.values(competitors).forEach(competitor => {
+      if (competitor.uid === this.props.auth.uid) {
+        isCompetitor = true;
+      }
+    });
+    return isCompetitor;
+  }
+
   render() {
     if (isLoaded(this.props.matches) && !isEmpty(this.props.matches)) {
       return (
         <MatchListWrapper>
           {Object.entries(this.props.matches)
             .reverse()
+            .filter(([matchId, match]) => {
+              return this.checkAuthIsCompetitor(match.competitors);
+            })
             .map(([matchId, match]) => {
               return (
                 <Match
@@ -40,7 +56,14 @@ const populates = [
 ];
 
 const enhance = compose(
-  firebaseConnect(props => [{ path: '/matches', populates }, { path: 'auth' }]),
+  firebaseConnect(props => [
+    {
+      path: '/matches',
+      queryParams: ['orderByChild=finishedAt', 'equalTo=null'],
+      populates
+    },
+    { path: 'auth' }
+  ]),
   connect(({ firebase }) => ({
     matches: populate(firebase, 'matches', populates),
     auth: firebase.auth
