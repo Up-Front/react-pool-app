@@ -24,10 +24,10 @@ class CreateMatch extends Component {
   }
 
   filterUsers = filterTerm => {
-    if (!filterTerm) {
+    if (!filterTerm || !this.props.users) {
       return [];
     }
-    return this.props.users.filter(
+    return Object.values(this.props.users).filter(
       user =>
         user.value.displayName.toLowerCase().indexOf(filterTerm.toLowerCase()) >
           -1 && user.key !== this.props.auth.uid // do not select the auth user
