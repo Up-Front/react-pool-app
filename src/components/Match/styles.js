@@ -11,14 +11,3 @@ export const MatchWrapper = styled.li`
   background-color: ${props => (props.contested ? 'red' : '')};
   color: ${props => props.theme.fontColor};
 `;
-
-export const MatchRemoveButton = ClearButtonStyle.extend`
-  position: absolute;
-  top: -3px;
-  right: 3px;
-  width: 20px;
-  height: 20px;
-
-  color: ${props => props.theme.fontColor};
-  font-size: 20px;
-`;
