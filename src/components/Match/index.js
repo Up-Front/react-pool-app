@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Competitor from './components/Competitor';
-import { declareWinner, removeMatch } from './../../actions/matches';
-import { MatchWrapper, MatchRemoveButton } from './styles';
+import { declareWinner } from './../../actions/matches';
+import { MatchWrapper } from './styles';
 
 class Match extends Component {
   constructor(props) {
     super(props);
     this.handleDeclareWinner = this.handleDeclareWinner.bind(this);
-    this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
   }
 
   /**
@@ -54,38 +53,12 @@ class Match extends Component {
     return isCompetitor;
   }
 
-  handleRemoveMatch() {
-    removeMatch(this.props.matchId)
-      .then(() => {
-        console.log('match removed');
-      })
-      .catch(() => {
-        console.log('something went oops');
-      });
-  }
-
-  showDeleteButton() {
-    return (
-      <MatchRemoveButton
-        className="deletebutton"
-        onClick={this.handleRemoveMatch}
-      >
-        x
-      </MatchRemoveButton>
-    );
-  }
-
-  hasWinner(match) {
-    return !!match.winner;
-  }
-
   render() {
     const contestedText = this.props.isContested
       ? 'this match result is contested'
       : '';
     return (
       <MatchWrapper contested={this.props.match.isContested}>
-        {!this.hasWinner(this.props.match) ? this.showDeleteButton() : ''}
         <strong>{contestedText}</strong>
         {Object.values(this.props.match.competitors).map(competitor => {
           return (
