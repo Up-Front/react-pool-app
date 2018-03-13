@@ -12,16 +12,18 @@ import { Button } from './../shared/styles';
 class CreateMatch extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: '',
-      filteredUsers: [],
-      selectedOpponent: null,
-      matchCreated: false,
-      openModal: false
-    };
+    this.state = this.initalState();
     this.selectOpponent = this.selectOpponent.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
+
+  initalState = () => ({
+    search: '',
+    filteredUsers: [],
+    selectedOpponent: null,
+    matchCreated: false,
+    openModal: false
+  });
 
   filterUsers = filterTerm => {
     if (!filterTerm || !this.props.users) {
@@ -81,9 +83,7 @@ class CreateMatch extends Component {
   };
 
   handleCloseModal = () => {
-    this.setState({
-      openModal: false
-    });
+    this.setState(this.initalState());
   };
 
   render() {
