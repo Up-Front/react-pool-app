@@ -10,20 +10,20 @@ describe('Match component', () => {
     matchId = '1';
     auth = {
       uid: 1,
-      displayName: 'Bob de Bouwer'
+      displayName: 'Bob de Bouwer',
     };
     match = {
       uid: '1',
       competitors: {
         0: {
           uid: 1,
-          displayName: 'Bob de Bouwer'
+          displayName: 'Bob de Bouwer',
         },
         1: {
           uid: 2,
-          displayName: 'Asterix'
-        }
-      }
+          displayName: 'Asterix',
+        },
+      },
     };
   });
 
@@ -32,7 +32,7 @@ describe('Match component', () => {
       <Match matchId={matchId} auth={auth} match={match} />
     );
 
-    expect(wrapper.find('.deletebutton').length).toEqual(1);
+    expect(wrapper.find('SwipeDelete').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -43,13 +43,13 @@ describe('Match component', () => {
       competitors: {
         0: {
           uid: 1,
-          displayName: 'Bob de Bouwer'
+          displayName: 'Bob de Bouwer',
         },
         1: {
           uid: 2,
-          displayName: 'Asterix'
-        }
-      }
+          displayName: 'Asterix',
+        },
+      },
     };
 
     const wrapper = shallow(
@@ -62,33 +62,22 @@ describe('Match component', () => {
     expect(wrapper.find('.deletebutton').length).toEqual(0);
   });
 
-  test('remove click', () => {
-    const wrapper = mount(
-      <Match matchId={matchId} auth={auth} match={match} />
-    );
-
-    wrapper.instance().handleRemoveMatch = jest.fn();
-    wrapper.instance().forceUpdate();
-    wrapper.find('button.deletebutton').simulate('click');
-    expect(wrapper.instance().handleRemoveMatch).toHaveBeenCalledTimes(1);
-  });
-
   test('check that auth has voted', () => {
     match = {
       uid: '1',
       competitors: {
         0: {
           uid: 1,
-          displayName: 'Bob de Bouwer'
+          displayName: 'Bob de Bouwer',
         },
         1: {
           uid: 2,
-          displayName: 'Asterix'
-        }
+          displayName: 'Asterix',
+        },
       },
       winners: {
-        '1': 2
-      }
+        '1': 2,
+      },
     };
 
     const wrapper = shallow(
