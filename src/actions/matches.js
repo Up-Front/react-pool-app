@@ -8,7 +8,7 @@ export const addMatch = users => {
   const matchId = database.ref('/matches').push().key;
 
   const model = matchModel({
-    competitors: users
+    competitors: users,
   });
   let updateData = {};
   updateData[`matches/${matchId}`] = model;
@@ -31,7 +31,7 @@ export const declareWinner = (matchId, match, winner, declarer) => {
   const ref = database.ref('/');
   let updateData = {};
   const winners = Object.assign({}, match.winners, {
-    [declarer.uid]: winner.uid
+    [declarer.uid]: winner.uid,
   });
   match = Object.assign({}, match, { winners });
   match = setMatchStatus(matchId, match);
@@ -60,6 +60,7 @@ export const removeMatch = (matchId, match) => {
   const ref = database.ref('/');
   let updateData = {};
   updateData[`matches/${matchId}`] = null;
+
   Object.values(match.competitors).map(competitor => {
     updateData[`users/${competitor.uid}/matches/${matchId}`] = null;
   });
@@ -106,13 +107,13 @@ export const setMatchStatus = (matchId, match) => {
     return Object.assign({}, match, {
       isContested: false,
       winner,
-      finishedAt: new Date().getTime()
+      finishedAt: new Date().getTime(),
     });
   } else {
     return Object.assign({}, match, {
       isContested: true,
       winner: null,
-      finishedAt: null
+      finishedAt: null,
     });
   }
 };
@@ -135,6 +136,6 @@ export const checkWinner = winnerVotes => {
 
   return {
     winner,
-    isContested
+    isContested,
   };
 };
