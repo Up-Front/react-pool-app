@@ -10,13 +10,15 @@ export const addMatch = users => {
   const model = matchModel({
     competitors: users,
   });
-  let updateData = {};
-  updateData[`matches/${matchId}`] = model;
 
   //also update the match data for the competitors
-  users.forEach(userId => {
-    updateData[`users/${userId}/matches/${matchId}`] = true;
-  });
+  const updateData = users.reduce(
+    (previous, competitorId) => {
+      previous[`users/${competitorId}/matches/${matchId}`] = true;
+      return previous;
+    },
+    { [`matches/${matchId}`]: model }
+  );
 
   return ref.update(updateData, function(error) {
     if (error) {
@@ -58,12 +60,13 @@ export const declareWinner = (matchId, match, winner, declarer) => {
 //and the different users
 export const removeMatch = (matchId, match) => {
   const ref = database.ref('/');
-  let updateData = {};
-  updateData[`matches/${matchId}`] = null;
-
-  Object.values(match.competitors).map(competitor => {
-    updateData[`users/${competitor.uid}/matches/${matchId}`] = null;
-  });
+  const updateData = Object.values(match.competitors).reduce(
+    (previous, competitor) => {
+      previous[`users/${competitor.uid}/matches/${matchId}`] = null;
+      return previous;
+    },
+    { [`matches/${matchId}`]: null }
+  );
 
   return ref.update(updateData, function(error) {
     if (error) {
