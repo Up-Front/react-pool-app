@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Competitor from './components/Competitor';
-import { declareWinner } from './../../actions/matches';
+import SwipeDelete from './../shared/components/SwipeDelete';
+import { declareWinner, removeMatch } from './../../actions/matches';
 import { MatchWrapper } from './styles';
 
 class Match extends Component {
@@ -53,7 +54,25 @@ class Match extends Component {
     return isCompetitor;
   }
 
-  render() {
+  handleRemoveMatch(matchId) {
+    removeMatch(matchId)
+      .then(() => {
+        console.log('match removed');
+      })
+      .catch(() => {
+        console.log('something went oops');
+      });
+  }
+
+  canBeDeleted(match) {
+    return !this.hasWinner(match) && this.checkAuthIsCompetitor(match.competitors);
+  }
+
+  hasWinner(match) {
+    return !!match.winner;
+  }
+
+  renderMatch() {
     const contestedText = this.props.isContested
       ? 'this match result is contested'
       : '';
@@ -75,7 +94,23 @@ class Match extends Component {
           );
         })}
       </MatchWrapper>
-    );
+  );
+  }
+
+  render() {
+    if (this.canBeDeleted(this.props.match)) {
+      return (<SwipeDelete
+      key={this.props.matchId}
+      deleteId={this.props.matchId}
+      canbeSwiped={this.canBeDeleted(this.props.match)}
+      onDelete={this.handleRemoveMatch}
+      >
+      {this.renderMatch()}
+      </SwipeDelete>);
+    } else {
+      return this.renderMatch();
+    }  
+    
   }
 }
 

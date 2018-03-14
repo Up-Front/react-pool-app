@@ -8,15 +8,9 @@ import {
   populate
 } from 'react-redux-firebase';
 import Match from './../../../Match';
-import { removeMatch } from './../../../../actions/matches';
-import SwipeDelete from './../../../shared/components/SwipeDelete';
 import { MatchListWrapper } from './styles';
 
 class MatchList extends Component {
-  constructor(props) {
-    super(props);
-    this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
-  }
   /**
    * check if the authUser is a competitor in this match
    * TODO: this needs to be refactored to a seperate file, because this function is used in multiple places.
@@ -32,16 +26,6 @@ class MatchList extends Component {
     return isCompetitor;
   }
 
-  handleRemoveMatch(matchId) {
-    removeMatch(matchId)
-      .then(() => {
-        console.log('match removed');
-      })
-      .catch(() => {
-        console.log('something went oops');
-      });
-  }
-
   render() {
     if (isLoaded(this.props.matches) && !isEmpty(this.props.matches)) {
       return (
@@ -53,17 +37,12 @@ class MatchList extends Component {
             })
             .map(([matchId, match]) => {
               return (
-                <SwipeDelete
-                  key={matchId}
-                  deleteId={matchId}
-                  onDelete={this.handleRemoveMatch}
-                >
                   <Match
+                    key={matchId}
                     matchId={matchId}
                     match={match}
                     auth={this.props.auth}
                   />
-                </SwipeDelete>
               );
             })}
         </MatchListWrapper>

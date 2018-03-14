@@ -37,124 +37,50 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": undefined,
+    "key": "1",
     "nodeType": "class",
     "props": Object {
-      "children": Array [
-        <styled.button
-          className="deletebutton"
-          onClick={[Function]}
+      "canbeSwiped": true,
+      "children": <styled.li
+        contested={undefined}
 >
-          x
-</styled.button>,
-        <strong />,
-        Array [
-          <Competitor
-            checkAuthIsCompetitor={true}
-            competitor={
+        <strong />
+        <Competitor
+                checkAuthIsCompetitor={true}
+                competitor={
                         Object {
-                                    "displayName": "Bob de Bouwer",
-                                    "uid": 1,
-                                  }
-            }
-            handleClick={[Function]}
-            hasVote={false}
-            winner={undefined}
-/>,
-          <Competitor
-            checkAuthIsCompetitor={true}
-            competitor={
+                                "displayName": "Bob de Bouwer",
+                                "uid": 1,
+                              }
+                }
+                handleClick={[Function]}
+                hasVote={false}
+                winner={undefined}
+        />
+        <Competitor
+                checkAuthIsCompetitor={true}
+                competitor={
                         Object {
-                                    "displayName": "Asterix",
-                                    "uid": 2,
-                                  }
-            }
-            handleClick={[Function]}
-            hasVote={false}
-            winner={undefined}
-/>,
-        ],
-      ],
-      "contested": undefined,
+                                "displayName": "Asterix",
+                                "uid": 2,
+                              }
+                }
+                handleClick={[Function]}
+                hasVote={false}
+                winner={undefined}
+        />
+</styled.li>,
+      "deleteId": "1",
+      "onDelete": [Function],
+      "tag": "div",
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "x",
-          "className": "deletebutton",
-          "onClick": [Function],
-        },
-        "ref": null,
-        "rendered": "x",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "",
-        },
-        "ref": null,
-        "rendered": "",
-        "type": "strong",
-      },
-      Object {
-        "instance": null,
-        "key": "1",
-        "nodeType": "function",
-        "props": Object {
-          "checkAuthIsCompetitor": true,
-          "competitor": Object {
-            "displayName": "Bob de Bouwer",
-            "uid": 1,
-          },
-          "handleClick": [Function],
-          "hasVote": false,
-          "winner": undefined,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": "2",
-        "nodeType": "function",
-        "props": Object {
-          "checkAuthIsCompetitor": true,
-          "competitor": Object {
-            "displayName": "Asterix",
-            "uid": 2,
-          },
-          "handleClick": [Function],
-          "hasVote": false,
-          "winner": undefined,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <styled.button
-            className="deletebutton"
-            onClick={[Function]}
->
-            x
-</styled.button>,
           <strong />,
           Array [
             <Competitor
@@ -187,19 +113,6 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "x",
-            "className": "deletebutton",
-            "onClick": [Function],
-          },
-          "ref": null,
-          "rendered": "x",
-          "type": [Function],
-        },
         Object {
           "instance": null,
           "key": undefined,
@@ -248,6 +161,139 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": "1",
+      "nodeType": "class",
+      "props": Object {
+        "canbeSwiped": true,
+        "children": <styled.li
+          contested={undefined}
+>
+          <strong />
+          <Competitor
+                    checkAuthIsCompetitor={true}
+                    competitor={
+                              Object {
+                                        "displayName": "Bob de Bouwer",
+                                        "uid": 1,
+                                      }
+                    }
+                    handleClick={[Function]}
+                    hasVote={false}
+                    winner={undefined}
+          />
+          <Competitor
+                    checkAuthIsCompetitor={true}
+                    competitor={
+                              Object {
+                                        "displayName": "Asterix",
+                                        "uid": 2,
+                                      }
+                    }
+                    handleClick={[Function]}
+                    hasVote={false}
+                    winner={undefined}
+          />
+</styled.li>,
+        "deleteId": "1",
+        "onDelete": [Function],
+        "tag": "div",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <strong />,
+            Array [
+              <Competitor
+                checkAuthIsCompetitor={true}
+                competitor={
+                                Object {
+                                                "displayName": "Bob de Bouwer",
+                                                "uid": 1,
+                                              }
+                }
+                handleClick={[Function]}
+                hasVote={false}
+                winner={undefined}
+/>,
+              <Competitor
+                checkAuthIsCompetitor={true}
+                competitor={
+                                Object {
+                                                "displayName": "Asterix",
+                                                "uid": 2,
+                                              }
+                }
+                handleClick={[Function]}
+                hasVote={false}
+                winner={undefined}
+/>,
+            ],
+          ],
+          "contested": undefined,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "strong",
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "function",
+            "props": Object {
+              "checkAuthIsCompetitor": true,
+              "competitor": Object {
+                "displayName": "Bob de Bouwer",
+                "uid": 1,
+              },
+              "handleClick": [Function],
+              "hasVote": false,
+              "winner": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "function",
+            "props": Object {
+              "checkAuthIsCompetitor": true,
+              "competitor": Object {
+                "displayName": "Asterix",
+                "uid": 2,
+              },
+              "handleClick": [Function],
+              "hasVote": false,
+              "winner": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],
