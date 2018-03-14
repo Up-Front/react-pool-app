@@ -10,20 +10,14 @@ import { SelectOpponent, FloatButton } from './styles';
 import { Button } from './../shared/styles';
 
 class CreateMatch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = this.initalState();
-    this.selectOpponent = this.selectOpponent.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
-
-  initalState = () => ({
+  initialState = {
     search: '',
     filteredUsers: [],
     selectedOpponent: null,
     matchCreated: false,
-    openModal: false
-  });
+    openModal: false,
+  };
+  state = this.initialState;
 
   filterUsers = filterTerm => {
     if (!filterTerm || !this.props.users) {
@@ -41,14 +35,14 @@ class CreateMatch extends Component {
     const users = this.filterUsers(search);
     this.setState({
       search,
-      filteredUsers: users
+      filteredUsers: users,
     });
   };
 
   selectOpponent = user => {
     this.setState({
       selectedOpponent: user,
-      filteredUsers: []
+      filteredUsers: [],
     });
   };
 
@@ -68,7 +62,7 @@ class CreateMatch extends Component {
     addMatch([this.props.auth.uid, this.state.selectedOpponent.uid]).then(
       () => {
         this.setState({
-          matchCreated: true
+          matchCreated: true,
         });
         this.handleCloseModal();
         console.log('match created');
@@ -78,12 +72,12 @@ class CreateMatch extends Component {
 
   handleOpenModal = () => {
     this.setState({
-      openModal: true
+      openModal: true,
     });
   };
 
   handleCloseModal = () => {
-    this.setState(this.initalState());
+    this.setState(this.initialState);
   };
 
   render() {
@@ -128,7 +122,7 @@ class CreateMatch extends Component {
             </List>
           </SelectOpponent>
         </div>
-      </Modal>
+      </Modal>,
     ];
   }
 }
@@ -138,12 +132,12 @@ export default compose(
     { path: 'presence' },
     { path: 'users' },
     { path: 'auth' },
-    { path: 'matches' }
+    { path: 'matches' },
   ]),
   connect((state, props) => ({
     presence: state.firebase.data.presence || {},
     users: state.firebase.ordered.users,
     auth: state.firebase.auth,
-    matches: state.firebase.ordered.matches
+    matches: state.firebase.ordered.matches,
   }))
 )(CreateMatch);
