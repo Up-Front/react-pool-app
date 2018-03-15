@@ -48,7 +48,6 @@ export const declareWinner = (matchId, match, winner, declarer) => {
       updateWinnerData(matchId, match)
     );
   }
-
   return ref.update(updateData, function(error) {
     if (error) {
       console.log('Error updating data:', error);
@@ -76,11 +75,7 @@ export const removeMatch = (matchId, match) => {
 };
 
 export const updateWinnerData = (matchId, match) => {
-  let updateData = {};
-  updateData[`matches/${matchId}/winner`] = match.winner;
-  updateData[`matches/${matchId}/finishedAt`] = match.finishedAt;
-
-  Object.values(match.competitors).map(competitor => {
+  const updateData = Object.values(match.competitors).reduce((previous, competitor) => {
     let result;
     let streak = competitor.streak || '';
     if (match.winner === competitor.uid) {
@@ -89,11 +84,14 @@ export const updateWinnerData = (matchId, match) => {
       result = 'L';
     }
 
-    updateData[`users/${competitor.uid}/matches/${matchId}`] = result;
-    updateData[`users/${competitor.uid}/streak`] = competitor.streak =
-      streak + result;
+    previous[`users/${competitor.uid}/matches/${matchId}`] = result;
+    previous[`users/${competitor.uid}/streak`] = competitor.streak = streak + result;
+    return previous;
+  }, {
+    [`matches/${matchId}/winner`] : match.winner,
+    [`matches/${matchId}/finishedAt`] : match.finishedAt
   });
-
+  
   return updateData;
 };
 

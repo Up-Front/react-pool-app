@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import isMobile from './utils/isMobile';
 import Device from './utils/device';
@@ -180,7 +180,7 @@ class SwipeDelete extends React.Component {
 
   onDelete() {
     this.setState({ isDeleted: true });
-    this.props.onDelete(this.props.deleteId);
+    this.props.onDelete(this.props.deleteId, this.props.deleteObject);
   }
 
   onCancel(e) {
@@ -201,6 +201,7 @@ SwipeDelete.propTypes = {
   children: PropTypes.element.isRequired,
   onDelete: PropTypes.func,
   deleteId: PropTypes.string,
+  deleteObject: PropTypes.object,
   tag: PropTypes.string
 };
 

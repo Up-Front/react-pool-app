@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ClearButtonStyle } from './../shared/styles';
 
 export const MatchWrapper = styled.li`
   position: relative;

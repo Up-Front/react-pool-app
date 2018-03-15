@@ -53,8 +53,9 @@ class Match extends Component {
     return isCompetitor;
   }
 
-  handleRemoveMatch(matchId) {
-    removeMatch(matchId)
+
+  handleRemoveMatch(matchId, match) {
+    removeMatch(matchId, match)
       .then(() => {
         console.log('match removed');
       })
@@ -101,6 +102,7 @@ class Match extends Component {
       return (<SwipeDelete
       key={this.props.matchId}
       deleteId={this.props.matchId}
+      deleteObject={this.props.match}
       canbeSwiped={this.canBeDeleted(this.props.match)}
       onDelete={this.handleRemoveMatch}
       >
