@@ -10,20 +10,20 @@ describe('Match component', () => {
     matchId = '1';
     auth = {
       uid: 1,
-      displayName: 'Bob de Bouwer'
+      displayName: 'Bob de Bouwer',
     };
     match = {
       uid: '1',
       competitors: {
         0: {
           uid: 1,
-          displayName: 'Bob de Bouwer'
+          displayName: 'Bob de Bouwer',
         },
         1: {
           uid: 2,
-          displayName: 'Asterix'
-        }
-      }
+          displayName: 'Asterix',
+        },
+      },
     };
   });
 
@@ -32,24 +32,24 @@ describe('Match component', () => {
       <Match matchId={matchId} auth={auth} match={match} />
     );
 
-    expect(wrapper.find('.deletebutton').length).toEqual(1);
+    expect(wrapper.find('SwipeDelete').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('when there is a winner, there is no delete button', () => {
+test('when there is a winner, there is no delete button', () => {
     match = {
       uid: '1',
       winner: '2',
       competitors: {
         0: {
           uid: 1,
-          displayName: 'Bob de Bouwer'
+          displayName: 'Bob de Bouwer',
         },
         1: {
           uid: 2,
-          displayName: 'Asterix'
-        }
-      }
+          displayName: 'Asterix',
+        },
+      },
     };
 
     const wrapper = shallow(
@@ -59,61 +59,25 @@ describe('Match component', () => {
     const result = wrapper.instance().hasWinner(match);
     expect(result).toEqual(true);
 
-    expect(wrapper.find('.deletebutton').length).toEqual(0);
+    expect(wrapper.find('SwipeDelete').length).toEqual(0);
   });
-
-  test('when there is no winner and the auth is no competitor, there is no delete button', () => {
-    match = {
-      uid: '1',
-      competitors: {
-        0: {
-          uid: 3,
-          displayName: 'Bob de Bouwer'
-        },
-        1: {
-          uid: 4,
-          displayName: 'Asterix'
-        }
-      }
-    };
-
-    const wrapper = shallow(
-      <Match matchId={matchId} auth={auth} match={match} />
-    );
-
-    const result = wrapper.instance().hasWinner(match);
-    expect(result).toEqual(false);
-
-    expect(wrapper.find('.deletebutton').length).toEqual(0);
-  });
-
-  test('remove click', () => {
-    const wrapper = mount(
-      <Match matchId={matchId} auth={auth} match={match} />
-    );
-
-    wrapper.instance().handleRemoveMatch = jest.fn();
-    wrapper.instance().forceUpdate();
-    wrapper.find('.deletebutton').simulate('click');
-    expect(wrapper.instance().handleRemoveMatch).toHaveBeenCalledTimes(1);
-  });
-
+  
   test('check that auth has voted', () => {
     match = {
       uid: '1',
       competitors: {
         0: {
           uid: 1,
-          displayName: 'Bob de Bouwer'
+          displayName: 'Bob de Bouwer',
         },
         1: {
           uid: 2,
-          displayName: 'Asterix'
-        }
+          displayName: 'Asterix',
+        },
       },
       winners: {
-        '1': 2
-      }
+        '1': 2,
+      },
     };
 
     const wrapper = shallow(

@@ -1,10 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { ClearButtonStyle } from './../shared/styles';
 
 export const MatchWrapper = styled.li`
-    margin: 2px 0;
-    padding: 10px;
-    width: 100%;
-    border: 1px solid white;
+  position: relative;
+  margin: 2px 0;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid ${props => props.theme.borderColor};
 
-    background-color: ${props => props.contested ? 'red' : ''};
+  background-color: ${props => (props.contested ? 'red' : '')};
+  color: ${props => props.theme.fontColor};
 `;
