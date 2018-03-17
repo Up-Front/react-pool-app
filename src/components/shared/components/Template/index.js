@@ -5,11 +5,11 @@ import { Wrapper, Header, FullScreen, HeaderLogo } from './components/Styles';
 const Template = props => (
   <Wrapper>
     <Header>
+      <Link to="/leaderboard">Leaderboard</Link>
       <HeaderLogo>
-        <Link to="/dashboard">FrontMen</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </HeaderLogo>
-      <Link to="/login">login</Link>
-      <Link to="/leaderboard">leaderboard</Link>
+      <Link to="/login">Log In</Link>
     </Header>
     <FullScreen>{props.children}</FullScreen>
   </Wrapper>
