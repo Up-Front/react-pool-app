@@ -71,6 +71,19 @@ ShallowWrapper {
         />
 </styled.li>,
       "deleteId": "1",
+      "deleteObject": Object {
+        "competitors": Object {
+          "0": Object {
+            "displayName": "Bob de Bouwer",
+            "uid": 1,
+          },
+          "1": Object {
+            "displayName": "Asterix",
+            "uid": 2,
+          },
+        },
+        "uid": "1",
+      },
       "onDelete": [Function],
       "tag": "div",
     },
@@ -202,6 +215,19 @@ ShallowWrapper {
           />
 </styled.li>,
         "deleteId": "1",
+        "deleteObject": Object {
+          "competitors": Object {
+            "0": Object {
+              "displayName": "Bob de Bouwer",
+              "uid": 1,
+            },
+            "1": Object {
+              "displayName": "Asterix",
+              "uid": 2,
+            },
+          },
+          "uid": "1",
+        },
         "onDelete": [Function],
         "tag": "div",
       },

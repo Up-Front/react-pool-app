@@ -5,7 +5,7 @@ import {
   firebaseConnect,
   isLoaded,
   isEmpty,
-  populate
+  populate,
 } from 'react-redux-firebase';
 import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
@@ -37,12 +37,12 @@ class MatchList extends Component {
             })
             .map(([matchId, match]) => {
               return (
-                  <Match
-                    key={matchId}
-                    matchId={matchId}
-                    match={match}
-                    auth={this.props.auth}
-                  />
+                <Match
+                  key={matchId}
+                  matchId={matchId}
+                  match={match}
+                  auth={this.props.auth}
+                />
               );
             })}
         </MatchListWrapper>
@@ -54,7 +54,7 @@ class MatchList extends Component {
 }
 
 const populates = [
-  { child: 'competitors', root: 'users', keyProp: 'uid' } // replace owner with user object
+  { child: 'competitors', root: 'users', keyProp: 'uid' }, // replace owner with user object
 ];
 
 const enhance = compose(
@@ -62,14 +62,14 @@ const enhance = compose(
     {
       path: '/matches',
       queryParams: ['orderByChild=finishedAt', 'equalTo=null'],
-      populates
+      populates,
     },
-    { path: 'auth' }
+    { path: 'auth' },
   ]),
   connect(({ firebase }) => ({
     matches: populate(firebase, 'matches', populates),
-    auth: firebase.auth
+    auth: firebase.auth,
   }))
 );
-
+export const MatchListTest = MatchList;
 export default enhance(MatchList);

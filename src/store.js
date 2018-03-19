@@ -1,14 +1,11 @@
-import { createStore, compose } from 'redux'
-import rootReducer from './reducer'
-import firebase from 'firebase'
-import config from './config'
-import { reactReduxFirebase } from 'react-redux-firebase'
+import { createStore, compose } from 'redux';
+import rootReducer from './reducer';
+import firebase from 'firebase';
+import config from './config';
+import { reactReduxFirebase } from 'react-redux-firebase';
 
 firebase.initializeApp(config);
 export const database = firebase.database();
-
-
-
 
 export default function configureStore(initialState) {
   const store = createStore(
@@ -21,8 +18,11 @@ export default function configureStore(initialState) {
         sessions: 'sessions',
       }),
       // Redux Devtools
-      typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+      typeof window === 'object' &&
+      typeof window.devToolsExtension !== 'undefined'
+        ? window.devToolsExtension()
+        : f => f
     )
-  )
+  );
   return store;
 }
