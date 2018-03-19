@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Wrapper, Header, FullScreen, HeaderLogo } from './components/Styles';
+import { Wrapper, Header, FullScreen, HeaderLogo } from './styles';
 
 const Template = props => (
   <Wrapper>

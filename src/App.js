@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Authorization from './components/shared/components/Authorization';
 import Dashboard from './components/Dashboard';
@@ -18,7 +18,7 @@ const App = () => (
     <Provider store={store}>
       <Router>
         <Template>
-          <React.Fragment>
+          <Fragment>
             <Route exact path="/" component={Authorization(Dashboard)} />
             <Route exact path="/login" component={Login} />
             <Route
@@ -26,7 +26,7 @@ const App = () => (
               path="/leaderboard"
               component={Authorization(Leaderboard)}
             />
-          </React.Fragment>
+          </Fragment>
         </Template>
       </Router>
     </Provider>

@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { addMatch } from './../../actions/matches';
 import Modal from './../shared/components/Modal';
-import List from './components/List';
-import { User } from './../UserList/';
+import User from './../shared/components/User';
 import { SelectOpponent, FloatButton } from './styles';
 import { Button } from './../shared/styles';
 
@@ -14,6 +13,7 @@ class CreateMatch extends Component {
     search: '',
     filteredUsers: [],
     selectedOpponent: null,
+    selectedOpponentUid: null,
     matchCreated: false,
     openModal: false,
   };
@@ -39,9 +39,10 @@ class CreateMatch extends Component {
     });
   };
 
-  selectOpponent = user => {
+  selectOpponent = (uid, user) => {
     this.setState({
       selectedOpponent: user,
+      selectedOpponentUid: uid,
       filteredUsers: [],
     });
   };
@@ -59,15 +60,13 @@ class CreateMatch extends Component {
   };
 
   createMatch = () => {
-    addMatch([this.props.auth.uid, this.state.selectedOpponent.uid]).then(
-      () => {
-        this.setState({
-          matchCreated: true,
-        });
-        this.handleCloseModal();
-        console.log('match created');
-      }
-    );
+    addMatch([this.props.auth.uid, this.state.selectedOpponentUid]).then(() => {
+      this.setState({
+        matchCreated: true,
+      });
+      this.handleCloseModal();
+      console.log('match created');
+    });
   };
 
   handleOpenModal = () => {
@@ -81,33 +80,33 @@ class CreateMatch extends Component {
   };
 
   render() {
-    return [
-      <FloatButton onClick={this.handleOpenModal} key="FloatButton">
-        +
-      </FloatButton>,
-      <Modal
-        open={this.state.openModal ? 'open' : false}
-        closeModal={this.handleCloseModal}
-        key="CreateMatch"
-        footer={
-          <Button
-            onClick={this.createMatch}
-            disabled={!this.state.selectedOpponent}
-          >
-            create show down
-          </Button>
-        }
-      >
-        <div>
-          {this.showUser()}
-          {this.showOpponent()}
-          <SelectOpponent matchCreated={this.state.matchCreated}>
-            <input
-              onChange={this.handleChange}
-              value={this.state.search}
-              type="text"
-            />
-            <List>
+    return (
+      <Fragment>
+        <FloatButton onClick={this.handleOpenModal} key="FloatButton">
+          +
+        </FloatButton>
+        <Modal
+          open={this.state.openModal ? 'open' : false}
+          closeModal={this.handleCloseModal}
+          key="CreateMatch"
+          footer={
+            <Button
+              onClick={this.createMatch}
+              disabled={!this.state.selectedOpponent}
+            >
+              create show down
+            </Button>
+          }
+        >
+          <div>
+            {this.showUser()}
+            {this.showOpponent()}
+            <SelectOpponent matchCreated={this.state.matchCreated}>
+              <input
+                onChange={this.handleChange}
+                value={this.state.search}
+                type="text"
+              />
               {this.state.filteredUsers &&
                 this.state.filteredUsers.map(({ key, value: user }) => (
                   <User
@@ -115,14 +114,14 @@ class CreateMatch extends Component {
                     online={this.props.presence[key]}
                     key={key}
                     uid={key}
-                    {...user}
+                    user={user}
                   />
                 ))}
-            </List>
-          </SelectOpponent>
-        </div>
-      </Modal>,
-    ];
+            </SelectOpponent>
+          </div>
+        </Modal>
+      </Fragment>
+    );
   }
 }
 

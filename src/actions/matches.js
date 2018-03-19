@@ -75,23 +75,27 @@ export const removeMatch = (matchId, match) => {
 };
 
 export const updateWinnerData = (matchId, match) => {
-  const updateData = Object.values(match.competitors).reduce((previous, competitor) => {
-    let result;
-    let streak = competitor.streak || '';
-    if (match.winner === competitor.uid) {
-      result = 'W';
-    } else {
-      result = 'L';
-    }
+  const updateData = Object.values(match.competitors).reduce(
+    (previous, competitor) => {
+      let result;
+      let streak = competitor.streak || '';
+      if (match.winner === competitor.uid) {
+        result = 'W';
+      } else {
+        result = 'L';
+      }
 
-    previous[`users/${competitor.uid}/matches/${matchId}`] = result;
-    previous[`users/${competitor.uid}/streak`] = competitor.streak = streak + result;
-    return previous;
-  }, {
-    [`matches/${matchId}/winner`] : match.winner,
-    [`matches/${matchId}/finishedAt`] : match.finishedAt
-  });
-  
+      previous[`users/${competitor.uid}/matches/${matchId}`] = result;
+      previous[`users/${competitor.uid}/streak`] = competitor.streak =
+        streak + result;
+      return previous;
+    },
+    {
+      [`matches/${matchId}/winner`]: match.winner,
+      [`matches/${matchId}/finishedAt`]: match.finishedAt,
+    }
+  );
+
   return updateData;
 };
 
