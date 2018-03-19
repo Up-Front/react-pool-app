@@ -22,12 +22,13 @@ class App extends Component {
           <Router>
             <Template>
               <React.Fragment>
-                <Route path="/login" component={Login} />
+                <Route exact path="/" component={Authorization(Dashboard)} />
+                <Route exact path="/login" component={Login} />
                 <Route
+                  exact
                   path="/leaderboard"
                   component={Authorization(Leaderboard)}
                 />
-                <Route path="/" component={Authorization(Dashboard)} />
               </React.Fragment>
             </Template>
           </Router>

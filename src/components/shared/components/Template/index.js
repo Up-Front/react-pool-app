@@ -6,7 +6,7 @@ const Template = props => (
   <Wrapper>
     <Header>
       <HeaderLogo>
-        <Link to="/dashboard">FrontMen</Link>
+        <Link to="/">FrontMen</Link>
       </HeaderLogo>
       <Link to="/login">login</Link>
       <Link to="/leaderboard">leaderboard</Link>
