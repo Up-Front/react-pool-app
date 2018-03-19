@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Wrapper, Header, FullScreen, HeaderLogo } from './styles';
+import { logoutUser } from './../../../../actions/auth';
 
 const Template = props => (
   <Wrapper>
@@ -8,7 +9,7 @@ const Template = props => (
       <HeaderLogo>
         <Link to="/">FrontMen</Link>
       </HeaderLogo>
-      <Link to="/login">login</Link>
+      <button onClick={logoutUser}>logout</button>
       <Link to="/leaderboard">leaderboard</Link>
     </Header>
     <FullScreen>{props.children}</FullScreen>
