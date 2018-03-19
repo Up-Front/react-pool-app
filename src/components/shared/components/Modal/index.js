@@ -1,45 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ModalWrapper,
   ModalRemoveButton,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from './styles';
 
-class Modal extends Component {
-  constructor(props) {
-    super(props);
+const Modal = props => {
+  const handleRemoveModal = () => {
+    props.closeModal();
+  };
 
-    this.handleRemoveModal = this.handleRemoveModal.bind(this);
-  }
-
-  handleRemoveModal() {
-    this.props.closeModal();
-  }
-
-  render() {
-    return (
-      <ModalWrapper open={this.props.open}>
-        <ModalHeader>
-          <ModalRemoveButton
-            className="removeButton"
-            onClick={this.handleRemoveModal}
-          >
-            x
-          </ModalRemoveButton>
-        </ModalHeader>
-        <ModalBody>{this.props.children}</ModalBody>
-        <ModalFooter className="footer">{this.props.footer}</ModalFooter>
-      </ModalWrapper>
-    );
-  }
-}
+  return (
+    <ModalWrapper open={props.open}>
+      <ModalHeader>
+        <ModalRemoveButton className="removeButton" onClick={handleRemoveModal}>
+          x
+        </ModalRemoveButton>
+      </ModalHeader>
+      <ModalBody>{props.children}</ModalBody>
+      <ModalFooter className="footer">{props.footer}</ModalFooter>
+    </ModalWrapper>
+  );
+};
 
 Modal.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  footer: PropTypes.object
+  footer: PropTypes.object,
 };
 
 export default Modal;

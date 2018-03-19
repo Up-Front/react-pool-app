@@ -6,23 +6,18 @@ import { declareWinner, removeMatch } from './../../actions/matches';
 import { MatchWrapper } from './styles';
 
 class Match extends Component {
-  constructor(props) {
-    super(props);
-    this.handleDeclareWinner = this.handleDeclareWinner.bind(this);
-  }
-
   /**
    * user can only declare winner, if he is 1 of the competitors
    * and only 1 time
    */
-  handleDeclareWinner(competitor) {
+  handleDeclareWinner = competitor => {
     declareWinner(
       this.props.matchId,
       this.props.match,
       competitor,
       this.props.auth
     );
-  }
+  };
 
   /**
    * check if the auth has voted for the competitor
@@ -53,7 +48,6 @@ class Match extends Component {
     return isCompetitor;
   }
 
-
   handleRemoveMatch(matchId, match) {
     removeMatch(matchId, match)
       .then(() => {
@@ -65,7 +59,9 @@ class Match extends Component {
   }
 
   canBeDeleted(match) {
-    return !this.hasWinner(match) && this.checkAuthIsCompetitor(match.competitors);
+    return (
+      !this.hasWinner(match) && this.checkAuthIsCompetitor(match.competitors)
+    );
   }
 
   hasWinner(match) {
@@ -99,26 +95,27 @@ class Match extends Component {
 
   render() {
     if (this.canBeDeleted(this.props.match)) {
-      return (<SwipeDelete
-      key={this.props.matchId}
-      deleteId={this.props.matchId}
-      deleteObject={this.props.match}
-      canbeSwiped={this.canBeDeleted(this.props.match)}
-      onDelete={this.handleRemoveMatch}
-      >
-      {this.renderMatch()}
-      </SwipeDelete>);
+      return (
+        <SwipeDelete
+          key={this.props.matchId}
+          deleteId={this.props.matchId}
+          deleteObject={this.props.match}
+          canbeSwiped={this.canBeDeleted(this.props.match)}
+          onDelete={this.handleRemoveMatch}
+        >
+          {this.renderMatch()}
+        </SwipeDelete>
+      );
     } else {
       return this.renderMatch();
-    }  
-    
+    }
   }
 }
 
 Match.propTypes = {
   matchId: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
 export default Match;

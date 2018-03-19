@@ -4,7 +4,6 @@ import Authorization from './components/shared/components/Authorization';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login/Login';
 import Leaderboard from './components/Leaderboard';
-import Loading from './components/shared/components/Loading';
 import Template from './components/shared/components/Template';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';

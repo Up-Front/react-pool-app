@@ -6,7 +6,7 @@ import {
   SwipeWrapper,
   DeleteLayer,
   SwipeContentWrapper,
-  SwipeContent
+  SwipeContent,
 } from './styles';
 
 class SwipeDelete extends React.Component {
@@ -16,21 +16,12 @@ class SwipeDelete extends React.Component {
     this.state = {
       isDeleted: false,
       deleteDirection: null,
-      deleteCancel: false
+      deleteCancel: false,
     };
 
     this.deleteSwipe = 0.5;
     this.startX = 0;
     this.device = Device.factory(isMobile.any());
-
-    this.addHandlers = this.addHandlers.bind(this);
-    this.interact = this.interact.bind(this);
-    this.moveAt = this.moveAt.bind(this);
-    this.stopInteract = this.stopInteract.bind(this);
-    this.offInteract = this.offInteract.bind(this);
-    this.endInteract = this.endInteract.bind(this);
-    this.onDelete = this.onDelete.bind(this);
-    this.onCancel = this.onCancel.bind(this);
   }
 
   render() {
@@ -60,15 +51,15 @@ class SwipeDelete extends React.Component {
     this.addHandlers();
   }
 
-  addHandlers() {
+  addHandlers = () => {
     this.step = this.startInteract()
       .then(this.interact)
       .then(this.stopInteract)
       .then(this.endInteract)
       .catch(this.addHandlers);
-  }
+  };
 
-  startInteract() {
+  startInteract = () => {
     return new Promise(resolve => {
       this.onInteract = e => {
         el.removeEventListener(
@@ -86,32 +77,32 @@ class SwipeDelete extends React.Component {
         false
       );
     });
-  }
+  };
 
-  interact() {
+  interact = () => {
     document.addEventListener(
       this.device.getInteractEventName(),
       this.moveAt,
       false
     );
-  }
+  };
 
-  offInteract() {
+  offInteract = () => {
     document.removeEventListener(
       this.device.getInteractEventName(),
       this.moveAt,
       false
     );
-  }
+  };
 
-  moveAt(e) {
+  moveAt = e => {
     const target = this.regionContent.firstChild;
     const res = this.device.getPageX(e) - this.startX;
 
     target.style.left = `${res}px`;
-  }
+  };
 
-  stopInteract() {
+  stopInteract = () => {
     return new Promise((resolve, reject) => {
       const el = this.regionContent.firstChild;
 
@@ -123,9 +114,9 @@ class SwipeDelete extends React.Component {
           el.addEventListener(eventName, this._onStopInteract, false)
         );
     });
-  }
+  };
 
-  onStopInteract(e, resolve, reject) {
+  onStopInteract = (e, resolve, reject) => {
     const el = this.regionContent.firstChild;
 
     this.offInteract();
@@ -137,9 +128,9 @@ class SwipeDelete extends React.Component {
 
     const shift = e.currentTarget.offsetLeft;
     !shift ? reject() : resolve();
-  }
+  };
 
-  endInteract() {
+  endInteract = () => {
     const target = this.regionContent.firstChild;
     const swipePercent = this.getSwipePercent();
 
@@ -158,14 +149,14 @@ class SwipeDelete extends React.Component {
     promise.then(this.onDelete, this.onCancel);
 
     return promise;
-  }
+  };
 
-  getSwipePercent() {
+  getSwipePercent = () => {
     const shift = this.regionContent.firstChild.offsetLeft;
     const width = this.regionContent.clientWidth;
 
     return this.calcSwipePercent({ shift, width });
-  }
+  };
 
   isDelete(percent) {
     return (
@@ -174,27 +165,27 @@ class SwipeDelete extends React.Component {
     );
   }
 
-  calcSwipePercent({ shift, width }) {
+  calcSwipePercent = ({ shift, width }) => {
     return shift / width;
-  }
+  };
 
-  onDelete() {
+  onDelete = () => {
     this.setState({ isDeleted: true });
     this.props.onDelete(this.props.deleteId, this.props.deleteObject);
-  }
+  };
 
-  onCancel(e) {
+  onCancel = e => {
     const target = e.currentTarget;
     this.setState({ deleteCancel: false });
     this.setState({ deleteDirection: null });
 
     this.startX = target.style.left = 0;
-  }
+  };
 }
 
 SwipeDelete.defaultProps = {
   tag: 'div',
-  onDelete: () => {}
+  onDelete: () => {},
 };
 
 SwipeDelete.propTypes = {
@@ -202,7 +193,7 @@ SwipeDelete.propTypes = {
   onDelete: PropTypes.func,
   deleteId: PropTypes.string,
   deleteObject: PropTypes.object,
-  tag: PropTypes.string
+  tag: PropTypes.string,
 };
 
 export default SwipeDelete;
