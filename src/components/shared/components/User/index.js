@@ -20,6 +20,7 @@ const User = ({ user, ...props }) => {
           {user.displayName}
         </strong>
         <div>{user.email}</div>
+        <div>{user.eloRating}</div>
       </div>
     </Avatar>
   );

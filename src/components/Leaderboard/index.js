@@ -1,36 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { firebaseConnect } from 'react-redux-firebase';
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import User from './../shared/components/User';
+import Constants from './../shared/constants';
 
-const Leaderboard = ({ scores, users, presence }) => {
-  if (scores) scores.reverse();
-  return (
-    <div>
-      {scores &&
-        scores.map(({ key, value: score }, position) => (
-          <User
-            position={position}
-            score={score}
-            online={presence[key]}
-            key={key}
-            user={users[key]}
-          />
-        ))}
-    </div>
-  );
+const Leaderboard = props => {
+  let users;
+  if (isLoaded(props.users) || !isEmpty(props.users)) {
+    users = Object.values(props.users).map(user => {
+      user.value.eloRating = user.value.eloRating || Constants.defaultEloRating;
+      return (
+        <User
+          online={props.presence[user.key]}
+          key={user.key}
+          uid={user.key}
+          user={user.value}
+        />
+      );
+    });
+  }
+
+  return <div>{users}</div>;
 };
 
 export default compose(
   firebaseConnect(props => [
     { path: 'presence' },
-    { path: 'users', queryParams: ['orderByChild=displayName'] },
-    { path: 'scores', queryParams: ['orderByValue'] },
+    { path: 'users', queryParams: ['orderByChild=eloRating'] },
   ]),
   connect((state, props) => ({
     presence: state.firebase.data.presence || {},
-    users: state.firebase.data.users,
-    scores: state.firebase.ordered.scores,
+    users: state.firebase.ordered.users,
   }))
 )(Leaderboard);
