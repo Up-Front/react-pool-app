@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {
@@ -10,47 +10,49 @@ import {
 import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
 
-class MatchList extends Component {
+const MatchList = (props) => {
   /**
    * check if the authUser is a competitor in this match
    * TODO: this needs to be refactored to a seperate file, because this function is used in multiple places.
    * but will cause a big merge conflict when done now
    */
-  checkAuthIsCompetitor(competitors) {
+  const checkAuthIsCompetitor = (competitors) => {
     let isCompetitor = false;
     Object.values(competitors).forEach(competitor => {
-      if (competitor.uid === this.props.auth.uid) {
+      if (competitor.uid === props.auth.uid) {
         isCompetitor = true;
       }
     });
     return isCompetitor;
-  }
+  };
 
-  render() {
-    if (isLoaded(this.props.matches) && !isEmpty(this.props.matches)) {
+  
+
+    if (isLoaded(props.matches) && !isEmpty(props.matches)) {
+      const matches = Object.entries(props.matches)
+        .reverse()
+        .filter(([matchId, match]) => !match.finishedAt)
+        .filter(([matchId, match]) => checkAuthIsCompetitor(match.competitors)
+        )
+        .map(([matchId, match]) => {
+          return (
+            <Match
+              key={matchId}
+              matchId={matchId}
+              match={match}
+              auth={props.auth}
+            />
+          );
+        });
+
       return (
         <MatchListWrapper>
-          {Object.entries(this.props.matches)
-            .reverse()
-            .filter(([matchId, match]) => {
-              return this.checkAuthIsCompetitor(match.competitors);
-            })
-            .map(([matchId, match]) => {
-              return (
-                <Match
-                  key={matchId}
-                  matchId={matchId}
-                  match={match}
-                  auth={this.props.auth}
-                />
-              );
-            })}
+          {matches}
         </MatchListWrapper>
       );
     } else {
       return <div />;
     }
-  }
 }
 
 const populates = [
