@@ -1,5 +1,6 @@
 import { database } from './../store';
 import matchModel from './../models/matches';
+import Constants from './../components/shared/constants';
 
 // set match
 //the match also needs to be added to the 2 users
@@ -80,14 +81,19 @@ export const updateWinnerData = (matchId, match) => {
       let result;
       let streak = competitor.streak || '';
       if (match.winner === competitor.uid) {
-        result = 'W';
+        result = Constants.winValue;
       } else {
-        result = 'L';
+        result = Constants.loseValue;
       }
 
       previous[`users/${competitor.uid}/matches/${matchId}`] = result;
       previous[`users/${competitor.uid}/streak`] = competitor.streak =
         streak + result;
+      previous[`users/${competitor.uid}/eloRating`] = setEloRating(
+        result,
+        competitor,
+        match.competitors
+      );
       return previous;
     },
     {
@@ -95,7 +101,6 @@ export const updateWinnerData = (matchId, match) => {
       [`matches/${matchId}/finishedAt`]: match.finishedAt,
     }
   );
-
   return updateData;
 };
 
@@ -143,4 +148,27 @@ export const checkWinner = winnerVotes => {
     winner,
     isContested,
   };
+};
+
+/**
+ * https://en.wikipedia.org/wiki/Elo_rating_system
+ * https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example/
+ * @param {*} userResult
+ * @param {*} user
+ * @param {*} competitors
+ */
+export const setEloRating = (userResult, user, competitors) => {
+  const competitor = Object.values(competitors)
+    .filter(comp => comp.uid != user.uid)
+    .shift();
+
+  const userRating = user.eloRating || Constants.defaultEloRating;
+  const competitorRating = competitor.eloRating || Constants.defaultEloRating;
+  const expectedScore = userRating / (userRating + competitorRating);
+
+  if (userResult === Constants.winValue) {
+    return Math.round(userRating + Constants.eloConstant * (1 - expectedScore));
+  } else {
+    return Math.round(userRating + Constants.eloConstant * (0 - expectedScore));
+  }
 };

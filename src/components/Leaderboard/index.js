@@ -8,17 +8,20 @@ import Constants from './../shared/constants';
 const Leaderboard = props => {
   let users;
   if (isLoaded(props.users) || !isEmpty(props.users)) {
-    users = Object.values(props.users).map(user => {
-      user.value.eloRating = user.value.eloRating || Constants.defaultEloRating;
-      return (
-        <User
-          online={props.presence[user.key]}
-          key={user.key}
-          uid={user.key}
-          user={user.value}
-        />
-      );
-    });
+    users = Object.values(props.users)
+      .reverse()
+      .map(user => {
+        user.value.eloRating =
+          user.value.eloRating || Constants.defaultEloRating;
+        return (
+          <User
+            online={props.presence[user.key]}
+            key={user.key}
+            uid={user.key}
+            user={user.value}
+          />
+        );
+      });
   }
 
   return <div>{users}</div>;
