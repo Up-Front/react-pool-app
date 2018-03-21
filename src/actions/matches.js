@@ -159,7 +159,7 @@ export const checkWinner = winnerVotes => {
  */
 export const setEloRating = (userResult, user, competitors) => {
   const competitor = Object.values(competitors)
-    .filter(comp => comp.uid != user.uid)
+    .filter(comp => comp.uid !== user.uid)
     .shift();
 
   const userRating = user.eloRating || Constants.defaultEloRating;
