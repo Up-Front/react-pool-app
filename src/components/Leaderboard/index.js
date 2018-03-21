@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
@@ -6,7 +6,6 @@ import User from './../shared/components/User';
 import Constants from './../shared/constants';
 
 class Leaderboard extends Component {
-  
   componentDidMount() {
     // bugfix in react-redux-firebase
     // the watchers have a problem
@@ -18,7 +17,7 @@ class Leaderboard extends Component {
     let users;
     if (this.props.users) {
       users = Object.values(this.props.users)
-        .sort((a,b) => {
+        .sort((a, b) => {
           const ratingA = a.value.eloRating || Constants.defaultEloRating;
           const ratingB = b.value.eloRating || Constants.defaultEloRating;
           return ratingA - ratingB;
@@ -37,18 +36,16 @@ class Leaderboard extends Component {
           );
         });
     }
-    return (<div>{users}</div>)
+    return <div>{users}</div>;
   }
-};
+}
 
 export default compose(
-  firebaseConnect(props => [
-    { path: 'presence' },
-    { path: '/users'},
-  ]),
-  connect(({firebase}) => {
-    return ({
-    presence: firebase.data.presence || {},
-    users: firebase.ordered.users,
-  })})
+  firebaseConnect(props => [{ path: 'presence' }, { path: '/users' }]),
+  connect(({ firebase }) => {
+    return {
+      presence: firebase.data.presence || {},
+      users: firebase.ordered.users,
+    };
+  })
 )(Leaderboard);
