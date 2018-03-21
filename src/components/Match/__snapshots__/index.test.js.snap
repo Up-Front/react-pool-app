@@ -46,6 +46,7 @@ ShallowWrapper {
 >
         <strong />
         <Competitor
+                align="left"
                 checkAuthIsCompetitor={true}
                 competitor={
                         Object {
@@ -57,7 +58,14 @@ ShallowWrapper {
                 hasVote={false}
                 winner={undefined}
         />
+        <styled.div>
+                vs
+                <styled.div>
+                        0-0
+                </styled.div>
+        </styled.div>
         <Competitor
+                align="right"
                 checkAuthIsCompetitor={true}
                 competitor={
                         Object {
@@ -95,32 +103,38 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <strong />,
-          Array [
-            <Competitor
-              checkAuthIsCompetitor={true}
-              competitor={
-                            Object {
-                                          "displayName": "Bob de Bouwer",
-                                          "uid": 1,
-                                        }
-              }
-              handleClick={[Function]}
-              hasVote={false}
-              winner={undefined}
+          <Competitor
+            align="left"
+            checkAuthIsCompetitor={true}
+            competitor={
+                        Object {
+                                    "displayName": "Bob de Bouwer",
+                                    "uid": 1,
+                                  }
+            }
+            handleClick={[Function]}
+            hasVote={false}
+            winner={undefined}
 />,
-            <Competitor
-              checkAuthIsCompetitor={true}
-              competitor={
-                            Object {
-                                          "displayName": "Asterix",
-                                          "uid": 2,
-                                        }
-              }
-              handleClick={[Function]}
-              hasVote={false}
-              winner={undefined}
+          <styled.div>
+            vs
+            <styled.div>
+                        0-0
+            </styled.div>
+</styled.div>,
+          <Competitor
+            align="right"
+            checkAuthIsCompetitor={true}
+            competitor={
+                        Object {
+                                    "displayName": "Asterix",
+                                    "uid": 2,
+                                  }
+            }
+            handleClick={[Function]}
+            hasVote={false}
+            winner={undefined}
 />,
-          ],
         ],
         "contested": undefined,
       },
@@ -142,6 +156,7 @@ ShallowWrapper {
           "key": "1",
           "nodeType": "function",
           "props": Object {
+            "align": "left",
             "checkAuthIsCompetitor": true,
             "competitor": Object {
               "displayName": "Bob de Bouwer",
@@ -157,9 +172,39 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              "vs",
+              <styled.div>
+                0-0
+</styled.div>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "vs",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "0-0",
+              },
+              "ref": null,
+              "rendered": "0-0",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
           "key": "2",
           "nodeType": "function",
           "props": Object {
+            "align": "right",
             "checkAuthIsCompetitor": true,
             "competitor": Object {
               "displayName": "Asterix",
@@ -190,6 +235,7 @@ ShallowWrapper {
 >
           <strong />
           <Competitor
+                    align="left"
                     checkAuthIsCompetitor={true}
                     competitor={
                               Object {
@@ -201,7 +247,14 @@ ShallowWrapper {
                     hasVote={false}
                     winner={undefined}
           />
+          <styled.div>
+                    vs
+                    <styled.div>
+                              0-0
+                    </styled.div>
+          </styled.div>
           <Competitor
+                    align="right"
                     checkAuthIsCompetitor={true}
                     competitor={
                               Object {
@@ -239,32 +292,38 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <strong />,
-            Array [
-              <Competitor
-                checkAuthIsCompetitor={true}
-                competitor={
-                                Object {
-                                                "displayName": "Bob de Bouwer",
-                                                "uid": 1,
-                                              }
-                }
-                handleClick={[Function]}
-                hasVote={false}
-                winner={undefined}
+            <Competitor
+              align="left"
+              checkAuthIsCompetitor={true}
+              competitor={
+                            Object {
+                                          "displayName": "Bob de Bouwer",
+                                          "uid": 1,
+                                        }
+              }
+              handleClick={[Function]}
+              hasVote={false}
+              winner={undefined}
 />,
-              <Competitor
-                checkAuthIsCompetitor={true}
-                competitor={
-                                Object {
-                                                "displayName": "Asterix",
-                                                "uid": 2,
-                                              }
-                }
-                handleClick={[Function]}
-                hasVote={false}
-                winner={undefined}
+            <styled.div>
+              vs
+              <styled.div>
+                            0-0
+              </styled.div>
+</styled.div>,
+            <Competitor
+              align="right"
+              checkAuthIsCompetitor={true}
+              competitor={
+                            Object {
+                                          "displayName": "Asterix",
+                                          "uid": 2,
+                                        }
+              }
+              handleClick={[Function]}
+              hasVote={false}
+              winner={undefined}
 />,
-            ],
           ],
           "contested": undefined,
         },
@@ -286,6 +345,7 @@ ShallowWrapper {
             "key": "1",
             "nodeType": "function",
             "props": Object {
+              "align": "left",
               "checkAuthIsCompetitor": true,
               "competitor": Object {
                 "displayName": "Bob de Bouwer",
@@ -301,9 +361,39 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "vs",
+                <styled.div>
+                  0-0
+</styled.div>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "vs",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "0-0",
+                },
+                "ref": null,
+                "rendered": "0-0",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
             "key": "2",
             "nodeType": "function",
             "props": Object {
+              "align": "right",
               "checkAuthIsCompetitor": true,
               "competitor": Object {
                 "displayName": "Asterix",

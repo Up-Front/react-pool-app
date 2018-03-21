@@ -35,44 +35,24 @@ ReactWrapper {
     },
     "ref": null,
     "rendered": Object {
-      "instance": <div>
-        <strong>
-                Bob de Bouwer
-                👑
-        </strong>
-</div>,
+      "instance": <strong>
+        Bob de Bouwer
+        👑
+</strong>,
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <strong>
-          Bob de Bouwer
-           👑
-</strong>,
+        "children": Array [
+          "Bob de Bouwer",
+          " 👑",
+        ],
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": <strong>
-            Bob de Bouwer
-            👑
-</strong>,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Bob de Bouwer",
-              " 👑",
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Bob de Bouwer",
-            " 👑",
-          ],
-          "type": "strong",
-        },
+        "Bob de Bouwer",
+        " 👑",
       ],
-      "type": "div",
+      "type": "strong",
     },
     "type": [Function],
   },
@@ -91,44 +71,24 @@ ReactWrapper {
       },
       "ref": null,
       "rendered": Object {
-        "instance": <div>
-          <strong>
-                    Bob de Bouwer
-                    👑
-          </strong>
-</div>,
+        "instance": <strong>
+          Bob de Bouwer
+          👑
+</strong>,
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <strong>
-            Bob de Bouwer
-             👑
-</strong>,
+          "children": Array [
+            "Bob de Bouwer",
+            " 👑",
+          ],
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": <strong>
-              Bob de Bouwer
-              👑
-</strong>,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                "Bob de Bouwer",
-                " 👑",
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              "Bob de Bouwer",
-              " 👑",
-            ],
-            "type": "strong",
-          },
+          "Bob de Bouwer",
+          " 👑",
         ],
-        "type": "div",
+        "type": "strong",
       },
       "type": [Function],
     },
@@ -166,41 +126,145 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
-      "children": Array [
-        "Bob de Bouwer",
-        undefined,
-        undefined,
-      ],
+      "children": <styled.div
+        align={undefined}
+>
+        <styled.img
+                src={undefined}
+        />
+        <styled.div
+                align={undefined}
+                hasVote={undefined}
+        >
+                Bob de Bouwer
+        </styled.div>
+</styled.div>,
+      "hasVote": undefined,
+      "onClick": [Function],
     },
     "ref": null,
-    "rendered": Array [
-      "Bob de Bouwer",
-      undefined,
-      undefined,
-    ],
-    "type": "div",
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "align": undefined,
+        "children": Array [
+          <styled.img
+            src={undefined}
+/>,
+          <styled.div
+            align={undefined}
+            hasVote={undefined}
+>
+            Bob de Bouwer
+</styled.div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "src": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "align": undefined,
+            "children": "Bob de Bouwer",
+            "hasVote": undefined,
+          },
+          "ref": null,
+          "rendered": "Bob de Bouwer",
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
-        "children": Array [
-          "Bob de Bouwer",
-          undefined,
-          undefined,
-        ],
+        "children": <styled.div
+          align={undefined}
+>
+          <styled.img
+                    src={undefined}
+          />
+          <styled.div
+                    align={undefined}
+                    hasVote={undefined}
+          >
+                    Bob de Bouwer
+          </styled.div>
+</styled.div>,
+        "hasVote": undefined,
+        "onClick": [Function],
       },
       "ref": null,
-      "rendered": Array [
-        "Bob de Bouwer",
-        undefined,
-        undefined,
-      ],
-      "type": "div",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "align": undefined,
+          "children": Array [
+            <styled.img
+              src={undefined}
+/>,
+            <styled.div
+              align={undefined}
+              hasVote={undefined}
+>
+              Bob de Bouwer
+</styled.div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "src": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "align": undefined,
+              "children": "Bob de Bouwer",
+              "hasVote": undefined,
+            },
+            "ref": null,
+            "rendered": "Bob de Bouwer",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

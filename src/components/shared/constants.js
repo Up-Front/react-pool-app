@@ -3,6 +3,8 @@ const Constants = {
   eloConstant: 32,
   loseValue: 'L',
   winValue: 'W',
+  ALIGNLEFT: 'left',
+  ALIGNRIGHT: 'right',
 };
 
 export default Constants;

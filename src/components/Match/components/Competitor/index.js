@@ -1,52 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constant from './../../../shared/constants';
+import {
+  CompetitorWrapper,
+  CompetitorAvatar,
+  CompetitorName,
+  CompetitorLine,
+} from './styles';
 
+const Competitor = ({
+  competitor,
+  checkAuthIsCompetitor,
+  hasVote,
+  winner,
+  ...props
+}) => {
+  const isWinner = winner === competitor.uid ? true : false;
 
-const Competitor = ({ competitor, checkAuthIsCompetitor, hasVote, winner, ...props }) => {
-    const isWinner = winner === competitor.uid ? true : false;
-
-    const handleClick = () => {
-        props.handleClick(competitor);
+  const handleClick = () => {
+    if (checkAuthIsCompetitor && !winner) {
+      props.handleClick(competitor);
     }
+  };
 
-    const authVote = () => {
-        if (hasVote && !winner) {
-            return (
-                <div className="winner">your winner</div>
-            );
-        }
-    }
+  const authVote = () => hasVote && !winner;
 
-    const showWinnerButton = () => {
-        if (checkAuthIsCompetitor && !winner) {
-            return <button onClick={handleClick}>declare winner</button>
-        }
-    }
-
-    if (isWinner) {
-        return (
-            <div>
-                <strong>
-                    {competitor.displayName} 👑
-                </strong>
-            </div>
-        );
-    }
-    return (
-
-        <div>
-            {competitor.displayName}
-            {showWinnerButton()}
-            {authVote()}
-        </div>
-    );
-}
+  if (isWinner) {
+    return <strong>{competitor.displayName} 👑</strong>;
+  }
+  return (
+    <CompetitorWrapper onClick={handleClick} hasVote={authVote()}>
+      <CompetitorLine align={props.align}>
+        <CompetitorAvatar src={competitor.avatarUrl} />
+        <CompetitorName align={props.align} hasVote={authVote()}>
+          {competitor.displayName}
+        </CompetitorName>
+      </CompetitorLine>
+    </CompetitorWrapper>
+  );
+};
 
 Competitor.propTypes = {
-    checkAuthIsCompetitor: PropTypes.bool,
-    competitor: PropTypes.object.isRequired,
-    hasVote: PropTypes.bool,
-    winner: PropTypes.string,
-    handleClick: PropTypes.func.isRequired
+  align: PropTypes.string.isRequired,
+  checkAuthIsCompetitor: PropTypes.bool,
+  competitor: PropTypes.object.isRequired,
+  hasVote: PropTypes.bool,
+  winner: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
 };
 export default Competitor;

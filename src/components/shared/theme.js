@@ -10,5 +10,9 @@ export const theme = {
   headerFontColor: '#FFF',
 
   buttonColor: 'DarkOrange',
-  buttonFontColor: '#FFF'
+  buttonFontColor: '#FFF',
+
+  //match
+  matchBackgroundColor: '#243949',
+  contestedMatchBackgroundColor: 'red',
 };
