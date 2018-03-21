@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Component renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Loading />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <span
+          aria-label="left hand"
+          role="img"
+>
+          👈
+</span>,
+        <span
+          aria-label="8-ball"
+          role="img"
+>
+          🎱
+</span>,
+        <span
+          aria-label="right hand"
+          role="img"
+>
+          👉
+</span>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "left hand",
+          "children": "👈",
+          "role": "img",
+        },
+        "ref": null,
+        "rendered": "👈",
+        "type": "span",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "8-ball",
+          "children": "🎱",
+          "role": "img",
+        },
+        "ref": null,
+        "rendered": "🎱",
+        "type": "span",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "right hand",
+          "children": "👉",
+          "role": "img",
+        },
+        "ref": null,
+        "rendered": "👉",
+        "type": "span",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <span
+            aria-label="left hand"
+            role="img"
+>
+            👈
+</span>,
+          <span
+            aria-label="8-ball"
+            role="img"
+>
+            🎱
+</span>,
+          <span
+            aria-label="right hand"
+            role="img"
+>
+            👉
+</span>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "left hand",
+            "children": "👈",
+            "role": "img",
+          },
+          "ref": null,
+          "rendered": "👈",
+          "type": "span",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "8-ball",
+            "children": "🎱",
+            "role": "img",
+          },
+          "ref": null,
+          "rendered": "🎱",
+          "type": "span",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "right hand",
+            "children": "👉",
+            "role": "img",
+          },
+          "ref": null,
+          "rendered": "👉",
+          "type": "span",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

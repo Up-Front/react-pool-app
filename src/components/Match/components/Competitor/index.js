@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Constant from './../../../shared/constants';
 import {
   CompetitorWrapper,
   CompetitorAvatar,
@@ -26,7 +25,14 @@ const Competitor = ({
   const authVote = () => hasVote && !winner;
 
   if (isWinner) {
-    return <strong>{competitor.displayName} 👑</strong>;
+    return (
+      <strong>
+        {competitor.displayName}{' '}
+        <span role="img" aria-label="Winner">
+          👑
+        </span>
+      </strong>
+    );
   }
   return (
     <CompetitorWrapper onClick={handleClick} hasVote={authVote()}>

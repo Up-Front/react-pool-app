@@ -39,20 +39,51 @@ ReactWrapper {
     "rendered": Object {
       "instance": <strong>
         Bob de Bouwer
-        👑
+        <span
+                role="img"
+                aria-label="Winner"
+        >
+                👑
+        </span>
 </strong>,
       "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
           "Bob de Bouwer",
-          " 👑",
+          " ",
+          <span
+            aria-label="Winner"
+            role="img"
+>
+            👑
+</span>,
         ],
       },
       "ref": null,
       "rendered": Array [
         "Bob de Bouwer",
-        " 👑",
+        " ",
+        Object {
+          "instance": <span
+            role="img"
+            aria-label="Winner"
+>
+            👑
+</span>,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "Winner",
+            "children": "👑",
+            "role": "img",
+          },
+          "ref": null,
+          "rendered": Array [
+            "👑",
+          ],
+          "type": "span",
+        },
       ],
       "type": "strong",
     },
@@ -76,20 +107,51 @@ ReactWrapper {
       "rendered": Object {
         "instance": <strong>
           Bob de Bouwer
-          👑
+          <span
+                    role="img"
+                    aria-label="Winner"
+          >
+                    👑
+          </span>
 </strong>,
         "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
             "Bob de Bouwer",
-            " 👑",
+            " ",
+            <span
+              aria-label="Winner"
+              role="img"
+>
+              👑
+</span>,
           ],
         },
         "ref": null,
         "rendered": Array [
           "Bob de Bouwer",
-          " 👑",
+          " ",
+          Object {
+            "instance": <span
+              role="img"
+              aria-label="Winner"
+>
+              👑
+</span>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "aria-label": "Winner",
+              "children": "👑",
+              "role": "img",
+            },
+            "ref": null,
+            "rendered": Array [
+              "👑",
+            ],
+            "type": "span",
+          },
         ],
         "type": "strong",
       },

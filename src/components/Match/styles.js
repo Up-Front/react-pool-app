@@ -5,8 +5,6 @@ export const MatchWrapper = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  margin: 2px 0;
   padding: 10px 0;
   width: 100%;
   border-bottom: 1px solid ${props => props.theme.borderColor};

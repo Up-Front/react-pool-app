@@ -15,4 +15,7 @@ export const theme = {
   //match
   matchBackgroundColor: '#243949',
   contestedMatchBackgroundColor: 'red',
+
+  //delete swipe
+  deleteBackgroundColor: 'red',
 };
