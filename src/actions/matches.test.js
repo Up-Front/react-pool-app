@@ -1,6 +1,6 @@
 import React from 'react';
 import sinon from 'sinon';
-import { setMatchStatus, checkWinner, setEloRating } from './matches';
+import { setMatchStatus, checkWinner, setEloRating, increaseStreak, findOtherCompetitor } from './matches';
 import Constants from './../components/shared/constants';
 
 describe('Match actions', () => {
@@ -89,6 +89,32 @@ describe('Match actions', () => {
     expect(winner).toEqual(null);
   });
 
+  describe('increaseStreak', () => {
+    test('increaseStreak add a match', () => {
+      const expectedResult = 'LL';
+      const result = increaseStreak('L', 'L');
+  
+      expect(result).toEqual(expectedResult);
+    });
+
+    test('increaseStreak add a match when result was null', () => {
+      const expectedResult = 'L';
+      const result = increaseStreak(null, 'L');
+  
+      expect(result).toEqual(expectedResult);
+    });
+  });
+
+  describe('findOtherCompetitor', () => {
+    const expectedResult = {2:2};
+    const competitor = {2:2}
+    const user = {1:2};
+    const competitors = [user, competitor];
+
+    const result = findOtherCompetitor(user, competitors);
+
+    expect(expectedResult).toEqual(competitor);
+  });
 
   describe('Match actions', () => {
     test('When the user loses', () => {

@@ -79,16 +79,17 @@ export const updateWinnerData = (matchId, match) => {
   const updateData = Object.values(match.competitors).reduce(
     (previous, competitor) => {
       let result;
-      let streak = competitor.streak || '';
+      const otherCompetitor = findOtherCompetitor(competitor, Object.values(match.competitors));
+      const otherCompetitorResults = competitor.results && competitor.results[otherCompetitor.uid];
+      
       if (match.winner === competitor.uid) {
         result = Constants.winValue;
       } else {
         result = Constants.loseValue;
       }
 
-      previous[`users/${competitor.uid}/matches/${matchId}`] = result;
-      previous[`users/${competitor.uid}/streak`] = competitor.streak =
-        streak + result;
+      previous[`users/${competitor.uid}/results/${otherCompetitor.uid}`] = increaseStreak(otherCompetitorResults, result);
+      previous[`users/${competitor.uid}/streak`] = increaseStreak(competitor.streak, result);
       previous[`users/${competitor.uid}/eloRating`] = setEloRating(
         result,
         competitor,
@@ -101,6 +102,7 @@ export const updateWinnerData = (matchId, match) => {
       [`matches/${matchId}/finishedAt`]: match.finishedAt,
     }
   );
+
   return updateData;
 };
 
@@ -158,9 +160,7 @@ export const checkWinner = winnerVotes => {
  * @param {*} competitors
  */
 export const setEloRating = (userResult, user, competitors) => {
-  const competitor = Object.values(competitors)
-    .filter(comp => comp.uid != user.uid)
-    .shift();
+  const competitor = findOtherCompetitor(user, Object.values(competitors));
 
   const userRating = user.eloRating || Constants.defaultEloRating;
   const competitorRating = competitor.eloRating || Constants.defaultEloRating;
@@ -172,3 +172,14 @@ export const setEloRating = (userResult, user, competitors) => {
     return Math.round(userRating + Constants.eloConstant * (0 - expectedScore));
   }
 };
+
+
+export const increaseStreak = (streak, result) => {
+  streak = streak || '';
+  return streak + result;
+}
+
+export const findOtherCompetitor = (user, competitors) => (
+  competitors.filter(comp => comp.uid !== user.uid)
+    .shift()
+);

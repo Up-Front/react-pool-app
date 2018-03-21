@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { firebaseConnect } from 'react-redux-firebase';
 import User from './../shared/components/User';
 import Constants from './../shared/constants';
 
@@ -16,7 +16,6 @@ class Leaderboard extends Component {
 
   render() {
     let users;
-    
     if (this.props.users) {
       users = Object.values(this.props.users)
         .sort((a,b) => {
