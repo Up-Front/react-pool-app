@@ -10,14 +10,6 @@ describe('Modal component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('close button clicked', () => {
-    const wrapper = mount(<Modal closeModal={jest.fn()} />);
-    wrapper.instance().handleRemoveModal = jest.fn();
-    wrapper.instance().forceUpdate();
-    wrapper.find('button.removeButton').simulate('click');
-    expect(wrapper.instance().handleRemoveModal).toHaveBeenCalledTimes(1);
-  });
-
   test('that modal is opened / closed', () => {
     const wrapper = mount(<Modal closeModal={jest.fn()} />);
     expect(wrapper).toHaveStyleRule('display', 'none');
