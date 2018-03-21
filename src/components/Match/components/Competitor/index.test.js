@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import Constants from './../../../shared/constants';
 import Competitor from './';
 
 describe('Competitor component', () => {
@@ -16,7 +17,11 @@ describe('Competitor component', () => {
 
   test('renders without crashing', () => {
     const wrapper = shallow(
-      <Competitor competitor={competitor} handleClick={handleClick} />
+      <Competitor
+        align={Constants.ALIGNLEFT}
+        competitor={competitor}
+        handleClick={handleClick}
+      />
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -28,6 +33,7 @@ describe('Competitor component', () => {
         checkAuthIsCompetitor={true}
         competitor={competitor}
         handleClick={handleClick}
+        align={Constants.ALIGNLEFT}
       />
     );
     wrapper.find('[onClick]').simulate('click');
@@ -37,18 +43,20 @@ describe('Competitor component', () => {
   test('check that you voted', () => {
     const wrapper = mount(
       <Competitor
+        align={Constants.ALIGNLEFT}
         hasVote={true}
         competitor={competitor}
         handleClick={handleClick}
       />
     );
-    expect(wrapper.find('div.winner').length).toEqual(1);
+    expect(wrapper.find('div.name').length).toEqual(1);
   });
 
   test('render of winner', () => {
     const wrapper = mount(
       <Competitor
         winner="1"
+        align={Constants.ALIGNLEFT}
         competitor={competitor}
         handleClick={handleClick}
       />

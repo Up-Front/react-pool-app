@@ -70,11 +70,7 @@ class Match extends Component {
     const streak = competitorA.results && competitorA.results[competitorB.uid];
     let wins = 0;
     let losses = 0;
-    console.log(streak);
     if (streak) {
-      console.log(
-        (streak.match(new RegExp(Constants.winValue, 'g')) || []).length
-      );
       wins = (streak.match(new RegExp(Constants.winValue, 'g')) || []).length;
       losses = (streak.match(new RegExp(Constants.loseValue, 'g')) || [])
         .length;

@@ -32,7 +32,11 @@ const Competitor = ({
     <CompetitorWrapper onClick={handleClick} hasVote={authVote()}>
       <CompetitorLine align={props.align}>
         <CompetitorAvatar src={competitor.avatarUrl} />
-        <CompetitorName align={props.align} hasVote={authVote()}>
+        <CompetitorName
+          className="name"
+          align={props.align}
+          hasVote={authVote()}
+        >
           {competitor.displayName}
         </CompetitorName>
       </CompetitorLine>

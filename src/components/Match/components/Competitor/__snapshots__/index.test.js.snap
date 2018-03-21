@@ -4,6 +4,7 @@ exports[`Competitor component render of winner 1`] = `
 ReactWrapper {
   "length": 1,
   Symbol(enzyme.__unrendered__): <Competitor
+    align="left"
     competitor={
         Object {
             "displayName": "Bob de Bouwer",
@@ -26,6 +27,7 @@ ReactWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "align": "left",
       "competitor": Object {
         "displayName": "Bob de Bouwer",
         "uid": "1",
@@ -62,6 +64,7 @@ ReactWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "align": "left",
         "competitor": Object {
           "displayName": "Bob de Bouwer",
           "uid": "1",
@@ -108,6 +111,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Competitor
+    align="left"
     competitor={
         Object {
             "displayName": "Bob de Bouwer",
@@ -129,13 +133,14 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <styled.div
-        align={undefined}
+        align="left"
 >
         <styled.img
                 src={undefined}
         />
         <styled.div
-                align={undefined}
+                align="left"
+                className="name"
                 hasVote={undefined}
         >
                 Bob de Bouwer
@@ -150,13 +155,14 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "align": undefined,
+        "align": "left",
         "children": Array [
           <styled.img
             src={undefined}
 />,
           <styled.div
-            align={undefined}
+            align="left"
+            className="name"
             hasVote={undefined}
 >
             Bob de Bouwer
@@ -181,8 +187,9 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "align": undefined,
+            "align": "left",
             "children": "Bob de Bouwer",
+            "className": "name",
             "hasVote": undefined,
           },
           "ref": null,
@@ -201,13 +208,14 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <styled.div
-          align={undefined}
+          align="left"
 >
           <styled.img
                     src={undefined}
           />
           <styled.div
-                    align={undefined}
+                    align="left"
+                    className="name"
                     hasVote={undefined}
           >
                     Bob de Bouwer
@@ -222,13 +230,14 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "align": undefined,
+          "align": "left",
           "children": Array [
             <styled.img
               src={undefined}
 />,
             <styled.div
-              align={undefined}
+              align="left"
+              className="name"
               hasVote={undefined}
 >
               Bob de Bouwer
@@ -253,8 +262,9 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "align": undefined,
+              "align": "left",
               "children": "Bob de Bouwer",
+              "className": "name",
               "hasVote": undefined,
             },
             "ref": null,
