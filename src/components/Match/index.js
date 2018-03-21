@@ -4,6 +4,7 @@ import Constants from './../shared/constants';
 import Competitor from './components/Competitor';
 import SwipeDelete from './../shared/components/SwipeDelete';
 import { declareWinner, removeMatch } from './../../actions/matches';
+import { calcHead2Head } from './../../actions/competitors';
 import { MatchWrapper, Versus, Head2Head } from './styles';
 
 class Match extends Component {
@@ -65,19 +66,6 @@ class Match extends Component {
     return !!match.winner;
   }
 
-  //find the head2head score of the 2 competitors
-  calcHead2Head(competitorA, competitorB) {
-    const streak = competitorA.results && competitorA.results[competitorB.uid];
-    let wins = 0;
-    let losses = 0;
-    if (streak) {
-      wins = (streak.match(new RegExp(Constants.winValue, 'g')) || []).length;
-      losses = (streak.match(new RegExp(Constants.loseValue, 'g')) || [])
-        .length;
-    }
-    return `${wins}-${losses}`;
-  }
-
   renderCompetitor(competitor, align) {
     return (
       <Competitor
@@ -108,7 +96,7 @@ class Match extends Component {
         {this.renderCompetitor(competitorA, Constants.ALIGNLEFT)}
         <Versus>
           vs
-          <Head2Head>{this.calcHead2Head(competitorA, competitorB)}</Head2Head>
+          <Head2Head>{calcHead2Head(competitorA, competitorB)}</Head2Head>
         </Versus>
         {this.renderCompetitor(competitorB, Constants.ALIGNRIGHT)}
       </MatchWrapper>
