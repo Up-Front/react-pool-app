@@ -1,6 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
-import { setMatchStatus, checkWinner } from './matches';
+import { setMatchStatus, checkWinner, setEloRating } from './matches';
+import Constants from './../components/shared/constants';
 
 describe('Match actions', () => {
   let now = new Date();
@@ -87,4 +88,62 @@ describe('Match actions', () => {
     expect(isContested).toEqual(true);
     expect(winner).toEqual(null);
   });
+
+
+  describe('Match actions', () => {
+    test('When the user loses', () => {
+      const competitors = {
+        0: {
+          uid: 1,
+          eloRating: 200
+        },
+        1: {
+          uid: 2,
+          eloRating: 1000
+        }
+      }
+      const expectedResult = 195;
+      const result = setEloRating(Constants.loseValue, competitors[0], competitors);
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    test('When the user wins', () => {
+      const competitors = {
+        0: {
+          uid: 1,
+          eloRating: 200
+        },
+        1: {
+          uid: 2,
+          eloRating: 1000
+        }
+      };
+      const expectedResult = 227;
+      const result = setEloRating(Constants.winValue, competitors[0], competitors);
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    test('When the user does not have a rating yet', () => {
+      const competitors = {
+        0: {
+            uid: 1
+          },
+          1: {
+            uid: 2
+          }
+        };
+  
+        const expectedResult = 1016;
+        const result = setEloRating(Constants.winValue, competitors[0], competitors);
+  
+        expect(result).toEqual(expectedResult);
+    });
+  });
+
+  
+  
+
+
 });
