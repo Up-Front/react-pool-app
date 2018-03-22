@@ -1,10 +1,10 @@
-const Constants = {
-  defaultEloRating: 1000,
-  eloConstant: 32,
-  loseValue: 'L',
-  winValue: 'W',
+const constants = {
+  DEFAULTELORATING: 1000,
+  ELOCONSTANT: 32,
+  LOSEVALUE: 'L',
+  WINVALUE: 'W',
   ALIGNLEFT: 'left',
   ALIGNRIGHT: 'right',
 };
 
-export default Constants;
+export default constants;

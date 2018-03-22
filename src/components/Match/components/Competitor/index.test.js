@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Constants from './../../../shared/constants';
+import constants from './../../../shared/constants';
 import Competitor from './';
 
 describe('Competitor component', () => {
@@ -18,7 +18,7 @@ describe('Competitor component', () => {
   test('renders without crashing', () => {
     const wrapper = shallow(
       <Competitor
-        align={Constants.ALIGNLEFT}
+        align={constants.ALIGNLEFT}
         competitor={competitor}
         handleClick={handleClick}
       />
@@ -33,7 +33,7 @@ describe('Competitor component', () => {
         checkAuthIsCompetitor={true}
         competitor={competitor}
         handleClick={handleClick}
-        align={Constants.ALIGNLEFT}
+        align={constants.ALIGNLEFT}
       />
     );
     wrapper.find('[onClick]').simulate('click');
@@ -43,7 +43,7 @@ describe('Competitor component', () => {
   test('check that you voted', () => {
     const wrapper = mount(
       <Competitor
-        align={Constants.ALIGNLEFT}
+        align={constants.ALIGNLEFT}
         hasVote={true}
         competitor={competitor}
         handleClick={handleClick}
@@ -56,7 +56,7 @@ describe('Competitor component', () => {
     const wrapper = mount(
       <Competitor
         winner="1"
-        align={Constants.ALIGNLEFT}
+        align={constants.ALIGNLEFT}
         competitor={competitor}
         handleClick={handleClick}
       />

@@ -1,7 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import { setMatchStatus, checkWinner, setEloRating, increaseStreak, findOtherCompetitor } from './matches';
-import Constants from './../components/shared/constants';
+import constants from './../components/shared/constants';
 
 describe('Match actions', () => {
   let now = new Date();
@@ -129,7 +129,7 @@ describe('Match actions', () => {
         }
       }
       const expectedResult = 195;
-      const result = setEloRating(Constants.loseValue, competitors[0], competitors);
+      const result = setEloRating(constants.LOSEVALUE, competitors[0], competitors);
 
       expect(result).toEqual(expectedResult);
     });
@@ -146,7 +146,7 @@ describe('Match actions', () => {
         }
       };
       const expectedResult = 227;
-      const result = setEloRating(Constants.winValue, competitors[0], competitors);
+      const result = setEloRating(constants.WINVALUE, competitors[0], competitors);
 
       expect(result).toEqual(expectedResult);
     });
@@ -162,7 +162,7 @@ describe('Match actions', () => {
         };
   
         const expectedResult = 1016;
-        const result = setEloRating(Constants.winValue, competitors[0], competitors);
+        const result = setEloRating(constants.WINVALUE, competitors[0], competitors);
   
         expect(result).toEqual(expectedResult);
     });

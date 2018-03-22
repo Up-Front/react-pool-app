@@ -1,6 +1,6 @@
 import { database } from './../store';
 import matchModel from './../models/matches';
-import Constants from './../components/shared/constants';
+import constants from './../components/shared/constants';
 
 // set match
 //the match also needs to be added to the 2 users
@@ -83,9 +83,9 @@ export const updateWinnerData = (matchId, match) => {
       const otherCompetitorResults = competitor.results && competitor.results[otherCompetitor.uid];
       
       if (match.winner === competitor.uid) {
-        result = Constants.winValue;
+        result = constants.WINVALUE;
       } else {
-        result = Constants.loseValue;
+        result = constants.LOSEVALUE;
       }
 
       previous[`users/${competitor.uid}/results/${otherCompetitor.uid}`] = increaseStreak(otherCompetitorResults, result);
@@ -162,14 +162,14 @@ export const checkWinner = winnerVotes => {
 export const setEloRating = (userResult, user, competitors) => {
   const competitor = findOtherCompetitor(user, Object.values(competitors));
 
-  const userRating = user.eloRating || Constants.defaultEloRating;
-  const competitorRating = competitor.eloRating || Constants.defaultEloRating;
+  const userRating = user.eloRating || constants.DEFAULTELORATING;
+  const competitorRating = competitor.eloRating || constants.DEFAULTELORATING;
   const expectedScore = userRating / (userRating + competitorRating);
 
-  if (userResult === Constants.winValue) {
-    return Math.round(userRating + Constants.eloConstant * (1 - expectedScore));
+  if (userResult === constants.WINVALUE) {
+    return Math.round(userRating + constants.ELOCONSTANT * (1 - expectedScore));
   } else {
-    return Math.round(userRating + Constants.eloConstant * (0 - expectedScore));
+    return Math.round(userRating + constants.ELOCONSTANT * (0 - expectedScore));
   }
 };
 

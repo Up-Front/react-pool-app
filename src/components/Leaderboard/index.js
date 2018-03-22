@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import User from './../shared/components/User';
-import Constants from './../shared/constants';
+import constants from './../shared/constants';
 
 class Leaderboard extends Component {
   componentDidMount() {
@@ -18,14 +18,14 @@ class Leaderboard extends Component {
     if (this.props.users) {
       users = Object.values(this.props.users)
         .sort((a, b) => {
-          const ratingA = a.value.eloRating || Constants.defaultEloRating;
-          const ratingB = b.value.eloRating || Constants.defaultEloRating;
+          const ratingA = a.value.eloRating || constants.DEFAULTELORATING;
+          const ratingB = b.value.eloRating || constants.DEFAULTELORATING;
           return ratingA - ratingB;
         })
         .reverse()
         .map(user => {
           user.value.eloRating =
-            user.value.eloRating || Constants.defaultEloRating;
+            user.value.eloRating || constants.DEFAULTELORATING;
           return (
             <User
               online={this.props.presence[user.key]}

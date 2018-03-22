@@ -1,5 +1,4 @@
 import { calcHead2Head } from './competitors';
-import Constants from './../components/shared/constants';
 
 describe('Competitor actions', () => {
   describe('calcHead2Head', () => {

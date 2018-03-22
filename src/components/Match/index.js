@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Constants from './../shared/constants';
+import constants from './../shared/constants';
 import Competitor from './components/Competitor';
 import SwipeDelete from './../shared/components/SwipeDelete';
 import { declareWinner, removeMatch } from './../../actions/matches';
@@ -93,12 +93,12 @@ class Match extends Component {
     return (
       <MatchWrapper contested={this.props.match.isContested}>
         <strong>{contestedText}</strong>
-        {this.renderCompetitor(competitorA, Constants.ALIGNLEFT)}
+        {this.renderCompetitor(competitorA, constants.ALIGNLEFT)}
         <Versus>
           vs
           <Head2Head>{calcHead2Head(competitorA, competitorB)}</Head2Head>
         </Versus>
-        {this.renderCompetitor(competitorB, Constants.ALIGNRIGHT)}
+        {this.renderCompetitor(competitorB, constants.ALIGNRIGHT)}
       </MatchWrapper>
     );
   }
