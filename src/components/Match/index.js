@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import constants from './../shared/constants';
-import Competitor from './components/Competitor';
+import Competitor from './../shared/components/Competitor';
 import SwipeDelete from './../shared/components/SwipeDelete';
 import { declareWinner, removeMatch } from './../../actions/matches';
 import { calcHead2Head } from './../../actions/competitors';
@@ -66,6 +66,10 @@ class Match extends Component {
     return !!match.winner;
   }
 
+  getRanking(ranking, competitor) {
+    return ranking.value && ranking.value[competitor.uid];
+  }
+
   renderCompetitor(competitor, align) {
     return (
       <Competitor
@@ -73,6 +77,11 @@ class Match extends Component {
         key={competitor.uid}
         checkAuthIsCompetitor={this.checkAuthIsCompetitor(
           this.props.match.competitors
+        )}
+        currentRanking={this.getRanking(this.props.currentRanking, competitor)}
+        previousRanking={this.getRanking(
+          this.props.previousRanking,
+          competitor
         )}
         competitor={competitor}
         hasVote={this.checkAuthVote(competitor)}
@@ -122,10 +131,17 @@ class Match extends Component {
   }
 }
 
+Match.defaultProps = {
+  currentRanking: {},
+  previousRanking: {},
+};
+
 Match.propTypes = {
   matchId: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  currentRanking: PropTypes.object,
+  previousRanking: PropTypes.object,
 };
 
 export default Match;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
-import User from './../shared/components/User';
+import Competitor from './../shared/components/Competitor';
 import constants from './../shared/constants';
 
 class Leaderboard extends Component {
@@ -26,11 +26,10 @@ class Leaderboard extends Component {
           user.value.eloRating =
             user.value.eloRating || constants.DEFAULTELORATING;
           return (
-            <User
+            <Competitor
               online={this.props.presence[user.key]}
               key={user.key}
-              uid={user.key}
-              user={user.value}
+              competitor={user.value}
             />
           );
         });

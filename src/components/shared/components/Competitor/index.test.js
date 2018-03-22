@@ -51,18 +51,4 @@ describe('Competitor component', () => {
     );
     expect(wrapper.find('div.name').length).toEqual(1);
   });
-
-  test('render of winner', () => {
-    const wrapper = mount(
-      <Competitor
-        winner="1"
-        align={constants.ALIGNLEFT}
-        competitor={competitor}
-        handleClick={handleClick}
-      />
-    );
-
-    expect(wrapper.find('strong').length).toEqual(1);
-    expect(wrapper).toMatchSnapshot();
-  });
 });

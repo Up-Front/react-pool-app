@@ -1,6 +1,8 @@
 import constants from './../constants';
 
-export const getStartOfWeek = (date = new Date()) => {
+export const getStartOfWeek = date => {
+  date = new Date(date);
+
   var day = date.getDay() || constants.STARTDAYOFWEEK; // Get current day number, converting Sun. to 7
   date.setUTCHours(0, 0, 0, 0);
 

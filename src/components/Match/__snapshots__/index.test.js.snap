@@ -11,6 +11,7 @@ ShallowWrapper {
             "uid": 1,
           }
     }
+    currentRanking={Object {}}
     match={
         Object {
             "competitors": Object {
@@ -27,6 +28,7 @@ ShallowWrapper {
           }
     }
     matchId="1"
+    previousRanking={Object {}}
 />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -54,8 +56,11 @@ ShallowWrapper {
                                 "uid": 1,
                               }
                 }
+                currentRanking={Object {}}
                 handleClick={[Function]}
                 hasVote={false}
+                online={false}
+                previousRanking={Object {}}
                 winner={undefined}
         />
         <styled.div>
@@ -73,8 +78,11 @@ ShallowWrapper {
                                 "uid": 2,
                               }
                 }
+                currentRanking={Object {}}
                 handleClick={[Function]}
                 hasVote={false}
+                online={false}
+                previousRanking={Object {}}
                 winner={undefined}
         />
 </styled.li>,
@@ -112,8 +120,11 @@ ShallowWrapper {
                                     "uid": 1,
                                   }
             }
+            currentRanking={Object {}}
             handleClick={[Function]}
             hasVote={false}
+            online={false}
+            previousRanking={Object {}}
             winner={undefined}
 />,
           <styled.div>
@@ -131,8 +142,11 @@ ShallowWrapper {
                                     "uid": 2,
                                   }
             }
+            currentRanking={Object {}}
             handleClick={[Function]}
             hasVote={false}
+            online={false}
+            previousRanking={Object {}}
             winner={undefined}
 />,
         ],
@@ -162,8 +176,11 @@ ShallowWrapper {
               "displayName": "Bob de Bouwer",
               "uid": 1,
             },
+            "currentRanking": Object {},
             "handleClick": [Function],
             "hasVote": false,
+            "online": false,
+            "previousRanking": Object {},
             "winner": undefined,
           },
           "ref": null,
@@ -210,8 +227,11 @@ ShallowWrapper {
               "displayName": "Asterix",
               "uid": 2,
             },
+            "currentRanking": Object {},
             "handleClick": [Function],
             "hasVote": false,
+            "online": false,
+            "previousRanking": Object {},
             "winner": undefined,
           },
           "ref": null,
@@ -243,8 +263,11 @@ ShallowWrapper {
                                         "uid": 1,
                                       }
                     }
+                    currentRanking={Object {}}
                     handleClick={[Function]}
                     hasVote={false}
+                    online={false}
+                    previousRanking={Object {}}
                     winner={undefined}
           />
           <styled.div>
@@ -262,8 +285,11 @@ ShallowWrapper {
                                         "uid": 2,
                                       }
                     }
+                    currentRanking={Object {}}
                     handleClick={[Function]}
                     hasVote={false}
+                    online={false}
+                    previousRanking={Object {}}
                     winner={undefined}
           />
 </styled.li>,
@@ -301,8 +327,11 @@ ShallowWrapper {
                                           "uid": 1,
                                         }
               }
+              currentRanking={Object {}}
               handleClick={[Function]}
               hasVote={false}
+              online={false}
+              previousRanking={Object {}}
               winner={undefined}
 />,
             <styled.div>
@@ -320,8 +349,11 @@ ShallowWrapper {
                                           "uid": 2,
                                         }
               }
+              currentRanking={Object {}}
               handleClick={[Function]}
               hasVote={false}
+              online={false}
+              previousRanking={Object {}}
               winner={undefined}
 />,
           ],
@@ -351,8 +383,11 @@ ShallowWrapper {
                 "displayName": "Bob de Bouwer",
                 "uid": 1,
               },
+              "currentRanking": Object {},
               "handleClick": [Function],
               "hasVote": false,
+              "online": false,
+              "previousRanking": Object {},
               "winner": undefined,
             },
             "ref": null,
@@ -399,8 +434,11 @@ ShallowWrapper {
                 "displayName": "Asterix",
                 "uid": 2,
               },
+              "currentRanking": Object {},
               "handleClick": [Function],
               "hasVote": false,
+              "online": false,
+              "previousRanking": Object {},
               "winner": undefined,
             },
             "ref": null,

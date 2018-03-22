@@ -1,173 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Competitor component render of winner 1`] = `
-ReactWrapper {
-  "length": 1,
-  Symbol(enzyme.__unrendered__): <Competitor
-    align="left"
-    competitor={
-        Object {
-            "displayName": "Bob de Bouwer",
-            "uid": "1",
-          }
-    }
-    handleClick={[Function]}
-    winner="1"
-/>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "function",
-    "props": Object {
-      "align": "left",
-      "competitor": Object {
-        "displayName": "Bob de Bouwer",
-        "uid": "1",
-      },
-      "handleClick": [Function],
-      "winner": "1",
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": <strong>
-        Bob de Bouwer
-        <span
-                role="img"
-                aria-label="Winner"
-        >
-                👑
-        </span>
-</strong>,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          "Bob de Bouwer",
-          " ",
-          <span
-            aria-label="Winner"
-            role="img"
->
-            👑
-</span>,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        "Bob de Bouwer",
-        " ",
-        Object {
-          "instance": <span
-            role="img"
-            aria-label="Winner"
->
-            👑
-</span>,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "aria-label": "Winner",
-            "children": "👑",
-            "role": "img",
-          },
-          "ref": null,
-          "rendered": Array [
-            "👑",
-          ],
-          "type": "span",
-        },
-      ],
-      "type": "strong",
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "align": "left",
-        "competitor": Object {
-          "displayName": "Bob de Bouwer",
-          "uid": "1",
-        },
-        "handleClick": [Function],
-        "winner": "1",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": <strong>
-          Bob de Bouwer
-          <span
-                    role="img"
-                    aria-label="Winner"
-          >
-                    👑
-          </span>
-</strong>,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Bob de Bouwer",
-            " ",
-            <span
-              aria-label="Winner"
-              role="img"
->
-              👑
-</span>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Bob de Bouwer",
-          " ",
-          Object {
-            "instance": <span
-              role="img"
-              aria-label="Winner"
->
-              👑
-</span>,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "aria-label": "Winner",
-              "children": "👑",
-              "role": "img",
-            },
-            "ref": null,
-            "rendered": Array [
-              "👑",
-            ],
-            "type": "span",
-          },
-        ],
-        "type": "strong",
-      },
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
 exports[`Competitor component renders without crashing 1`] = `
 ShallowWrapper {
   "length": 1,
@@ -180,7 +12,10 @@ ShallowWrapper {
             "uid": "1",
           }
     }
+    currentRanking={Object {}}
     handleClick={[Function]}
+    online={false}
+    previousRanking={Object {}}
 />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -199,6 +34,11 @@ ShallowWrapper {
 >
         <styled.img
                 src={undefined}
+        />
+        <RankingDetail
+                currentRanking={Object {}}
+                eloRating={1000}
+                previousRanking={Object {}}
         />
         <styled.div
                 align="left"
@@ -222,6 +62,11 @@ ShallowWrapper {
           <styled.img
             src={undefined}
 />,
+          <RankingDetail
+            currentRanking={Object {}}
+            eloRating={1000}
+            previousRanking={Object {}}
+/>,
           <styled.div
             align="left"
             className="name"
@@ -239,6 +84,19 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "src": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "currentRanking": Object {},
+            "eloRating": 1000,
+            "previousRanking": Object {},
           },
           "ref": null,
           "rendered": null,
@@ -275,6 +133,11 @@ ShallowWrapper {
           <styled.img
                     src={undefined}
           />
+          <RankingDetail
+                    currentRanking={Object {}}
+                    eloRating={1000}
+                    previousRanking={Object {}}
+          />
           <styled.div
                     align="left"
                     className="name"
@@ -297,6 +160,11 @@ ShallowWrapper {
             <styled.img
               src={undefined}
 />,
+            <RankingDetail
+              currentRanking={Object {}}
+              eloRating={1000}
+              previousRanking={Object {}}
+/>,
             <styled.div
               align="left"
               className="name"
@@ -314,6 +182,19 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "src": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "currentRanking": Object {},
+              "eloRating": 1000,
+              "previousRanking": Object {},
             },
             "ref": null,
             "rendered": null,

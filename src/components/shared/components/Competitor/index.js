@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import constants from './../../../shared/constants';
+import RankingDetail from './../RankingDetail';
 import {
   CompetitorWrapper,
   CompetitorAvatar,
@@ -11,33 +13,25 @@ const Competitor = ({
   competitor,
   checkAuthIsCompetitor,
   hasVote,
-  winner,
   ...props
 }) => {
-  const isWinner = winner === competitor.uid ? true : false;
-
   const handleClick = () => {
-    if (checkAuthIsCompetitor && !winner) {
+    if (checkAuthIsCompetitor) {
       props.handleClick(competitor);
     }
   };
 
-  const authVote = () => hasVote && !winner;
+  const authVote = () => hasVote;
 
-  if (isWinner) {
-    return (
-      <strong>
-        {competitor.displayName}{' '}
-        <span role="img" aria-label="Winner">
-          👑
-        </span>
-      </strong>
-    );
-  }
   return (
     <CompetitorWrapper onClick={handleClick} hasVote={authVote()}>
       <CompetitorLine align={props.align}>
         <CompetitorAvatar src={competitor.avatarUrl} />
+        <RankingDetail
+          eloRating={competitor.ranking}
+          currentRanking={props.currentRanking}
+          previousRanking={props.previousRanking}
+        />
         <CompetitorName
           className="name"
           align={props.align}
@@ -50,6 +44,14 @@ const Competitor = ({
   );
 };
 
+Competitor.defaultProps = {
+  handleClick: () => {},
+  online: false,
+  align: constants.ALIGNLEFT,
+  currentRanking: {},
+  previousRanking: {},
+};
+
 Competitor.propTypes = {
   align: PropTypes.string.isRequired,
   checkAuthIsCompetitor: PropTypes.bool,
@@ -57,5 +59,8 @@ Competitor.propTypes = {
   hasVote: PropTypes.bool,
   winner: PropTypes.string,
   handleClick: PropTypes.func.isRequired,
+  online: PropTypes.bool,
+  currentRanking: PropTypes.object,
+  previousRanking: PropTypes.object,
 };
 export default Competitor;
