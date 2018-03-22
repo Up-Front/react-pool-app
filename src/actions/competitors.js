@@ -1,3 +1,4 @@
+import { database } from './../store';
 import constants from './../components/shared/constants';
 
 //find the head2head score of the 2 competitors
@@ -10,4 +11,8 @@ export const calcHead2Head = (competitorA, competitorB) => {
     losses = (streak.match(new RegExp(constants.LOSEVALUE, 'g')) || []).length;
   }
   return `${wins}-${losses}`;
+};
+
+export const getUserData = () => {
+  return database.ref('/users/').once('value');
 };

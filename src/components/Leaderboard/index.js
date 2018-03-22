@@ -20,9 +20,8 @@ class Leaderboard extends Component {
         .sort((a, b) => {
           const ratingA = a.value.eloRating || constants.DEFAULTELORATING;
           const ratingB = b.value.eloRating || constants.DEFAULTELORATING;
-          return ratingA - ratingB;
+          return -(ratingA - ratingB);
         })
-        .reverse()
         .map(user => {
           user.value.eloRating =
             user.value.eloRating || constants.DEFAULTELORATING;

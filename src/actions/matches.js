@@ -1,6 +1,7 @@
 import { database } from './../store';
 import matchModel from './../models/matches';
 import constants from './../components/shared/constants';
+import { calculateLeaderBoard } from './leaderboard';
 
 // set match
 //the match also needs to be added to the 2 users
@@ -49,10 +50,12 @@ export const declareWinner = (matchId, match, winner, declarer) => {
       updateWinnerData(matchId, match)
     );
   }
+
   return ref.update(updateData, function(error) {
     if (error) {
       console.log('Error updating data:', error);
     }
+    calculateLeaderBoard();
   });
 };
 
@@ -79,17 +82,26 @@ export const updateWinnerData = (matchId, match) => {
   const updateData = Object.values(match.competitors).reduce(
     (previous, competitor) => {
       let result;
-      const otherCompetitor = findOtherCompetitor(competitor, Object.values(match.competitors));
-      const otherCompetitorResults = competitor.results && competitor.results[otherCompetitor.uid];
-      
+      const otherCompetitor = findOtherCompetitor(
+        competitor,
+        Object.values(match.competitors)
+      );
+      const otherCompetitorResults =
+        competitor.results && competitor.results[otherCompetitor.uid];
+
       if (match.winner === competitor.uid) {
         result = constants.WINVALUE;
       } else {
         result = constants.LOSEVALUE;
       }
 
-      previous[`users/${competitor.uid}/results/${otherCompetitor.uid}`] = increaseStreak(otherCompetitorResults, result);
-      previous[`users/${competitor.uid}/streak`] = increaseStreak(competitor.streak, result);
+      previous[
+        `users/${competitor.uid}/results/${otherCompetitor.uid}`
+      ] = increaseStreak(otherCompetitorResults, result);
+      previous[`users/${competitor.uid}/streak`] = increaseStreak(
+        competitor.streak,
+        result
+      );
       previous[`users/${competitor.uid}/eloRating`] = setEloRating(
         result,
         competitor,
@@ -173,13 +185,10 @@ export const setEloRating = (userResult, user, competitors) => {
   }
 };
 
-
 export const increaseStreak = (streak, result) => {
   streak = streak || '';
   return streak + result;
-}
+};
 
-export const findOtherCompetitor = (user, competitors) => (
-  competitors.filter(comp => comp.uid !== user.uid)
-    .shift()
-);
+export const findOtherCompetitor = (user, competitors) =>
+  competitors.filter(comp => comp.uid !== user.uid).shift();

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isMobile from './utils/isMobile';
-import Device from './utils/device';
+import isMobile from './../../utils/isMobile';
+import Device from './../../utils/device';
 import {
   SwipeWrapper,
   DeleteLayer,
