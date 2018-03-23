@@ -31,6 +31,7 @@ ShallowWrapper {
         align="left"
 >
         <styled.img
+                online={undefined}
                 src={undefined}
         />
         <RankingDetail
@@ -58,6 +59,7 @@ ShallowWrapper {
         "align": "left",
         "children": Array [
           <styled.img
+            online={undefined}
             src={undefined}
 />,
           <RankingDetail
@@ -81,6 +83,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "online": undefined,
             "src": undefined,
           },
           "ref": null,
@@ -129,6 +132,7 @@ ShallowWrapper {
           align="left"
 >
           <styled.img
+                    online={undefined}
                     src={undefined}
           />
           <RankingDetail
@@ -156,6 +160,7 @@ ShallowWrapper {
           "align": "left",
           "children": Array [
             <styled.img
+              online={undefined}
               src={undefined}
 />,
             <RankingDetail
@@ -179,6 +184,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "online": undefined,
               "src": undefined,
             },
             "ref": null,

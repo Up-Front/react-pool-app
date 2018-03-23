@@ -26,7 +26,10 @@ const Competitor = ({
   return (
     <CompetitorWrapper onClick={handleClick} hasVote={authVote()}>
       <CompetitorLine align={props.align}>
-        <CompetitorAvatar src={competitor.avatarUrl} />
+        <CompetitorAvatar
+          src={competitor.avatarUrl}
+          online={competitor.online}
+        />
         <RankingDetail
           eloRating={competitor.ranking}
           currentRanking={competitor.currentRanking}

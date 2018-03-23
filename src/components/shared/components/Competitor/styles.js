@@ -18,6 +18,13 @@ export const CompetitorAvatar = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${props =>
+    props.online
+      ? props.theme.statusOnlineColor
+      : props.theme.statusOfflineColor};
 `;
 
 export const CompetitorName = styled.div`

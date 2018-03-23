@@ -38,7 +38,7 @@ const MatchList = props => {
     return {};
   };
 
-  const setRankingsForCompetitors = ([matchId, match]) => {
+  const enrichCompetitorData = ([matchId, match]) => {
     match.competitors = Object.values(match.competitors).map(competitor => {
       competitor.currentRanking = getRanking(
         competitor,
@@ -48,6 +48,8 @@ const MatchList = props => {
         competitor,
         constants.PREVIOUS_RANKING_INDEX
       );
+
+      competitor.online = props.presence[competitor.uid];
       return competitor;
     });
     return [matchId, match];
@@ -58,8 +60,9 @@ const MatchList = props => {
       .reverse()
       .filter(([matchId, match]) => !match.finishedAt)
       .filter(([matchId, match]) => checkAuthIsCompetitor(match.competitors))
-      .map(setRankingsForCompetitors)
+      .map(enrichCompetitorData)
       .map(([matchId, match]) => {
+        console.log(match);
         return (
           <Match
             key={matchId}
@@ -93,9 +96,11 @@ const enhance = compose(
       path: 'rankings',
       queryParams: ['orderByKey', 'limitToLast=2'],
     },
+    { path: 'presence' },
     { path: 'auth' },
   ]),
   connect(({ firebase }) => ({
+    presence: firebase.data.presence || {},
     matches: populate(firebase, 'matches', populates),
     rankings: firebase.ordered.rankings,
     auth: firebase.auth,

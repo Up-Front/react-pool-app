@@ -18,4 +18,9 @@ export const theme = {
 
   //delete swipe
   deleteBackgroundColor: 'red',
+
+  //user / competitor
+  statusOnlineColor: 'green',
+  statusOfflineColor: 'orange',
+  statusUnknownColor: 'lightgrey',
 };
