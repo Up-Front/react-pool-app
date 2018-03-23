@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RankingDetail Component renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RankingDetail
+    currentRanking={Object {}}
+    previousRanking={Object {}}
+    them={undefined}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        0,
+        ".",
+        <styled.span>
+          <styled.span
+                    movement={0}
+          >
+                    »
+          </styled.span>
+          -
+</styled.span>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      0,
+      ".",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.span
+              movement={0}
+>
+              »
+</styled.span>,
+            "-",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "»",
+              "movement": 0,
+            },
+            "ref": null,
+            "rendered": "»",
+            "type": [Function],
+          },
+          "-",
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          0,
+          ".",
+          <styled.span>
+            <styled.span
+                        movement={0}
+            >
+                        »
+            </styled.span>
+            -
+</styled.span>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        0,
+        ".",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.span
+                movement={0}
+>
+                »
+</styled.span>,
+              "-",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "»",
+                "movement": 0,
+              },
+              "ref": null,
+              "rendered": "»",
+              "type": [Function],
+            },
+            "-",
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

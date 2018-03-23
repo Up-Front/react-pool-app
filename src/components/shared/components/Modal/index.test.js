@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import 'jest-styled-components';
 import Modal from './';
-import { ModalFooter } from './styles';
+import { ModalFooter, ModalRemoveButton } from './styles';
 
 describe('Modal component', () => {
   test('renders without crashing', () => {
@@ -24,5 +24,12 @@ describe('Modal component', () => {
 
     wrapper.setProps({ footer: <div>test</div> });
     expect(wrapper.find(ModalFooter).children()).toHaveLength(1);
+  });
+
+  test('close modal', () => {
+    const handleClick = jest.fn();
+    const wrapper = mount(<Modal closeModal={handleClick} />);
+    wrapper.find(ModalRemoveButton).simulate('click');
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
