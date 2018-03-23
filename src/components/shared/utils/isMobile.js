@@ -12,7 +12,7 @@ const isMobile = {
   },
 
   any() {
-    return this.Android() || this.iOS() || this.Windows();
+    return this.iOS() || this.Windows() || this.Android();
   },
 };
 
