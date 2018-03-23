@@ -11,30 +11,24 @@ describe('MatchList Component', () => {
         competitors: {
           0: {
             uid: '1',
-            displayName: 'He-man'
+            displayName: 'He-man',
           },
           1: {
             uid: '2',
-            displayName: 'Skeletor'
-          }
+            displayName: 'Skeletor',
+          },
         },
-        winners: {}
-      }
+        winners: {},
+      },
     };
 
     auth = {
       uid: '1',
-      displayName: 'Bob de Bouwer'
+      displayName: 'Bob de Bouwer',
     };
   });
   test('should render', () => {
     const wrapper = shallow(<MatchListTest />);
     expect(wrapper).toMatchSnapshot();
-  });
-
-  test('render list of matches', () => {
-    const wrapper = mount(<MatchListTest matches={matches} auth={auth} />);
-
-    expect(wrapper.children().length).toEqual(1);
   });
 });
