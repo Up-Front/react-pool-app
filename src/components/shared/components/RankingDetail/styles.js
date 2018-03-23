@@ -12,7 +12,8 @@ export const RankMovement = styled.span`
 
 export const RankMovementDirection = styled.span`
   display: inline-block;
-  opacity: ${props => (props.movement === 0 ? '0' : '1')};
+  opacity: ${props =>
+    props.movement === 0 || props.movement === undefined ? '0' : '1'};
   color: ${props =>
     props.movement > 0
       ? props.theme.movementUp
