@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
-import Competitor from './../shared/components/Competitor';
+import User from './../shared/components/User';
 import constants from './../shared/constants';
+import { enrichCompetitor } from './../../actions/competitors';
 
 class Leaderboard extends Component {
   componentDidMount() {
@@ -12,6 +13,16 @@ class Leaderboard extends Component {
     // https://github.com/prescottprue/react-redux-firebase/issues/368#issuecomment-357917044
     this.props.firebase.watchEvent('value', `/users`);
   }
+
+  enrichCompetitorData = competitor => {
+    enrichCompetitor({
+      competitor,
+      presence: this.props.presence,
+      rankings: this.props.rankings,
+    });
+
+    return competitor;
+  };
 
   render() {
     let users;
@@ -22,14 +33,15 @@ class Leaderboard extends Component {
           const ratingB = b.value.eloRating || constants.DEFAULTELORATING;
           return -(ratingA - ratingB);
         })
+        .map(this.enrichCompetitorData)
         .map(user => {
           user.value.eloRating =
             user.value.eloRating || constants.DEFAULTELORATING;
           return (
-            <Competitor
+            <User
               online={this.props.presence[user.key]}
               key={user.key}
-              competitor={user.value}
+              user={user.value}
             />
           );
         });
@@ -39,10 +51,18 @@ class Leaderboard extends Component {
 }
 
 export default compose(
-  firebaseConnect(props => [{ path: 'presence' }, { path: '/users' }]),
+  firebaseConnect(props => [
+    { path: 'presence' },
+    { path: '/users' },
+    {
+      path: 'rankings',
+      queryParams: ['orderByKey', 'limitToLast=2'],
+    },
+  ]),
   connect(({ firebase }) => {
     return {
       presence: firebase.data.presence || {},
+      rankings: firebase.ordered.rankings,
       users: firebase.ordered.users,
     };
   })

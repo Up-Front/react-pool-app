@@ -16,3 +16,30 @@ export const calcHead2Head = (competitorA, competitorB) => {
 export const getUserData = () => {
   return database.ref('/users/').once('value');
 };
+
+export const enrichCompetitor = ({ competitor, presence, rankings }) => {
+  competitor.currentRanking = getRanking(
+    competitor,
+    rankings,
+    constants.CURRENT_RANKING_INDEX
+  );
+  competitor.previousRanking = getRanking(
+    competitor,
+    rankings,
+    constants.PREVIOUS_RANKING_INDEX
+  );
+
+  competitor.online = presence[competitor.uid];
+  return competitor;
+};
+
+const getRanking = (competitor, rankings, rankingIndex) => {
+  if (rankings) {
+    const setRankings = rankings && rankings[rankingIndex];
+
+    if (setRankings) {
+      return setRankings.value && setRankings.value[competitor.uid];
+    }
+  }
+  return {};
+};

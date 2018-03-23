@@ -7,7 +7,7 @@ import {
   isEmpty,
   populate,
 } from 'react-redux-firebase';
-import constants from './../../../shared/constants';
+import { enrichCompetitor } from './../../../../actions/competitors';
 import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
 
@@ -27,30 +27,13 @@ const MatchList = props => {
     return isCompetitor;
   };
 
-  const getRanking = (competitor, rankingIndex) => {
-    if (props.rankings) {
-      const rankings = props.rankings && props.rankings[rankingIndex];
-
-      if (rankings) {
-        return rankings.value && rankings.value[competitor.uid];
-      }
-    }
-    return {};
-  };
-
   const enrichCompetitorData = ([matchId, match]) => {
     match.competitors = Object.values(match.competitors).map(competitor => {
-      competitor.currentRanking = getRanking(
+      return enrichCompetitor({
         competitor,
-        constants.CURRENT_RANKING_INDEX
-      );
-      competitor.previousRanking = getRanking(
-        competitor,
-        constants.PREVIOUS_RANKING_INDEX
-      );
-
-      competitor.online = props.presence[competitor.uid];
-      return competitor;
+        presence: props.presence,
+        rankings: props.rankings,
+      });
     });
     return [matchId, match];
   };
@@ -62,14 +45,11 @@ const MatchList = props => {
       .filter(([matchId, match]) => checkAuthIsCompetitor(match.competitors))
       .map(enrichCompetitorData)
       .map(([matchId, match]) => {
-        console.log(match);
         return (
           <Match
             key={matchId}
             matchId={matchId}
             match={match}
-            currentRanking={getRanking(constants.CURRENT_RANKING_INDEX)}
-            previousRanking={getRanking(constants.PREVIOUS_RANKING_INDEX)}
             auth={props.auth}
           />
         );
@@ -82,7 +62,7 @@ const MatchList = props => {
 };
 
 const populates = [
-  { child: 'competitors', root: 'users', keyProp: 'uid' }, // replace owner with user object
+  { child: 'competitors', root: 'users', keyProp: 'uid' }, // replace competitors with user object
 ];
 
 const enhance = compose(
