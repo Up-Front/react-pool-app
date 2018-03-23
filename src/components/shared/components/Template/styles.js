@@ -19,7 +19,6 @@ export const Wrapper = styled.section`
 export const Header = styled.header`
   display: flex;
   justify-content: 'space-between';
-  ${props => (props.selfStart ? 'align-self: flex-start;' : '')};
   align-items: center;
   flex-direction: 'row';
   padding: 10px;

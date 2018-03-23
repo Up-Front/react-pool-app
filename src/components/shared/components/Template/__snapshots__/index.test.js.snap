@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Template Component renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Template
+    them={undefined}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.header>
+          <styled.h1>
+                    <Link
+                              replace={false}
+                              to="/"
+                    >
+                              FrontMen
+                    </Link>
+          </styled.h1>
+          <button
+                    onClick={[Function]}
+          >
+                    logout
+          </button>
+          <Link
+                    replace={false}
+                    to="/leaderboard"
+          >
+                    leaderboard
+          </Link>
+</styled.header>,
+        <styled.section />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.h1>
+              <Link
+                            replace={false}
+                            to="/"
+              >
+                            FrontMen
+              </Link>
+</styled.h1>,
+            <button
+              onClick={[Function]}
+>
+              logout
+</button>,
+            <Link
+              replace={false}
+              to="/leaderboard"
+>
+              leaderboard
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Link
+                replace={false}
+                to="/"
+>
+                FrontMen
+</Link>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "FrontMen",
+                "replace": false,
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": "FrontMen",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "logout",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "logout",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "leaderboard",
+              "replace": false,
+              "to": "/leaderboard",
+            },
+            "ref": null,
+            "rendered": "leaderboard",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.header>
+            <styled.h1>
+                        <Link
+                                    replace={false}
+                                    to="/"
+                        >
+                                    FrontMen
+                        </Link>
+            </styled.h1>
+            <button
+                        onClick={[Function]}
+            >
+                        logout
+            </button>
+            <Link
+                        replace={false}
+                        to="/leaderboard"
+            >
+                        leaderboard
+            </Link>
+</styled.header>,
+          <styled.section />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.h1>
+                <Link
+                                replace={false}
+                                to="/"
+                >
+                                FrontMen
+                </Link>
+</styled.h1>,
+              <button
+                onClick={[Function]}
+>
+                logout
+</button>,
+              <Link
+                replace={false}
+                to="/leaderboard"
+>
+                leaderboard
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <Link
+                  replace={false}
+                  to="/"
+>
+                  FrontMen
+</Link>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "FrontMen",
+                  "replace": false,
+                  "to": "/",
+                },
+                "ref": null,
+                "rendered": "FrontMen",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "logout",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "logout",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "leaderboard",
+                "replace": false,
+                "to": "/leaderboard",
+              },
+              "ref": null,
+              "rendered": "leaderboard",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
