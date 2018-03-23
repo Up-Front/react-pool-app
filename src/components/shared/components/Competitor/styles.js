@@ -13,20 +13,6 @@ export const CompetitorLine = styled.div`
   width: 100%;
 `;
 
-export const CompetitorAvatar = styled.img`
-  margin: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${props =>
-    props.online
-      ? props.theme.statusOnlineColor
-      : props.theme.statusOfflineColor};
-`;
-
 export const CompetitorName = styled.div`
   flex: 1;
   color: ${props => (props.hasVote ? 'green' : '')};

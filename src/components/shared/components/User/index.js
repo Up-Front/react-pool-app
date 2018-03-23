@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, AvatarImage } from './styles';
+import Avatar from './../Avatar';
+import { UserWrapper } from './styles';
 
 const User = ({ user, ...props }) => {
   const handleClickEvent = () => {
@@ -10,24 +11,17 @@ const User = ({ user, ...props }) => {
   };
 
   return (
-    <Avatar onClick={handleClickEvent} position={props.position}>
+    <UserWrapper onClick={handleClickEvent}>
+      <Avatar user={user} />
       <div>
-        <AvatarImage height="64" width="64" src={user.avatarUrl} />
-      </div>
-      <div>
-        <strong>
-          {props.online ? '✳️' : '✴️'}
-          {user.displayName}
-        </strong>
+        <strong>{user.displayName}</strong>
         <div>{user.email}</div>
         <div>{user.eloRating}</div>
       </div>
-    </Avatar>
+    </UserWrapper>
   );
 };
 User.propTypes = {
-  online: PropTypes.bool,
-  position: PropTypes.number,
   handleClick: PropTypes.func,
   user: PropTypes.object.isRequired,
 };

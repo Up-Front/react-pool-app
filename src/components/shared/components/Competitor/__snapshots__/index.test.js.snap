@@ -30,9 +30,13 @@ ShallowWrapper {
       "children": <styled.div
         align="left"
 >
-        <styled.img
-                online={undefined}
-                src={undefined}
+        <Avatar
+                user={
+                        Object {
+                                "displayName": "Bob de Bouwer",
+                                "uid": "1",
+                              }
+                }
         />
         <RankingDetail
                 currentRanking={Object {}}
@@ -58,9 +62,13 @@ ShallowWrapper {
       "props": Object {
         "align": "left",
         "children": Array [
-          <styled.img
-            online={undefined}
-            src={undefined}
+          <Avatar
+            user={
+                        Object {
+                                    "displayName": "Bob de Bouwer",
+                                    "uid": "1",
+                                  }
+            }
 />,
           <RankingDetail
             currentRanking={Object {}}
@@ -81,10 +89,12 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "online": undefined,
-            "src": undefined,
+            "user": Object {
+              "displayName": "Bob de Bouwer",
+              "uid": "1",
+            },
           },
           "ref": null,
           "rendered": null,
@@ -131,9 +141,13 @@ ShallowWrapper {
         "children": <styled.div
           align="left"
 >
-          <styled.img
-                    online={undefined}
-                    src={undefined}
+          <Avatar
+                    user={
+                              Object {
+                                        "displayName": "Bob de Bouwer",
+                                        "uid": "1",
+                                      }
+                    }
           />
           <RankingDetail
                     currentRanking={Object {}}
@@ -159,9 +173,13 @@ ShallowWrapper {
         "props": Object {
           "align": "left",
           "children": Array [
-            <styled.img
-              online={undefined}
-              src={undefined}
+            <Avatar
+              user={
+                            Object {
+                                          "displayName": "Bob de Bouwer",
+                                          "uid": "1",
+                                        }
+              }
 />,
             <RankingDetail
               currentRanking={Object {}}
@@ -182,10 +200,12 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "online": undefined,
-              "src": undefined,
+              "user": Object {
+                "displayName": "Bob de Bouwer",
+                "uid": "1",
+              },
             },
             "ref": null,
             "rendered": null,

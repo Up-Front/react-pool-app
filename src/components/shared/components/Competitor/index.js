@@ -2,12 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import constants from './../../../shared/constants';
 import RankingDetail from './../RankingDetail';
-import {
-  CompetitorWrapper,
-  CompetitorAvatar,
-  CompetitorName,
-  CompetitorLine,
-} from './styles';
+import Avatar from './../Avatar';
+import { CompetitorWrapper, CompetitorName, CompetitorLine } from './styles';
 
 const Competitor = ({
   competitor,
@@ -26,10 +22,7 @@ const Competitor = ({
   return (
     <CompetitorWrapper onClick={handleClick} hasVote={authVote()}>
       <CompetitorLine align={props.align}>
-        <CompetitorAvatar
-          src={competitor.avatarUrl}
-          online={competitor.online}
-        />
+        <Avatar user={competitor} />
         <RankingDetail
           eloRating={competitor.ranking}
           currentRanking={competitor.currentRanking}

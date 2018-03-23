@@ -27,16 +27,17 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <div>
-          <styled.img
-                    height="64"
-                    src="http://image"
-                    width="64"
-          />
-</div>,
+        <Avatar
+          user={
+                    Object {
+                              "avatarUrl": "http://image",
+                              "displayName": "Bob de Bouwer",
+                              "uid": 1,
+                            }
+          }
+/>,
         <div>
           <strong>
-                    ✴️
                     Bob de Bouwer
           </strong>
           <div />
@@ -44,36 +45,23 @@ ShallowWrapper {
 </div>,
       ],
       "onClick": [Function],
-      "position": undefined,
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
-          "children": <styled.img
-            height="64"
-            src="http://image"
-            width="64"
-/>,
+          "user": Object {
+            "avatarUrl": "http://image",
+            "displayName": "Bob de Bouwer",
+            "uid": 1,
+          },
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "height": "64",
-            "src": "http://image",
-            "width": "64",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": "div",
+        "rendered": null,
+        "type": [Function],
       },
       Object {
         "instance": null,
@@ -82,7 +70,6 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <strong>
-              ✴️
               Bob de Bouwer
 </strong>,
             <div />,
@@ -96,16 +83,10 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": Array [
-                "✴️",
-                "Bob de Bouwer",
-              ],
+              "children": "Bob de Bouwer",
             },
             "ref": null,
-            "rendered": Array [
-              "✴️",
-              "Bob de Bouwer",
-            ],
+            "rendered": "Bob de Bouwer",
             "type": "strong",
           },
           Object {
@@ -143,16 +124,17 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <div>
-            <styled.img
-                        height="64"
-                        src="http://image"
-                        width="64"
-            />
-</div>,
+          <Avatar
+            user={
+                        Object {
+                                    "avatarUrl": "http://image",
+                                    "displayName": "Bob de Bouwer",
+                                    "uid": 1,
+                                  }
+            }
+/>,
           <div>
             <strong>
-                        ✴️
                         Bob de Bouwer
             </strong>
             <div />
@@ -160,36 +142,23 @@ ShallowWrapper {
 </div>,
         ],
         "onClick": [Function],
-        "position": undefined,
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
-            "children": <styled.img
-              height="64"
-              src="http://image"
-              width="64"
-/>,
+            "user": Object {
+              "avatarUrl": "http://image",
+              "displayName": "Bob de Bouwer",
+              "uid": 1,
+            },
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "height": "64",
-              "src": "http://image",
-              "width": "64",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": "div",
+          "rendered": null,
+          "type": [Function],
         },
         Object {
           "instance": null,
@@ -198,7 +167,6 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <strong>
-                ✴️
                 Bob de Bouwer
 </strong>,
               <div />,
@@ -212,16 +180,10 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": Array [
-                  "✴️",
-                  "Bob de Bouwer",
-                ],
+                "children": "Bob de Bouwer",
               },
               "ref": null,
-              "rendered": Array [
-                "✴️",
-                "Bob de Bouwer",
-              ],
+              "rendered": "Bob de Bouwer",
               "type": "strong",
             },
             Object {

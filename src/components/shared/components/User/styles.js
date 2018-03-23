@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Avatar = styled.div`
+export const UserWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -10,17 +10,4 @@ export const Avatar = styled.div`
       : 'white'};
   padding: 10px;
   border-radius: 8px;
-`;
-
-export const AvatarImage = styled.img`
-  width: 64px;
-  height: 64px;
-  border-radius: 32px;
-  margin: 10px;
-`;
-
-export const UserList = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  padding: 10px;
 `;
