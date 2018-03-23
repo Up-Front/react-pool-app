@@ -27,6 +27,10 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
+        <RankingDetail
+          currentRanking={Object {}}
+          previousRanking={Object {}}
+/>,
         <Avatar
           user={
                     Object {
@@ -41,13 +45,24 @@ ShallowWrapper {
                     Bob de Bouwer
           </strong>
           <div />
-          <div />
 </div>,
       ],
       "onClick": [Function],
     },
     "ref": null,
     "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "currentRanking": Object {},
+          "previousRanking": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       Object {
         "instance": null,
         "key": undefined,
@@ -72,7 +87,6 @@ ShallowWrapper {
             <strong>
               Bob de Bouwer
 </strong>,
-            <div />,
             <div />,
           ],
         },
@@ -100,17 +114,6 @@ ShallowWrapper {
             "rendered": null,
             "type": "div",
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
-          },
         ],
         "type": "div",
       },
@@ -124,6 +127,10 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
+          <RankingDetail
+            currentRanking={Object {}}
+            previousRanking={Object {}}
+/>,
           <Avatar
             user={
                         Object {
@@ -138,13 +145,24 @@ ShallowWrapper {
                         Bob de Bouwer
             </strong>
             <div />
-            <div />
 </div>,
         ],
         "onClick": [Function],
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "currentRanking": Object {},
+            "previousRanking": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -170,7 +188,6 @@ ShallowWrapper {
                 Bob de Bouwer
 </strong>,
               <div />,
-              <div />,
             ],
           },
           "ref": null,
@@ -185,17 +202,6 @@ ShallowWrapper {
               "ref": null,
               "rendered": "Bob de Bouwer",
               "type": "strong",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "div",
             },
             Object {
               "instance": null,

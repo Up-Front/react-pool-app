@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import constants from './../../../shared/constants';
-import RankingDetail from './../RankingDetail';
 import Avatar from './../Avatar';
 import { CompetitorWrapper, CompetitorName, CompetitorLine } from './styles';
 
@@ -23,11 +22,6 @@ const Competitor = ({
     <CompetitorWrapper onClick={handleClick} hasVote={authVote()}>
       <CompetitorLine align={props.align}>
         <Avatar user={competitor} />
-        <RankingDetail
-          eloRating={competitor.ranking}
-          currentRanking={competitor.currentRanking}
-          previousRanking={competitor.previousRanking}
-        />
         <CompetitorName
           className="name"
           align={props.align}

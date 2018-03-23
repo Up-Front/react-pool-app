@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from './../Avatar';
+import RankingDetail from './../RankingDetail';
 import { UserWrapper } from './styles';
 
 const User = ({ user, ...props }) => {
@@ -12,10 +13,13 @@ const User = ({ user, ...props }) => {
 
   return (
     <UserWrapper onClick={handleClickEvent}>
+      <RankingDetail
+        currentRanking={user.currentRanking}
+        previousRanking={user.previousRanking}
+      />
       <Avatar user={user} />
       <div>
         <strong>{user.displayName}</strong>
-        <div>{user.email}</div>
         <div>{user.eloRating}</div>
       </div>
     </UserWrapper>

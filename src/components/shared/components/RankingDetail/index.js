@@ -1,25 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import constants from './../../constants';
+import { RankingWrapper, RankMovement, RankMovementDirection } from './styles';
 
 const RankingDetail = props => {
-  const eloRating = props.currentRanking.eloRating || props.eloRating;
-  const currentRanking = props.currentRanking.ranking;
+  const eloRating =
+    props.currentRanking.eloRating || constants.DEFAULTELORATING;
+  const currentRanking = props.currentRanking.ranking || 0;
+  const previousRanking = props.previousRanking.ranking || 0;
+  let movement = previousRanking - currentRanking;
+
+  const renderRankMovement = () => {
+    let absMovement = Math.abs(movement);
+    if (!movement) {
+      absMovement = '-';
+    }
+
+    return (
+      <RankMovement>
+        <RankMovementDirection movement={movement}>»</RankMovementDirection>
+        {absMovement}
+      </RankMovement>
+    );
+  };
+
   return (
-    <div>
-      {eloRating} {currentRanking}
-    </div>
+    <RankingWrapper>
+      {currentRanking}.
+      {renderRankMovement()}
+    </RankingWrapper>
   );
 };
 
 RankingDetail.defaultProps = {
-  eloRating: constants.DEFAULTELORATING,
   currentRanking: {},
   previousRanking: {},
 };
 
 RankingDetail.propTypes = {
-  eloRating: PropTypes.number.isRequired,
   currentRanking: PropTypes.object.isRequired,
   previousRanking: PropTypes.object.isRequired,
 };

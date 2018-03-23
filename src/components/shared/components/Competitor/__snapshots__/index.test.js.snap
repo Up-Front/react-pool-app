@@ -38,11 +38,6 @@ ShallowWrapper {
                               }
                 }
         />
-        <RankingDetail
-                currentRanking={Object {}}
-                eloRating={1000}
-                previousRanking={Object {}}
-        />
         <styled.div
                 align="left"
                 className="name"
@@ -70,11 +65,6 @@ ShallowWrapper {
                                   }
             }
 />,
-          <RankingDetail
-            currentRanking={Object {}}
-            eloRating={1000}
-            previousRanking={Object {}}
-/>,
           <styled.div
             align="left"
             className="name"
@@ -95,19 +85,6 @@ ShallowWrapper {
               "displayName": "Bob de Bouwer",
               "uid": "1",
             },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "currentRanking": Object {},
-            "eloRating": 1000,
-            "previousRanking": Object {},
           },
           "ref": null,
           "rendered": null,
@@ -149,11 +126,6 @@ ShallowWrapper {
                                       }
                     }
           />
-          <RankingDetail
-                    currentRanking={Object {}}
-                    eloRating={1000}
-                    previousRanking={Object {}}
-          />
           <styled.div
                     align="left"
                     className="name"
@@ -181,11 +153,6 @@ ShallowWrapper {
                                         }
               }
 />,
-            <RankingDetail
-              currentRanking={Object {}}
-              eloRating={1000}
-              previousRanking={Object {}}
-/>,
             <styled.div
               align="left"
               className="name"
@@ -206,19 +173,6 @@ ShallowWrapper {
                 "displayName": "Bob de Bouwer",
                 "uid": "1",
               },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "currentRanking": Object {},
-              "eloRating": 1000,
-              "previousRanking": Object {},
             },
             "ref": null,
             "rendered": null,

@@ -23,4 +23,8 @@ export const theme = {
   statusOnlineColor: 'green',
   statusOfflineColor: 'orange',
   statusUnknownColor: 'lightgrey',
+
+  //ranking
+  movementUp: '#66b75b',
+  movementDown: '#da1418',
 };
