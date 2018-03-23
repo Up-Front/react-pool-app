@@ -6,6 +6,8 @@ const constants = {
   WINVALUE: 'W',
   ALIGNLEFT: 'left',
   ALIGNRIGHT: 'right',
+  CURRENT_RANKING_INDEX: 1,
+  PREVIOUS_RANKING_INDEX: 0,
 };
 
 export default constants;

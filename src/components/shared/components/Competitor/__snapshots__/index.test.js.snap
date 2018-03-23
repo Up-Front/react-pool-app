@@ -12,10 +12,8 @@ ShallowWrapper {
             "uid": "1",
           }
     }
-    currentRanking={Object {}}
     handleClick={[Function]}
     online={false}
-    previousRanking={Object {}}
 />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

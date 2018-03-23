@@ -7,7 +7,7 @@ import {
   isEmpty,
   populate,
 } from 'react-redux-firebase';
-import { getStartOfWeek } from './../../../shared/utils/time';
+import constants from './../../../shared/constants';
 import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
 
@@ -27,8 +27,30 @@ const MatchList = props => {
     return isCompetitor;
   };
 
-  const getRanking = numb => {
-    return props.rankings && props.rankings[numb];
+  const getRanking = (competitor, rankingIndex) => {
+    if (props.rankings) {
+      const rankings = props.rankings && props.rankings[rankingIndex];
+
+      if (rankings) {
+        return rankings.value && rankings.value[competitor.uid];
+      }
+    }
+    return {};
+  };
+
+  const setRankingsForCompetitors = ([matchId, match]) => {
+    match.competitors = Object.values(match.competitors).map(competitor => {
+      competitor.currentRanking = getRanking(
+        competitor,
+        constants.CURRENT_RANKING_INDEX
+      );
+      competitor.previousRanking = getRanking(
+        competitor,
+        constants.PREVIOUS_RANKING_INDEX
+      );
+      return competitor;
+    });
+    return [matchId, match];
   };
 
   if (isLoaded(props.matches) && !isEmpty(props.matches)) {
@@ -36,14 +58,15 @@ const MatchList = props => {
       .reverse()
       .filter(([matchId, match]) => !match.finishedAt)
       .filter(([matchId, match]) => checkAuthIsCompetitor(match.competitors))
+      .map(setRankingsForCompetitors)
       .map(([matchId, match]) => {
         return (
           <Match
             key={matchId}
             matchId={matchId}
             match={match}
-            currentRanking={getRanking(1)}
-            previousRanking={getRanking(0)}
+            currentRanking={getRanking(constants.CURRENT_RANKING_INDEX)}
+            previousRanking={getRanking(constants.PREVIOUS_RANKING_INDEX)}
             auth={props.auth}
           />
         );

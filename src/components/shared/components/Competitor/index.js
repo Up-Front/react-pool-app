@@ -29,8 +29,8 @@ const Competitor = ({
         <CompetitorAvatar src={competitor.avatarUrl} />
         <RankingDetail
           eloRating={competitor.ranking}
-          currentRanking={props.currentRanking}
-          previousRanking={props.previousRanking}
+          currentRanking={competitor.currentRanking}
+          previousRanking={competitor.previousRanking}
         />
         <CompetitorName
           className="name"
@@ -48,8 +48,6 @@ Competitor.defaultProps = {
   handleClick: () => {},
   online: false,
   align: constants.ALIGNLEFT,
-  currentRanking: {},
-  previousRanking: {},
 };
 
 Competitor.propTypes = {
@@ -60,7 +58,5 @@ Competitor.propTypes = {
   winner: PropTypes.string,
   handleClick: PropTypes.func.isRequired,
   online: PropTypes.bool,
-  currentRanking: PropTypes.object,
-  previousRanking: PropTypes.object,
 };
 export default Competitor;
