@@ -28,9 +28,8 @@ export const enrichCompetitor = ({ competitor, presence, rankings }) => {
     rankings,
     constants.PREVIOUS_RANKING_INDEX
   );
-
   competitor.online = presence[competitor.uid];
-  return competitor;
+  return Object.assign({}, competitor);
 };
 
 const getRanking = (competitor, rankings, rankingIndex) => {

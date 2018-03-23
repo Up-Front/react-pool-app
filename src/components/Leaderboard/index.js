@@ -15,13 +15,13 @@ class Leaderboard extends Component {
   }
 
   enrichCompetitorData = competitor => {
-    enrichCompetitor({
-      competitor,
+    const newCompetitor = competitor.value;
+    newCompetitor.uid = competitor.key;
+    return enrichCompetitor({
+      competitor: newCompetitor,
       presence: this.props.presence,
       rankings: this.props.rankings,
     });
-
-    return competitor;
   };
 
   render() {
@@ -35,15 +35,8 @@ class Leaderboard extends Component {
         })
         .map(this.enrichCompetitorData)
         .map(user => {
-          user.value.eloRating =
-            user.value.eloRating || constants.DEFAULTELORATING;
-          return (
-            <User
-              online={this.props.presence[user.key]}
-              key={user.key}
-              user={user.value}
-            />
-          );
+          user.eloRating = user.eloRating || constants.DEFAULTELORATING;
+          return <User key={user.uid} user={user} />;
         });
     }
     return <div>{users}</div>;
