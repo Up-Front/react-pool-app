@@ -2,6 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Dashboard from './';
 
-it('renders without crashing', () => {
-    shallow(<Dashboard />);
+describe('Dashboard component', () => {
+  test('renders without crashing', () => {
+    const wrapper = shallow(<Dashboard />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

@@ -7,6 +7,7 @@ import Modal from './../shared/components/Modal';
 import User from './../shared/components/User';
 import { SelectOpponent, FloatButton } from './styles';
 import { Button } from './../shared/styles';
+import CompetitorAlert from './components/CompetitorAlert';
 
 class CreateMatch extends Component {
   initialState = {
@@ -82,6 +83,7 @@ class CreateMatch extends Component {
   render() {
     return (
       <Fragment>
+        <CompetitorAlert auth={this.props.auth} />
         <FloatButton onClick={this.handleOpenModal} key="FloatButton">
           +
         </FloatButton>
