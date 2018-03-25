@@ -18,8 +18,8 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": Array [
-        <FirebaseConnect(Connect(CreateMatch)) />,
-        <FirebaseConnect(Connect(MatchList)) />,
+        <FirebaseConnect(Connect(FirebaseConnect(Connect(BaseComponent)))) />,
+        <FirebaseConnect(Connect(FirebaseConnect(Connect(BaseComponent)))) />,
       ],
     },
     "ref": null,
@@ -52,8 +52,8 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": Array [
-          <FirebaseConnect(Connect(CreateMatch)) />,
-          <FirebaseConnect(Connect(MatchList)) />,
+          <FirebaseConnect(Connect(FirebaseConnect(Connect(BaseComponent)))) />,
+          <FirebaseConnect(Connect(FirebaseConnect(Connect(BaseComponent)))) />,
         ],
       },
       "ref": null,

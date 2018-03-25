@@ -1,13 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import {
-  firebaseConnect,
-  isLoaded,
-  isEmpty,
-  populate,
-} from 'react-redux-firebase';
-import { enrichCompetitor } from './../../../../actions/competitors';
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import EnrichCompetitors from './../../../shared/components/EnrichCompetitors';
 import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
 
@@ -27,28 +22,29 @@ const MatchList = props => {
     return isCompetitor;
   };
 
-  const enrichCompetitorData = ([matchId, match]) => {
-    match.competitors = Object.values(match.competitors).map(competitor => {
-      return enrichCompetitor({
-        competitor,
-        presence: props.presence,
-        rankings: props.rankings,
-      });
+  const setCompetitors = ({ key, value }) => {
+    const newMatch = Object.assign({}, value);
+    newMatch.matchId = key;
+    newMatch.competitors = Object.values(newMatch.competitors).map(uid => {
+      const data = props.users.filter(({ key, value }) => key === uid).shift();
+      if (data) {
+        return data.value;
+      }
     });
-    return [matchId, match];
+    return newMatch;
   };
 
   if (isLoaded(props.matches) && !isEmpty(props.matches)) {
-    const matches = Object.entries(props.matches)
+    const matches = Object.values(props.matches)
       .reverse()
-      .filter(([matchId, match]) => !match.finishedAt)
-      .filter(([matchId, match]) => checkAuthIsCompetitor(match.competitors))
-      .map(enrichCompetitorData)
-      .map(([matchId, match]) => {
+      .filter(({ key, value }) => !value.finishedAt)
+      .map(setCompetitors)
+      .filter(match => checkAuthIsCompetitor(match.competitors))
+      .map(match => {
         return (
           <Match
-            key={matchId}
-            matchId={matchId}
+            key={match.matchId}
+            matchId={match.matchId}
             match={match}
             auth={props.auth}
           />
@@ -61,30 +57,22 @@ const MatchList = props => {
   }
 };
 
-const populates = [
-  { child: 'competitors', root: 'users', keyProp: 'uid' }, // replace competitors with user object
-];
-
 const enhance = compose(
   firebaseConnect(props => [
     {
       path: '/matches',
       queryParams: ['orderByChild=finishedAt', 'equalTo=null'],
-      populates,
     },
     {
-      path: 'rankings',
-      queryParams: ['orderByKey', 'limitToLast=2'],
+      path: '/users',
     },
-    { path: 'presence' },
     { path: 'auth' },
   ]),
   connect(({ firebase }) => ({
-    presence: firebase.data.presence || {},
-    matches: populate(firebase, 'matches', populates),
-    rankings: firebase.ordered.rankings,
+    matches: firebase.ordered.matches,
+    users: firebase.ordered.users,
     auth: firebase.auth,
   }))
 );
 export const MatchListTest = MatchList;
-export default enhance(MatchList);
+export default EnrichCompetitors(enhance(MatchList));

@@ -5,7 +5,10 @@ import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { addMatch } from './../../actions/matches';
 import Modal from './../shared/components/Modal';
 import User from './../shared/components/User';
+import EnrichCompetitors from './../shared/components/EnrichCompetitors';
 import { SelectOpponent, FloatButton } from './styles';
+import constants from './../shared/constants';
+import { enrichCompetitor } from './../../actions/competitors';
 import { Button } from './../shared/styles';
 import CompetitorAlert from './components/CompetitorAlert';
 
@@ -24,10 +27,10 @@ class CreateMatch extends Component {
     if (!filterTerm || !this.props.users) {
       return [];
     }
-    return Object.values(this.props.users).filter(
+    return this.props.users.filter(
       user =>
-        user.value.displayName.toLowerCase().indexOf(filterTerm.toLowerCase()) >
-          -1 && user.key !== this.props.auth.uid // do not select the auth user
+        user.displayName.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1 &&
+        user.uid !== this.props.auth.uid // do not select the auth user
     );
   };
 
@@ -64,8 +67,8 @@ class CreateMatch extends Component {
     addMatch([this.props.auth.uid, this.state.selectedOpponentUid]).then(() => {
       this.setState({
         matchCreated: true,
+        openModal: false,
       });
-      this.handleCloseModal();
       console.log('match created');
     });
   };
@@ -80,10 +83,32 @@ class CreateMatch extends Component {
     this.setState(this.initialState);
   };
 
+  enrichCompetitorData = competitor => {
+    const newCompetitor = competitor.value;
+    newCompetitor.uid = competitor.key;
+    return enrichCompetitor({
+      competitor: newCompetitor,
+      presence: this.props.presence,
+      rankings: this.props.rankings,
+    });
+  };
+
+  showAlert = () => {
+    if (this.state.matchCreated) {
+      return (
+        <CompetitorAlert
+          auth={this.props.auth}
+          opponent={this.state.selectedOpponent}
+          onEndAnimation={this.handleCloseModal}
+        />
+      );
+    }
+  };
+
   render() {
     return (
       <Fragment>
-        <CompetitorAlert auth={this.props.auth} />
+        {this.showAlert()}
         <FloatButton onClick={this.handleOpenModal} key="FloatButton">
           +
         </FloatButton>
@@ -110,15 +135,17 @@ class CreateMatch extends Component {
                 type="text"
               />
               {this.state.filteredUsers &&
-                this.state.filteredUsers.map(({ key, value: user }) => (
-                  <User
-                    handleClick={this.selectOpponent}
-                    online={this.props.presence[key]}
-                    key={key}
-                    uid={key}
-                    user={user}
-                  />
-                ))}
+                this.state.filteredUsers
+                  .sort((a, b) => -(a.eloRating - b.eloRating))
+                  .map(user => (
+                    <User
+                      handleClick={this.selectOpponent}
+                      online={this.props.presence[user.uid]}
+                      key={user.uid}
+                      uid={user.uid}
+                      user={user}
+                    />
+                  ))}
             </SelectOpponent>
           </div>
         </Modal>
@@ -128,16 +155,9 @@ class CreateMatch extends Component {
 }
 
 export default compose(
-  firebaseConnect(props => [
-    { path: 'presence' },
-    { path: 'users' },
-    { path: 'auth' },
-    { path: 'matches' },
-  ]),
+  firebaseConnect(props => [{ path: 'users' }, { path: 'auth' }]),
   connect((state, props) => ({
-    presence: state.firebase.data.presence || {},
     users: state.firebase.ordered.users,
     auth: state.firebase.auth,
-    matches: state.firebase.ordered.matches,
   }))
-)(CreateMatch);
+)(EnrichCompetitors(CreateMatch));

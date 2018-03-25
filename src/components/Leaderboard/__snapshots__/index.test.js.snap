@@ -221,7 +221,7 @@ ReactWrapper {
           "_debugOwner": [Circular],
           "_debugSource": Object {
             "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-            "lineNumber": 42,
+            "lineNumber": 25,
           },
           "alternate": null,
           "child": null,
@@ -462,7 +462,6 @@ ReactWrapper {
       },
       "_reactInternalInstance": Object {},
       "context": Object {},
-      "enrichCompetitorData": [Function],
       "props": Object {
         "firebase": [Function],
       },
@@ -704,7 +703,7 @@ ReactWrapper {
             "_debugOwner": [Circular],
             "_debugSource": Object {
               "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-              "lineNumber": 42,
+              "lineNumber": 25,
             },
             "alternate": null,
             "child": null,
@@ -945,7 +944,6 @@ ReactWrapper {
         },
         "_reactInternalInstance": Object {},
         "context": Object {},
-        "enrichCompetitorData": [Function],
         "props": Object {
           "firebase": [Function],
         },

@@ -10,6 +10,13 @@ const Avatar = ({ user }) => {
   );
 };
 
+Avatar.defaultProps = {
+  user: {
+    rank: null,
+    avatarUrl: null,
+    online: false,
+  },
+};
 Avatar.propTypes = {
   user: PropTypes.object,
 };
