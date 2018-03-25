@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from './../Avatar';
 import RankingDetail from './../RankingDetail';
-import { UserWrapper } from './styles';
+import { UserWrapper, UserEloRating } from './styles';
 
 const User = ({ user, ...props }) => {
   const handleClickEvent = () => {
@@ -20,7 +20,7 @@ const User = ({ user, ...props }) => {
       <Avatar user={user} />
       <div>
         <strong>{user.displayName}</strong>
-        <div>{user.eloRating}</div>
+        <UserEloRating data-test="elorating">{user.eloRating}</UserEloRating>
       </div>
     </UserWrapper>
   );

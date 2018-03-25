@@ -8,3 +8,5 @@ export const UserWrapper = styled.div`
   padding: 10px;
   border-radius: 8px;
 `;
+
+export const UserEloRating = styled.div``;

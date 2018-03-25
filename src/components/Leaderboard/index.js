@@ -43,6 +43,8 @@ class Leaderboard extends Component {
   }
 }
 
+export const LeaderboardTest = Leaderboard;
+
 export default compose(
   firebaseConnect(props => [
     { path: 'presence' },

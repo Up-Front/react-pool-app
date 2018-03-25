@@ -28,7 +28,9 @@ export const enrichCompetitor = ({ competitor, presence, rankings }) => {
     rankings,
     constants.PREVIOUS_RANKING_INDEX
   );
-  competitor.online = presence[competitor.uid];
+  if (presence) {
+    competitor.online = presence[competitor.uid];
+  }
   return Object.assign({}, competitor);
 };
 
