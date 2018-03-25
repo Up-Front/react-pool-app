@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AvatarImage } from './styles';
+import { AvatarImage, AvatarWrapper } from './styles';
 
 const Avatar = ({ user }) => {
-  return <AvatarImage src={user.avatarUrl} online={user.online} />;
+  return (
+    <AvatarWrapper rank={user.rank}>
+      <AvatarImage src={user.avatarUrl} online={user.online} />
+    </AvatarWrapper>
+  );
 };
 
 Avatar.propTypes = {
