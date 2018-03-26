@@ -4,27 +4,19 @@ import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
-import Lottie from 'react-lottie';
-import * as animationData from '../../pool';
-import { Login, Button } from './styles';
+import { Login, Button, LoginWrapper } from './styles';
 import { loginUser } from './../../actions/auth';
 
-const defaultOptions = {
-  loop: false,
-  autoplay: true,
-  animationData,
-};
 
 const LoginPage = ({ auth }) => {
   if (isLoaded(auth) && !isEmpty(auth)) return <Redirect to="/" push />;
 
   return (
-    <div>
+    <LoginWrapper>
       <Login>
         <Button onClick={loginUser}>Log in</Button>
       </Login>
-      <Lottie options={defaultOptions} />
-    </div>
+    </LoginWrapper>
   );
 };
 

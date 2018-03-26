@@ -31,7 +31,15 @@ export const Header = styled.header`
   }
 `;
 
-export const HeaderLogo = styled.h1``;
+export const HeaderLogo = styled.h1`
+  display: inline-block;
+  margin: 5px 0;
+  width: 40px;
+  height: 40px;
+  text-indent: -3333px;
+  background: transparent url(/logo.svg) no-repeat scroll 0% 0%;
+  cursor: pointer;
+`;
 
 export const FullScreen = styled.section`
   flex: 1;

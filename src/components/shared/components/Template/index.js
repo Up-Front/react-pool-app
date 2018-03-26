@@ -6,9 +6,11 @@ import { logoutUser } from './../../../../actions/auth';
 const Template = props => (
   <Wrapper>
     <Header>
-      <HeaderLogo>
-        <Link to="/">FrontMen</Link>
-      </HeaderLogo>
+      <Link to="/">
+        <HeaderLogo role="banner">
+          FrontMen
+        </HeaderLogo>
+      </Link>
       <button onClick={logoutUser}>logout</button>
       <Link to="/leaderboard">leaderboard</Link>
     </Header>

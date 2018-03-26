@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
-import { Login, Button } from './styles';
+import { Login, Button, LoginWrapper } from './styles';
 
 describe('Login component', () => {
   test('renders normally', () => {
@@ -13,6 +13,13 @@ describe('Login component', () => {
 describe('Button component', () => {
   test('renders normally', () => {
     const wrapper = shallow(<Button />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('LoginWrapper component', () => {
+  test('renders normally', () => {
+    const wrapper = shallow(<LoginWrapper />);
     expect(wrapper).toMatchSnapshot();
   });
 });

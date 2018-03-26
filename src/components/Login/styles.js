@@ -24,3 +24,10 @@ export const Button = styled.button`
     transition: all 150ms linear;
   }
 `;
+
+export const LoginWrapper = styled.div`
+background: url(background_small.jpg) no-repeat center center fixed; 
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+`;
