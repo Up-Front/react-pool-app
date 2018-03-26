@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Authorization from './components/shared/components/Authorization';
-import Dashboard from './components/Dashboard';
 import Login from './components/Login/Login';
-import Leaderboard from './components/Leaderboard';
 import Template from './components/shared/components/Template';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
@@ -17,17 +15,12 @@ const App = () => (
   <ThemeProvider theme={theme}>
     <Provider store={store}>
       <Router>
-        <Template>
-          <Fragment>
-            <Route exact path="/" component={Authorization(Dashboard)} />
-            <Route exact path="/login" component={Login} />
-            <Route
-              exact
-              path="/leaderboard"
-              component={Authorization(Leaderboard)}
-            />
-          </Fragment>
-        </Template>
+        <Fragment>
+          <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/" component={Authorization(Template)} />
+          </Switch>
+        </Fragment>
       </Router>
     </Provider>
   </ThemeProvider>

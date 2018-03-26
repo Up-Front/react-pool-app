@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
+import Dashboard from './../../../Dashboard';
+import Leaderboard from './../../../Leaderboard';
 import { Wrapper, Header, FullScreen, HeaderLogo } from './styles';
 import { logoutUser } from './../../../../actions/auth';
 
@@ -14,7 +16,15 @@ const Template = props => (
       <button onClick={logoutUser}>logout</button>
       <Link to="/leaderboard">leaderboard</Link>
     </Header>
-    <FullScreen>{props.children}</FullScreen>
+    <FullScreen>
+      <Switch>
+        <Route
+          path="/leaderboard" 
+          component={Leaderboard}
+          />
+        <Route path="/" component={Dashboard} />
+      </Switch>
+    </FullScreen>
   </Wrapper>
 );
 
