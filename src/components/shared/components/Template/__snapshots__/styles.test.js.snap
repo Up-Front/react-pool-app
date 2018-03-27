@@ -39,7 +39,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-bxivhb bBTwYE",
+      "className": "sc-bxivhb jReaAv",
     },
     "ref": null,
     "rendered": null,
@@ -51,7 +51,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-bxivhb bBTwYE",
+        "className": "sc-bxivhb jReaAv",
       },
       "ref": null,
       "rendered": null,
@@ -175,7 +175,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-htpNat KtFsv",
+      "className": "sc-htpNat jMuZiw",
     },
     "ref": null,
     "rendered": null,
@@ -187,7 +187,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-htpNat KtFsv",
+        "className": "sc-htpNat jMuZiw",
       },
       "ref": null,
       "rendered": null,

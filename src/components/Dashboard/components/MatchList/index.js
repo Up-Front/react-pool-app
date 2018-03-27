@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { setMatchCompetitors } from './../../../../actions/matches';
 import EnrichCompetitors from './../../../shared/components/EnrichCompetitors';
 import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
@@ -22,16 +23,8 @@ const MatchList = props => {
     return isCompetitor;
   };
 
-  const setCompetitors = ({ key, value }) => {
-    const newMatch = Object.assign({}, value);
-    newMatch.matchId = key;
-    newMatch.competitors = Object.values(newMatch.competitors).map(uid => {
-      const data = props.users.filter(({ key, value }) => key === uid).shift();
-      if (data) {
-        return data.value;
-      }
-    });
-    return newMatch;
+  const setCompetitors = matchObject => {
+    return setMatchCompetitors(matchObject, props.users);
   };
 
   if (isLoaded(props.matches) && !isEmpty(props.matches)) {

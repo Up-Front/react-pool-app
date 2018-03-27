@@ -185,6 +185,18 @@ export const setEloRating = (userResult, user, competitors) => {
   }
 };
 
+export const setMatchCompetitors = ({ key, value }, users) => {
+  const newMatch = Object.assign({}, value);
+  newMatch.matchId = key;
+  newMatch.competitors = Object.values(newMatch.competitors).map(uid => {
+    const data = users.filter(({ key, value }) => key === uid).shift();
+    if (data) {
+      return data.value;
+    }
+  });
+  return newMatch;
+};
+
 export const increaseStreak = (streak, result) => {
   streak = streak || '';
   return streak + result;

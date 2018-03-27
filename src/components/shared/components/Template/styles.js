@@ -44,6 +44,5 @@ export const HeaderLogo = styled.h1`
 export const FullScreen = styled.section`
   flex: 1;
   width: 100%;
-  margin: 5px 0;
   overflow-y: scroll;
 `;

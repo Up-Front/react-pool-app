@@ -7,10 +7,7 @@ import Modal from './../shared/components/Modal';
 import User from './../shared/components/User';
 import EnrichCompetitors from './../shared/components/EnrichCompetitors';
 import { SelectOpponent, FloatButton } from './styles';
-import constants from './../shared/constants';
-import { enrichCompetitor } from './../../actions/competitors';
 import { Button } from './../shared/styles';
-import CompetitorAlert from './components/CompetitorAlert';
 
 class CreateMatch extends Component {
   initialState = {
@@ -83,32 +80,9 @@ class CreateMatch extends Component {
     this.setState(this.initialState);
   };
 
-  enrichCompetitorData = competitor => {
-    const newCompetitor = competitor.value;
-    newCompetitor.uid = competitor.key;
-    return enrichCompetitor({
-      competitor: newCompetitor,
-      presence: this.props.presence,
-      rankings: this.props.rankings,
-    });
-  };
-
-  showAlert = () => {
-    if (this.state.matchCreated) {
-      return (
-        <CompetitorAlert
-          auth={this.props.auth}
-          opponent={this.state.selectedOpponent}
-          onEndAnimation={this.handleCloseModal}
-        />
-      );
-    }
-  };
-
   render() {
     return (
       <Fragment>
-        {this.showAlert()}
         <FloatButton onClick={this.handleOpenModal} key="FloatButton">
           +
         </FloatButton>

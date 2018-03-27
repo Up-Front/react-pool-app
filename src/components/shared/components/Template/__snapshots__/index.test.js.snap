@@ -20,15 +20,18 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
+        <AlertWrapper />,
         <styled.header>
-          <styled.h1>
-                    <Link
-                              replace={false}
-                              to="/"
+          <Link
+                    replace={false}
+                    to="/"
+          >
+                    <styled.h1
+                              role="banner"
                     >
                               FrontMen
-                    </Link>
-          </styled.h1>
+                    </styled.h1>
+          </Link>
           <button
                     onClick={[Function]}
           >
@@ -41,7 +44,18 @@ ShallowWrapper {
                     leaderboard
           </Link>
 </styled.header>,
-        <styled.section />,
+        <styled.section>
+          <Switch>
+                    <Route
+                              component={[Function]}
+                              path="/leaderboard"
+                    />
+                    <Route
+                              component={[Function]}
+                              path="/"
+                    />
+          </Switch>
+</styled.section>,
       ],
     },
     "ref": null,
@@ -50,16 +64,27 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
         "props": Object {
           "children": Array [
-            <styled.h1>
-              <Link
-                            replace={false}
-                            to="/"
+            <Link
+              replace={false}
+              to="/"
+>
+              <styled.h1
+                            role="banner"
               >
                             FrontMen
-              </Link>
-</styled.h1>,
+              </styled.h1>
+</Link>,
             <button
               onClick={[Function]}
 >
@@ -80,12 +105,13 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <Link
-                replace={false}
-                to="/"
+              "children": <styled.h1
+                role="banner"
 >
                 FrontMen
-</Link>,
+</styled.h1>,
+              "replace": false,
+              "to": "/",
             },
             "ref": null,
             "rendered": Object {
@@ -94,8 +120,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "FrontMen",
-                "replace": false,
-                "to": "/",
+                "role": "banner",
               },
               "ref": null,
               "rendered": "FrontMen",
@@ -136,10 +161,63 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": <Switch>
+            <Route
+                        component={[Function]}
+                        path="/leaderboard"
+            />
+            <Route
+                        component={[Function]}
+                        path="/"
+            />
+</Switch>,
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Route
+                component={[Function]}
+                path="/leaderboard"
+/>,
+              <Route
+                component={[Function]}
+                path="/"
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "path": "/leaderboard",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "path": "/",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
         "type": [Function],
       },
     ],
@@ -152,15 +230,18 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
+          <AlertWrapper />,
           <styled.header>
-            <styled.h1>
-                        <Link
-                                    replace={false}
-                                    to="/"
+            <Link
+                        replace={false}
+                        to="/"
+            >
+                        <styled.h1
+                                    role="banner"
                         >
                                     FrontMen
-                        </Link>
-            </styled.h1>
+                        </styled.h1>
+            </Link>
             <button
                         onClick={[Function]}
             >
@@ -173,7 +254,18 @@ ShallowWrapper {
                         leaderboard
             </Link>
 </styled.header>,
-          <styled.section />,
+          <styled.section>
+            <Switch>
+                        <Route
+                                    component={[Function]}
+                                    path="/leaderboard"
+                        />
+                        <Route
+                                    component={[Function]}
+                                    path="/"
+                        />
+            </Switch>
+</styled.section>,
         ],
       },
       "ref": null,
@@ -182,16 +274,27 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
           "props": Object {
             "children": Array [
-              <styled.h1>
-                <Link
-                                replace={false}
-                                to="/"
+              <Link
+                replace={false}
+                to="/"
+>
+                <styled.h1
+                                role="banner"
                 >
                                 FrontMen
-                </Link>
-</styled.h1>,
+                </styled.h1>
+</Link>,
               <button
                 onClick={[Function]}
 >
@@ -212,12 +315,13 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <Link
-                  replace={false}
-                  to="/"
+                "children": <styled.h1
+                  role="banner"
 >
                   FrontMen
-</Link>,
+</styled.h1>,
+                "replace": false,
+                "to": "/",
               },
               "ref": null,
               "rendered": Object {
@@ -226,8 +330,7 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "children": "FrontMen",
-                  "replace": false,
-                  "to": "/",
+                  "role": "banner",
                 },
                 "ref": null,
                 "rendered": "FrontMen",
@@ -268,10 +371,63 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": <Switch>
+              <Route
+                            component={[Function]}
+                            path="/leaderboard"
+              />
+              <Route
+                            component={[Function]}
+                            path="/"
+              />
+</Switch>,
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Route
+                  component={[Function]}
+                  path="/leaderboard"
+/>,
+                <Route
+                  component={[Function]}
+                  path="/"
+/>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "path": "/leaderboard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "path": "/",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
       ],
