@@ -20,7 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <AlertWrapper />,
+        <FirebaseConnect(Connect(AlertWrapper)) />,
         <styled.header>
           <Link
                     replace={false}
@@ -230,7 +230,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <AlertWrapper />,
+          <FirebaseConnect(Connect(AlertWrapper)) />,
           <styled.header>
             <Link
                         replace={false}
