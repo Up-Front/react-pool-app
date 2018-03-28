@@ -1,4 +1,4 @@
-import { calcHead2Head } from './competitors';
+import { calcHead2Head, increaseStreak } from './competitors';
 
 describe('Competitor actions', () => {
   describe('calcHead2Head', () => {
@@ -30,6 +30,22 @@ describe('Competitor actions', () => {
       };
 
       const result = calcHead2Head(competitorA, competitorB);
+      expect(result).toEqual(expectedResult);
+    });
+  });
+
+  describe('increaseStreak', () => {
+    test('increaseStreak add a match', () => {
+      const expectedResult = 'LL';
+      const result = increaseStreak('L', 'L');
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    test('increaseStreak add a match when result was null', () => {
+      const expectedResult = 'L';
+      const result = increaseStreak(null, 'L');
+
       expect(result).toEqual(expectedResult);
     });
   });

@@ -1,6 +1,11 @@
 import React from 'react';
 import sinon from 'sinon';
-import { setMatchStatus, checkWinner, setEloRating, increaseStreak, findOtherCompetitor } from './matches';
+import {
+  setMatchStatus,
+  checkWinner,
+  setEloRating,
+  findOtherCompetitor,
+} from './matches';
 import constants from './../components/shared/constants';
 
 describe('Match actions', () => {
@@ -23,7 +28,7 @@ describe('Match actions', () => {
       competitors: { 1: 1, 2: 2 },
       createdAt: 3,
       winner: 3,
-      winners: { 1: 1, 2: 2 }
+      winners: { 1: 1, 2: 2 },
     };
 
     const expectedResult = {
@@ -32,7 +37,7 @@ describe('Match actions', () => {
       finishedAt: null,
       winner: null,
       isContested: true,
-      winners: { 1: 1, 2: 2 }
+      winners: { 1: 1, 2: 2 },
     };
 
     const model = setMatchStatus(1, checkModel);
@@ -44,7 +49,7 @@ describe('Match actions', () => {
       competitors: { 1: 1, 2: 2 },
       createdAt: 3,
       winner: 3,
-      winners: { 1: 1, 2: 1 }
+      winners: { 1: 1, 2: 1 },
     };
 
     const expectedResult = {
@@ -53,7 +58,7 @@ describe('Match actions', () => {
       finishedAt: now.getTime(),
       winner: 1,
       isContested: false,
-      winners: { 1: 1, 2: 1 }
+      winners: { 1: 1, 2: 1 },
     };
 
     const model = setMatchStatus(1, checkModel);
@@ -64,7 +69,7 @@ describe('Match actions', () => {
     const checkModel = {
       competitors: { 1: 1, 2: 2 },
       createdAt: 3,
-      winners: {}
+      winners: {},
     };
 
     const expectedResult = {};
@@ -89,26 +94,10 @@ describe('Match actions', () => {
     expect(winner).toEqual(null);
   });
 
-  describe('increaseStreak', () => {
-    test('increaseStreak add a match', () => {
-      const expectedResult = 'LL';
-      const result = increaseStreak('L', 'L');
-  
-      expect(result).toEqual(expectedResult);
-    });
-
-    test('increaseStreak add a match when result was null', () => {
-      const expectedResult = 'L';
-      const result = increaseStreak(null, 'L');
-  
-      expect(result).toEqual(expectedResult);
-    });
-  });
-
   describe('findOtherCompetitor', () => {
-    const expectedResult = {2:2};
-    const competitor = {2:2}
-    const user = {1:2};
+    const expectedResult = { 2: 2 };
+    const competitor = { 2: 2 };
+    const user = { 1: 2 };
     const competitors = [user, competitor];
 
     const result = findOtherCompetitor(user, competitors);
@@ -121,15 +110,19 @@ describe('Match actions', () => {
       const competitors = {
         0: {
           uid: 1,
-          eloRating: 200
+          eloRating: 200,
         },
         1: {
           uid: 2,
-          eloRating: 1000
-        }
-      }
+          eloRating: 1000,
+        },
+      };
       const expectedResult = 195;
-      const result = setEloRating(constants.LOSEVALUE, competitors[0], competitors);
+      const result = setEloRating(
+        constants.LOSEVALUE,
+        competitors[0],
+        competitors
+      );
 
       expect(result).toEqual(expectedResult);
     });
@@ -138,15 +131,19 @@ describe('Match actions', () => {
       const competitors = {
         0: {
           uid: 1,
-          eloRating: 200
+          eloRating: 200,
         },
         1: {
           uid: 2,
-          eloRating: 1000
-        }
+          eloRating: 1000,
+        },
       };
       const expectedResult = 227;
-      const result = setEloRating(constants.WINVALUE, competitors[0], competitors);
+      const result = setEloRating(
+        constants.WINVALUE,
+        competitors[0],
+        competitors
+      );
 
       expect(result).toEqual(expectedResult);
     });
@@ -154,22 +151,21 @@ describe('Match actions', () => {
     test('When the user does not have a rating yet', () => {
       const competitors = {
         0: {
-            uid: 1
-          },
-          1: {
-            uid: 2
-          }
-        };
-  
-        const expectedResult = 1016;
-        const result = setEloRating(constants.WINVALUE, competitors[0], competitors);
-  
-        expect(result).toEqual(expectedResult);
+          uid: 1,
+        },
+        1: {
+          uid: 2,
+        },
+      };
+
+      const expectedResult = 1016;
+      const result = setEloRating(
+        constants.WINVALUE,
+        competitors[0],
+        competitors
+      );
+
+      expect(result).toEqual(expectedResult);
     });
   });
-
-  
-  
-
-
 });

@@ -44,3 +44,48 @@ const getRanking = (competitor, rankings, rankingIndex) => {
   }
   return {};
 };
+
+/**
+ * calculate the winning / losing streak of a competitor
+ */
+export const calculateStreak = competitor => {
+  let streak = 1;
+  const competitorStreak = competitor.streak || '';
+  let lastResult;
+
+  competitorStreak.split('').reduceRight((prev, current) => {
+    if (lastResult && lastResult !== current) {
+      return null;
+    }
+    if (!lastResult) {
+      lastResult = current;
+    }
+    if (current === prev && lastResult === current) {
+      streak++;
+      return current;
+    }
+    return null;
+  });
+  console.log(streak);
+  return streak;
+};
+
+/**
+ * set the victoryName of a match,
+ * this depends on the winning - streak length of the winner
+ */
+export const setVictoryName = streak => {
+  if (streak >= 10) {
+    return 'godlike';
+  } else if (streak >= 6) {
+    return 'rampage';
+  } else if (streak >= 3) {
+    return 'dominating';
+  }
+  return 'victory';
+};
+
+export const increaseStreak = (streak, result) => {
+  streak = streak || '';
+  return streak + result;
+};

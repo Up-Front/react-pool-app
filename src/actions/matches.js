@@ -2,6 +2,7 @@ import { database } from './../store';
 import matchModel from './../models/matches';
 import constants from './../components/shared/constants';
 import { calculateLeaderBoard } from './leaderboard';
+import { increaseStreak } from './competitors';
 
 // set match
 //the match also needs to be added to the 2 users
@@ -199,11 +200,6 @@ export const setMatchCompetitors = ({ key, value }, users) => {
     }
   });
   return newMatch;
-};
-
-export const increaseStreak = (streak, result) => {
-  streak = streak || '';
-  return streak + result;
 };
 
 /**

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import constants from './../../../shared/constants';
 import { BounceIn, BounceOut } from 'animate-css-styled-components';
 import { findOtherCompetitor, findWinner } from './../../../../actions/matches';
+import {
+  calculateStreak,
+  setVictoryName,
+  increaseStreak,
+} from './../../../../actions/competitors';
 import {
   AlertWrapper,
   WinnerWarningCenter,
@@ -15,12 +21,22 @@ class CompetitorAlert extends Component {
     super(props);
 
     if (props.match.finishedAt) {
+      const user = findWinner(props.match);
+      // the new streak of the user is not calculated yet
+      user.streak = increaseStreak(user.streak, constants.WINVALUE);
+
+      const streak = calculateStreak(user);
+      const victoryName = setVictoryName(streak);
       this.state = {
-        user: findWinner(props.match),
+        user,
+        streak,
+        victoryName,
+        sound: victoryName,
       };
     } else {
       this.state = {
         user: findOtherCompetitor(props.auth, props.match.competitors),
+        victoryName: 'Game on',
       };
     }
   }
@@ -37,41 +53,22 @@ class CompetitorAlert extends Component {
     this.props.onEndAnimation();
   };
 
-  calculateStreak = gameList => {
-    let streak = 1;
-    gameList.split('').reduceRight((prev, current) => {
-      if (current === prev) {
-        streak++;
-      }
-      return prev;
-    });
-    return streak;
-  };
-
-  setVictoryName = streak => {
-    if (streak >= 10) {
-      return 'godlike';
-    } else if (streak >= 6) {
-      return 'rampage';
-    } else if (streak >= 3) {
-      return 'dominating';
-    }
-    return 'victory';
-  };
-
-  victoryName = 'Game on!';
-  // let victoryName = this.setVictoryName(
-  //   this.calculateStreak()
-  // );
-  // <audio
-  //         autoPlay="autoplay"
-  //         src={'/sound/victory/' + victoryName + '.mp3'}
-  //         type="audio/mpeg"
-  //       />
+  //
 
   render() {
+    let sound;
+    if (this.state.sound) {
+      sound = (
+        <audio
+          autoPlay="autoplay"
+          src={`/sound/victory/${this.state.sound}.mp3`}
+          type="audio/mpeg"
+        />
+      );
+    }
     return (
       <AlertWrapper>
+        {sound}
         <WinnerWarningCenter>
           <BounceIn delay=".5s" duration="1s">
             <BounceOut
@@ -92,8 +89,8 @@ class CompetitorAlert extends Component {
                 this.animationRef = x;
               }}
             >
-              <BoomText>{this.victoryName}!</BoomText>
-              <BoomTextShadow>{this.victoryName}!</BoomTextShadow>
+              <BoomText>{this.state.victoryName}!</BoomText>
+              <BoomTextShadow>{this.state.victoryName}!</BoomTextShadow>
             </BounceOut>
           </BounceIn>
         </WinnerWarningCenter>
