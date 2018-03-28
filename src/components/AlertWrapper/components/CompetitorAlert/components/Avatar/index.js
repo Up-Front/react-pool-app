@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { AvatarImage } from './styles';
 
 const Avatar = ({ user }) => {
@@ -9,4 +10,7 @@ const Avatar = ({ user }) => {
   );
 };
 
+Avatar.propTypes = {
+  user: PropTypes.object.isRequired,
+};
 export default Avatar;

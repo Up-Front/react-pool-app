@@ -7,38 +7,58 @@ import { setMatchCompetitors } from './../../actions/matches';
 import CompetitorAlert from './components/CompetitorAlert';
 
 class AlertWrapper extends Component {
-  state = {
+  initialState = {
     newMatch: false,
+    match: null,
   };
+  state = this.initialState;
   checkNewMatches = () => {
     const newMatchesRef = database.ref('matches');
     newMatchesRef
       .orderByChild('createdAt')
       .startAt(Date.now())
       .on('child_added', snapshot => {
-        this.match = setMatchCompetitors(
+        const match = setMatchCompetitors(
           { key: snapshot.key, value: snapshot.val() },
           this.props.users
         );
         this.setState({
           newMatch: true,
+          match,
+        });
+      });
+  };
+
+  checkFinishedMatches = () => {
+    const newMatchesRef = database.ref('matches');
+    newMatchesRef
+      .orderByChild('finishedAt')
+      .startAt(Date.now())
+      .on('child_added', snapshot => {
+        const match = setMatchCompetitors(
+          { key: snapshot.key, value: snapshot.val() },
+          this.props.users
+        );
+        this.setState({
+          newMatch: true,
+          match,
         });
       });
   };
   componentDidMount() {
     this.checkNewMatches();
+    this.checkFinishedMatches();
   }
 
   endAnimationHandler = () => {
-    this.setState({
-      newMatch: false,
-    });
+    this.setState(this.initialState);
   };
 
   render() {
     const newMatchAlert = this.state.newMatch ? (
       <CompetitorAlert
-        opponent={this.match.competitors[0]}
+        match={this.state.match}
+        auth={this.props.auth}
         onEndAnimation={this.endAnimationHandler}
       />
     ) : (

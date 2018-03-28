@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { BounceIn, BounceOut } from 'animate-css-styled-components';
+import { findOtherCompetitor, findWinner } from './../../../../actions/matches';
 import {
   AlertWrapper,
   WinnerWarningCenter,
@@ -10,6 +11,20 @@ import {
 import Avatar from './components/Avatar';
 
 class CompetitorAlert extends Component {
+  constructor(props) {
+    super(props);
+
+    if (props.match.finishedAt) {
+      this.state = {
+        user: findWinner(props.match),
+      };
+    } else {
+      this.state = {
+        user: findOtherCompetitor(props.auth, props.match.competitors),
+      };
+    }
+  }
+
   componentDidMount() {
     this.animationRef.addEventListener('animationend', this.animationDone);
   }
@@ -66,7 +81,7 @@ class CompetitorAlert extends Component {
                 this.animationRef = x;
               }}
             >
-              <Avatar user={this.props.opponent} />
+              <Avatar user={this.state.user} />
             </BounceOut>
           </BounceIn>
           <BounceIn delay=".7s" duration=".5s">
@@ -88,7 +103,8 @@ class CompetitorAlert extends Component {
 }
 
 CompetitorAlert.propTypes = {
-  opponent: PropTypes.object,
+  match: PropTypes.object,
+  auth: PropTypes.object,
 };
 
 export default CompetitorAlert;

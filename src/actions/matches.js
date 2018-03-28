@@ -185,6 +185,10 @@ export const setEloRating = (userResult, user, competitors) => {
   }
 };
 
+/**
+ * enrich match data with competitor data.
+ * matches only give competitor uid
+ */
 export const setMatchCompetitors = ({ key, value }, users) => {
   const newMatch = Object.assign({}, value);
   newMatch.matchId = key;
@@ -202,5 +206,18 @@ export const increaseStreak = (streak, result) => {
   return streak + result;
 };
 
+/**
+ * find the competitor which is not the logged in user
+ */
 export const findOtherCompetitor = (user, competitors) =>
   competitors.filter(comp => comp.uid !== user.uid).shift();
+
+/**
+ * find the competitor which is not the logged in user
+ */
+export const findWinner = match => {
+  if (!match.finishedAt || !match.winner) {
+    return;
+  }
+  return match.competitors.filter(comp => comp.uid === match.winner).shift();
+};
