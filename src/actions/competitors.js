@@ -50,8 +50,9 @@ const getRanking = (competitor, rankings, rankingIndex) => {
  */
 export const calculateStreak = competitor => {
   let streak = 1;
-  const competitorStreak = competitor.streak || '';
   let lastResult;
+  const competitorStreak = competitor.streak;
+  if (!competitorStreak) return 0;
 
   competitorStreak.split('').reduceRight((prev, current) => {
     if (lastResult && lastResult !== current) {
@@ -66,7 +67,6 @@ export const calculateStreak = competitor => {
     }
     return null;
   });
-  console.log(streak);
   return streak;
 };
 
