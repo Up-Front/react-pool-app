@@ -27,7 +27,11 @@ const MatchList = props => {
     return setMatchCompetitors(matchObject, props.users);
   };
 
-  if (isLoaded(props.matches) && !isEmpty(props.matches)) {
+  if (
+    isLoaded(props.matches) &&
+    !isEmpty(props.matches) &&
+    !isEmpty(props.users)
+  ) {
     const matches = Object.values(props.matches)
       .reverse()
       .filter(({ key, value }) => !value.finishedAt)

@@ -31,19 +31,20 @@ class AlertWrapper extends Component {
 
   checkFinishedMatches = () => {
     const newMatchesRef = database.ref('matches');
-    newMatchesRef
-      .orderByChild('finishedAt')
-      .startAt(Date.now())
-      .on('child_added', snapshot => {
-        const match = setMatchCompetitors(
-          { key: snapshot.key, value: snapshot.val() },
-          this.props.users
-        );
-        this.setState({
-          newMatch: true,
-          match,
-        });
+    newMatchesRef.orderByChild('finishedAt').on('child_changed', snapshot => {
+      let match = snapshot.val();
+      if (!match.finishedAt) {
+        return;
+      }
+      match = setMatchCompetitors(
+        { key: snapshot.key, value: match },
+        this.props.users
+      );
+      this.setState({
+        newMatch: true,
+        match,
       });
+    });
   };
   componentDidMount() {
     this.checkNewMatches();

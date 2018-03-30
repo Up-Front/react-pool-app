@@ -67,6 +67,7 @@ class CreateMatch extends Component {
         openModal: false,
       });
       console.log('match created');
+      this.handleCloseModal();
     });
   };
 
