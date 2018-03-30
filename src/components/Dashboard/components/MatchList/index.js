@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { setMatchCompetitors } from './../../../../actions/matches';
 import EnrichCompetitors from './../../../shared/components/EnrichCompetitors';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Match from './../../../Match';
 import { MatchListWrapper } from './styles';
 
@@ -39,16 +40,22 @@ const MatchList = props => {
       .filter(match => checkAuthIsCompetitor(match.competitors))
       .map(match => {
         return (
-          <Match
+          <CSSTransition
             key={match.matchId}
-            matchId={match.matchId}
-            match={match}
-            auth={props.auth}
-          />
+            timeout={500}
+            exit={true}
+            classNames="fade"
+          >
+            <Match matchId={match.matchId} match={match} auth={props.auth} />
+          </CSSTransition>
         );
       });
 
-    return <MatchListWrapper>{matches}</MatchListWrapper>;
+    return (
+      <MatchListWrapper>
+        <TransitionGroup>{matches}</TransitionGroup>
+      </MatchListWrapper>
+    );
   } else {
     return <div />;
   }

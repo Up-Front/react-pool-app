@@ -16,7 +16,6 @@ class SwipeDelete extends React.Component {
     super(props);
 
     this.state = {
-      isDeleted: false,
       deleteDirection: null,
       deleteCancel: false,
     };
@@ -27,10 +26,6 @@ class SwipeDelete extends React.Component {
   }
 
   render() {
-    if (this.state.isDeleted) {
-      return null;
-    }
-
     return (
       <SwipeWrapper>
         <DeleteLayer key="delete">
@@ -193,7 +188,6 @@ class SwipeDelete extends React.Component {
   };
 
   onDelete = () => {
-    this.setState({ isDeleted: true });
     this.props.onDelete(this.props.deleteId, this.props.deleteObject);
   };
 
