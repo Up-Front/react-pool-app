@@ -100,7 +100,7 @@ class CompetitorAlert extends Component {
 }
 
 CompetitorAlert.propTypes = {
-  match: PropTypes.object,
+  match: PropTypes.object.isRequired,
   auth: PropTypes.object,
 };
 

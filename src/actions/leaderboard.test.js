@@ -1,0 +1,89 @@
+import sinon from 'sinon';
+import { calculateLeaderBoard, calculateLeaderBoardData } from './leaderboard';
+import * as funcs from './competitors';
+import { getStartOfWeek } from './../components/shared/utils/time';
+import { database } from './../store';
+import constants from './../components/shared/constants';
+
+describe('calculateLeaderBoard', () => {
+  let now = new Date();
+  let clock;
+  let sandbox;
+  let startOfWeek;
+
+  beforeEach(() => {
+    sandbox = sinon.sandbox.create();
+    clock = sinon.useFakeTimers({ now: now.getTime() });
+    startOfWeek = getStartOfWeek();
+
+    const users = {
+      abc: {
+        uid: 'abc',
+        rank: 2,
+      },
+      xyz: {
+        uid: 'xyz',
+        rank: 1,
+      },
+    };
+    sinon.stub(funcs, 'getUserData').returns({
+      then: () => users,
+    });
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+    clock.restore();
+    funcs.getUserData.restore();
+  });
+
+  test('order users by ranking', () => {
+    const expectedResult = {
+      xyz: {
+        uid: 'xyz',
+        rank: 1,
+      },
+      abc: {
+        uid: 'abc',
+        rank: 2,
+      },
+    };
+
+    const model = calculateLeaderBoard();
+
+    expect(model).toEqual(expectedResult);
+  });
+
+  describe('calculateLeaderBoardData', () => {
+    test('order users by ranking', () => {
+      const users = {
+        abc: {
+          uid: 'abc',
+          rank: 2,
+          eloRating: 800,
+        },
+        xyz: {
+          uid: 'xyz',
+          rank: 1,
+          eloRating: 1000,
+        },
+      };
+      const expectedResult = {
+        [`rankings/${startOfWeek.getTime()}/abc`]: {
+          eloRating: 800,
+          ranking: 2,
+        },
+        [`rankings/${startOfWeek.getTime()}/xyz`]: {
+          eloRating: 1000,
+          ranking: 1,
+        },
+        'users/abc/rank': 2,
+        'users/xyz/rank': 1,
+      };
+
+      const model = calculateLeaderBoardData(users);
+
+      expect(model).toEqual(expectedResult);
+    });
+  });
+});
