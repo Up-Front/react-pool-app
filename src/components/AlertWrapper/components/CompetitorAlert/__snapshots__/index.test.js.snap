@@ -11,6 +11,21 @@ ShallowWrapper {
             "uid": "abc",
           }
     }
+    match={
+        Object {
+            "competitors": Array [
+              Object {
+                "displayName": "He-man",
+                "uid": "abc",
+              },
+              Object {
+                "displayName": "skeletor",
+                "uid": "xyz",
+              },
+            ],
+            "matchId": "xyz",
+          }
+    }
 />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -22,25 +37,491 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
-      "children": "dd",
+      "children": Array [
+        undefined,
+        <styled.div>
+          <Styled(styled.div)
+                    delay=".5s"
+                    duration="1s"
+          >
+                    <Styled(styled.div)
+                              delay="5s"
+                              duration=".5s"
+                    >
+                              <Avatar
+                                        user={
+                                                  Object {
+                                                            "displayName": "skeletor",
+                                                            "uid": "xyz",
+                                                          }
+                                        }
+                              />
+                    </Styled(styled.div)>
+          </Styled(styled.div)>
+          <Styled(styled.div)
+                    delay=".7s"
+                    duration=".5s"
+          >
+                    <Styled(styled.div)
+                              delay="5s"
+                              duration=".3s"
+                              innerRef={[Function]}
+                    >
+                              <Styled(styled.h2)>
+                                        Game on
+                                        !
+                              </Styled(styled.h2)>
+                              <Styled(styled.h2)>
+                                        Game on
+                                        !
+                              </Styled(styled.h2)>
+                    </Styled(styled.div)>
+          </Styled(styled.div)>
+</styled.div>,
+      ],
     },
     "ref": null,
-    "rendered": "dd",
-    "type": "div",
+    "rendered": Array [
+      undefined,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Styled(styled.div)
+              delay=".5s"
+              duration="1s"
+>
+              <Styled(styled.div)
+                            delay="5s"
+                            duration=".5s"
+              >
+                            <Avatar
+                                          user={
+                                                        Object {
+                                                                      "displayName": "skeletor",
+                                                                      "uid": "xyz",
+                                                                    }
+                                          }
+                            />
+              </Styled(styled.div)>
+</Styled(styled.div)>,
+            <Styled(styled.div)
+              delay=".7s"
+              duration=".5s"
+>
+              <Styled(styled.div)
+                            delay="5s"
+                            duration=".3s"
+                            innerRef={[Function]}
+              >
+                            <Styled(styled.h2)>
+                                          Game on
+                                          !
+                            </Styled(styled.h2)>
+                            <Styled(styled.h2)>
+                                          Game on
+                                          !
+                            </Styled(styled.h2)>
+              </Styled(styled.div)>
+</Styled(styled.div)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Styled(styled.div)
+                delay="5s"
+                duration=".5s"
+>
+                <Avatar
+                                user={
+                                                Object {
+                                                                "displayName": "skeletor",
+                                                                "uid": "xyz",
+                                                              }
+                                }
+                />
+</Styled(styled.div)>,
+              "delay": ".5s",
+              "duration": "1s",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <Avatar
+                  user={
+                                    Object {
+                                                      "displayName": "skeletor",
+                                                      "uid": "xyz",
+                                                    }
+                  }
+/>,
+                "delay": "5s",
+                "duration": ".5s",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "user": Object {
+                    "displayName": "skeletor",
+                    "uid": "xyz",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Styled(styled.div)
+                delay="5s"
+                duration=".3s"
+                innerRef={[Function]}
+>
+                <Styled(styled.h2)>
+                                Game on
+                                !
+                </Styled(styled.h2)>
+                <Styled(styled.h2)>
+                                Game on
+                                !
+                </Styled(styled.h2)>
+</Styled(styled.div)>,
+              "delay": ".7s",
+              "duration": ".5s",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Styled(styled.h2)>
+                    Game on
+                    !
+</Styled(styled.h2)>,
+                  <Styled(styled.h2)>
+                    Game on
+                    !
+</Styled(styled.h2)>,
+                ],
+                "delay": "5s",
+                "duration": ".3s",
+                "innerRef": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      "Game on",
+                      "!",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Game on",
+                    "!",
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      "Game on",
+                      "!",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Game on",
+                    "!",
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
-        "children": "dd",
+        "children": Array [
+          undefined,
+          <styled.div>
+            <Styled(styled.div)
+                        delay=".5s"
+                        duration="1s"
+            >
+                        <Styled(styled.div)
+                                    delay="5s"
+                                    duration=".5s"
+                        >
+                                    <Avatar
+                                                user={
+                                                            Object {
+                                                                        "displayName": "skeletor",
+                                                                        "uid": "xyz",
+                                                                      }
+                                                }
+                                    />
+                        </Styled(styled.div)>
+            </Styled(styled.div)>
+            <Styled(styled.div)
+                        delay=".7s"
+                        duration=".5s"
+            >
+                        <Styled(styled.div)
+                                    delay="5s"
+                                    duration=".3s"
+                                    innerRef={[Function]}
+                        >
+                                    <Styled(styled.h2)>
+                                                Game on
+                                                !
+                                    </Styled(styled.h2)>
+                                    <Styled(styled.h2)>
+                                                Game on
+                                                !
+                                    </Styled(styled.h2)>
+                        </Styled(styled.div)>
+            </Styled(styled.div)>
+</styled.div>,
+        ],
       },
       "ref": null,
-      "rendered": "dd",
-      "type": "div",
+      "rendered": Array [
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Styled(styled.div)
+                delay=".5s"
+                duration="1s"
+>
+                <Styled(styled.div)
+                                delay="5s"
+                                duration=".5s"
+                >
+                                <Avatar
+                                                user={
+                                                                Object {
+                                                                                "displayName": "skeletor",
+                                                                                "uid": "xyz",
+                                                                              }
+                                                }
+                                />
+                </Styled(styled.div)>
+</Styled(styled.div)>,
+              <Styled(styled.div)
+                delay=".7s"
+                duration=".5s"
+>
+                <Styled(styled.div)
+                                delay="5s"
+                                duration=".3s"
+                                innerRef={[Function]}
+                >
+                                <Styled(styled.h2)>
+                                                Game on
+                                                !
+                                </Styled(styled.h2)>
+                                <Styled(styled.h2)>
+                                                Game on
+                                                !
+                                </Styled(styled.h2)>
+                </Styled(styled.div)>
+</Styled(styled.div)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <Styled(styled.div)
+                  delay="5s"
+                  duration=".5s"
+>
+                  <Avatar
+                                    user={
+                                                      Object {
+                                                                        "displayName": "skeletor",
+                                                                        "uid": "xyz",
+                                                                      }
+                                    }
+                  />
+</Styled(styled.div)>,
+                "delay": ".5s",
+                "duration": "1s",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <Avatar
+                    user={
+                                        Object {
+                                                            "displayName": "skeletor",
+                                                            "uid": "xyz",
+                                                          }
+                    }
+/>,
+                  "delay": "5s",
+                  "duration": ".5s",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "user": Object {
+                      "displayName": "skeletor",
+                      "uid": "xyz",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <Styled(styled.div)
+                  delay="5s"
+                  duration=".3s"
+                  innerRef={[Function]}
+>
+                  <Styled(styled.h2)>
+                                    Game on
+                                    !
+                  </Styled(styled.h2)>
+                  <Styled(styled.h2)>
+                                    Game on
+                                    !
+                  </Styled(styled.h2)>
+</Styled(styled.div)>,
+                "delay": ".7s",
+                "duration": ".5s",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Styled(styled.h2)>
+                      Game on
+                      !
+</Styled(styled.h2)>,
+                    <Styled(styled.h2)>
+                      Game on
+                      !
+</Styled(styled.h2)>,
+                  ],
+                  "delay": "5s",
+                  "duration": ".3s",
+                  "innerRef": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        "Game on",
+                        "!",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      "Game on",
+                      "!",
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        "Game on",
+                        "!",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      "Game on",
+                      "!",
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

@@ -8,11 +8,13 @@ describe('Leaderboard component', () => {
 
   const users = [
     {
+      uid: 'abc',
       ranking: 3,
       eloRating: 900,
-      displayName: 'Bob de Bouwer',
+      displayName: 'Skeletor',
     },
     {
+      uid: 'xyz',
       ranking: 1,
       eloRating: 1100,
       displayName: 'He-man',

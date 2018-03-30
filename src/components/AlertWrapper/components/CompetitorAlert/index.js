@@ -42,7 +42,9 @@ class CompetitorAlert extends Component {
   }
 
   componentDidMount() {
-    this.animationRef.addEventListener('animationend', this.animationDone);
+    if (this.animationRef) {
+      this.animationRef.addEventListener('animationend', this.animationDone);
+    }
   }
   componentWillUnmount() {
     this.animationRef.removeEventListener('animationend', this.animationDone);
@@ -71,13 +73,7 @@ class CompetitorAlert extends Component {
         {sound}
         <WinnerWarningCenter>
           <BounceIn delay=".5s" duration="1s">
-            <BounceOut
-              delay="5s"
-              duration=".5s"
-              innerRef={x => {
-                this.animationRef = x;
-              }}
-            >
+            <BounceOut delay="5s" duration=".5s">
               <Avatar user={this.state.user} />
             </BounceOut>
           </BounceIn>

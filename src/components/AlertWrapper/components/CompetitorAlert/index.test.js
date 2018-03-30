@@ -8,7 +8,21 @@ describe('CompetitorAlert component', () => {
       uid: 'abc',
       displayName: 'He-man',
     };
-    const wrapper = shallow(<CompetitorAlert auth={auth} />);
+
+    const match = {
+      matchId: 'xyz',
+      competitors: [
+        {
+          uid: 'abc',
+          displayName: 'He-man',
+        },
+        {
+          uid: 'xyz',
+          displayName: 'skeletor',
+        },
+      ],
+    };
+    const wrapper = shallow(<CompetitorAlert auth={auth} match={match} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
