@@ -31,6 +31,8 @@ describe('Leaderboard component', () => {
     const wrapper = mount(
       <LeaderboardTest users={users} firebase={firebase} />
     );
+
+    console.log(wrapper.debug());
     const firstResult = wrapper
       .find('div[data-test="elorating"]')
       .first()

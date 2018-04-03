@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Match from './';
+import { MatchTest as Match } from './';
 
 describe('Match component', () => {
   let match;
@@ -36,7 +36,7 @@ describe('Match component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-test('when there is a winner, there is no delete button', () => {
+  test('when there is a winner, there is no delete button', () => {
     match = {
       uid: '1',
       winner: '2',
@@ -61,7 +61,7 @@ test('when there is a winner, there is no delete button', () => {
 
     expect(wrapper.find('SwipeDelete').length).toEqual(0);
   });
-  
+
   test('check that auth has voted', () => {
     match = {
       uid: '1',

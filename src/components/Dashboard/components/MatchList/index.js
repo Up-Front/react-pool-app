@@ -44,7 +44,7 @@ const MatchList = props => {
             key={match.matchId}
             timeout={500}
             exit={true}
-            classNames="fade"
+            classNames="remove"
           >
             <Match matchId={match.matchId} match={match} auth={props.auth} />
           </CSSTransition>

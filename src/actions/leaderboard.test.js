@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import { calculateLeaderBoard, calculateLeaderBoardData } from './leaderboard';
+import { calculateLeaderBoardData } from './leaderboard';
 import * as funcs from './competitors';
 import { getStartOfWeek } from './../components/shared/utils/time';
 import { database } from './../store';
@@ -37,37 +37,20 @@ describe('calculateLeaderBoard', () => {
     funcs.getUserData.restore();
   });
 
-  test('order users by ranking', () => {
-    const expectedResult = {
-      xyz: {
-        uid: 'xyz',
-        rank: 1,
-      },
-      abc: {
-        uid: 'abc',
-        rank: 2,
-      },
-    };
-
-    const model = calculateLeaderBoard();
-
-    expect(model).toEqual(expectedResult);
-  });
-
   describe('calculateLeaderBoardData', () => {
     test('order users by ranking', () => {
-      const users = {
-        abc: {
+      const users = [
+        {
           uid: 'abc',
           rank: 2,
           eloRating: 800,
         },
-        xyz: {
+        {
           uid: 'xyz',
           rank: 1,
           eloRating: 1000,
         },
-      };
+      ];
       const expectedResult = {
         [`rankings/${startOfWeek.getTime()}/abc`]: {
           eloRating: 800,

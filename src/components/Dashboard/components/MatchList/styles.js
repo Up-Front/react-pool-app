@@ -1,17 +1,17 @@
 import styled, { injectGlobal } from 'styled-components';
 
 injectGlobal`
-  .fade-enter {
+  .remove-enter {
     max-height: 0;
   }
-  .fade-enter-active {
+  .remove-enter-active {
     max-height: 100px;
     transition: all 500ms ease-in;
   }
-  .fade-exit {
+  .remove-exit {
     max-height: 100px;
   }
-  .fade-exit-active {
+  .remove-exit-active {
     max-height: 0;
     transition: all 500ms ease-in;
   }

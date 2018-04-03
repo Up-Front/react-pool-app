@@ -30,16 +30,16 @@ const EnrichCompetitors = Component => {
   };
   return compose(
     firebaseConnect(props => [
-      { path: 'presence' },
       {
         path: 'rankings',
         queryParams: ['orderByKey', 'limitToLast=2'],
       },
+      { path: 'presence' },
     ]),
     connect(({ firebase }) => {
       return {
-        presence: firebase.data.presence || {},
         rankings: firebase.ordered.rankings,
+        presence: firebase.data.presence || {},
       };
     })
   )(BaseComponent);
