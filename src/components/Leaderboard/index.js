@@ -24,39 +24,54 @@ class Leaderboard extends Component {
     // https://github.com/prescottprue/react-redux-firebase/issues/368#issuecomment-357917044
     this.props.firebase.watchEvent('value', `/users`);
 
-    this.checkChangedUsers();
-
     if (this.animationRef) {
       this.animationRef.addEventListener('transitionend', this.animationDone);
     }
   }
-
-  checkChangedUsers = () => {
-    const newUsersRef = database.ref('/users');
-    newUsersRef.on('child_changed', snapshot => {
-      this.enriched = true;
-    });
-  };
 
   componentWillUnmount() {
     this.animationRef.removeEventListener('transitionend', this.animationDone);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.users instanceof Array) {
-      if (this.enriched) {
-        this.enriched = false;
-        const removeAnimationUsers = this.props.users.filter(user => {
-          const prevUser = this.getPrevUser(user, nextProps.users);
-          return this.isChanged(user, prevUser);
-        });
+    console.log('staet', this.state.changedState);
+    if (
+      nextProps.users instanceof Array &&
+      (!this.state.removeAnimationUsers.length &&
+        !this.state.addAnimationUsers.length) &&
+      this.isEnrichedData(nextProps.users)
+    ) {
+      const removeAnimationUsers = nextProps.users.filter(user => {
+        const prevUser = this.getPrevUser(user, this.props.users);
+        return this.isChanged(user, prevUser);
+      });
+
+      const eloChangedUsers = nextProps.users.filter(user => {
+        const prevUser = this.getPrevUser(user, this.props.users);
+        return this.isEloChanged(user, prevUser);
+      });
+
+      if (eloChangedUsers.length) {
         this.setState({
-          prevUsers: this.props.users,
+          changedState: true,
+        });
+      }
+
+      console.log('next', nextProps);
+      console.log('changes', removeAnimationUsers);
+      console.log('elo', eloChangedUsers);
+
+      if (removeAnimationUsers.length) {
+        console.log(1);
+        this.setState({
+          users: this.props.users,
           nextUsers: nextProps.users,
+          changedState: true,
           removeAnimationUsers,
           addAnimationUsers: [],
         });
-      } else {
+      } else if (!this.state.changedState && !eloChangedUsers.length) {
+        console.log(4);
         this.setState({
           users: nextProps.users,
         });
@@ -64,11 +79,22 @@ class Leaderboard extends Component {
     }
   }
 
+  isEnrichedData = users => {
+    return users.length && users[0].currentRanking.ranking;
+  };
+
+  isEloChanged = (user, prevUser) => {
+    return prevUser && prevUser.eloRating !== user.eloRating;
+  };
+
   isChanged = (user, prevUser) => {
+    if (!prevUser.currentRanking.eloRating) return;
     return (
       prevUser &&
-      //user.rank !== prevUser.rank &&
-      user.eloRating !== prevUser.eloRating
+      prevUser.currentRanking &&
+      user.currentRanking &&
+      user.currentRanking.eloRating !== prevUser.currentRanking.eloRating &&
+      user.currentRanking.ranking !== prevUser.currentRanking.ranking
     );
   };
 
@@ -83,29 +109,34 @@ class Leaderboard extends Component {
     let newRemoveAnimationUsers = [];
     let newAddAnimationUsers = [];
 
-    const removeUser = this.state.removeAnimationUsers
-      .filter(rUser => rUser.uid === uid)
-      .shift();
-    const addUser = this.state.addAnimationUsers
-      .filter(aUser => aUser.uid === uid)
-      .shift();
+    if (this.state.removeAnimationUsers.length) {
+      const removeUser = this.state.removeAnimationUsers
+        .filter(rUser => rUser.uid === uid)
+        .shift();
 
-    if (removeUser) {
-      newRemoveAnimationUsers = this.state.removeAnimationUsers.filter(
-        rUser => rUser.uid !== uid
-      );
-      newAddAnimationUsers = this.state.addAnimationUsers.slice();
-      newAddAnimationUsers.push(removeUser);
-      this.setState({
-        removeAnimationUsers: newRemoveAnimationUsers,
-        addAnimationUsers: newAddAnimationUsers,
-      });
-    } else if (addUser) {
-      this.setState({
-        users: this.props.users,
-      });
+      if (removeUser) {
+        newRemoveAnimationUsers = this.state.removeAnimationUsers.filter(
+          rUser => rUser.uid !== uid
+        );
+        newAddAnimationUsers = this.state.addAnimationUsers.slice();
+        newAddAnimationUsers.push(removeUser);
+        this.setState({
+          removeAnimationUsers: newRemoveAnimationUsers,
+          addAnimationUsers: newAddAnimationUsers,
+        });
+      }
 
-      setTimeout(() => {
+      if (!newRemoveAnimationUsers.length) {
+        this.setState({
+          users: this.state.nextUsers,
+          changedState: false,
+        });
+      }
+    } else if (this.state.addAnimationUsers.length) {
+      const addUser = this.state.addAnimationUsers
+        .filter(aUser => aUser.uid === uid)
+        .shift();
+      if (addUser) {
         newAddAnimationUsers = this.state.addAnimationUsers.filter(
           aUser => aUser.uid !== uid
         );
@@ -113,7 +144,11 @@ class Leaderboard extends Component {
         this.setState({
           addAnimationUsers: newAddAnimationUsers,
         });
-      }, 0);
+      }
+    } else {
+      this.setState({
+        changedState: false,
+      });
     }
   };
 
@@ -148,10 +183,17 @@ class Leaderboard extends Component {
 export const LeaderboardTest = Leaderboard;
 
 export default compose(
-  firebaseConnect(props => [{ path: '/users' }]),
+  firebaseConnect(props => [
+    { path: '/users' },
+    {
+      path: 'rankings',
+      queryParams: ['orderByKey', 'limitToLast=2'],
+    },
+  ]),
   connect(({ firebase }) => {
     return {
       users: firebase.ordered.users,
+      rankings: firebase.ordered.rankings,
     };
   })
 )(EnrichCompetitors(Leaderboard));

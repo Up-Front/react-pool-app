@@ -34,7 +34,7 @@ ReactWrapper {
             "_debugOwner": [Circular],
             "_debugSource": Object {
               "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-              "lineNumber": 147,
+              "lineNumber": 149,
             },
             "alternate": null,
             "child": null,
@@ -188,7 +188,7 @@ ReactWrapper {
               "_debugOwner": [Circular],
               "_debugSource": Object {
                 "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-                "lineNumber": 147,
+                "lineNumber": 149,
               },
               "alternate": null,
               "child": null,
@@ -314,7 +314,7 @@ ReactWrapper {
           "_debugOwner": [Circular],
           "_debugSource": Object {
             "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-            "lineNumber": 147,
+            "lineNumber": 149,
           },
           "alternate": null,
           "child": null,
@@ -349,7 +349,7 @@ ReactWrapper {
           "_debugOwner": [Circular],
           "_debugSource": Object {
             "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-            "lineNumber": 147,
+            "lineNumber": 149,
           },
           "alternate": null,
           "child": null,
@@ -384,7 +384,7 @@ ReactWrapper {
           "_debugOwner": [Circular],
           "_debugSource": Object {
             "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-            "lineNumber": 147,
+            "lineNumber": 149,
           },
           "alternate": null,
           "child": null,
@@ -441,7 +441,7 @@ ReactWrapper {
             "_debugOwner": [Circular],
             "_debugSource": Object {
               "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-              "lineNumber": 147,
+              "lineNumber": 149,
             },
             "alternate": null,
             "child": null,
@@ -595,7 +595,7 @@ ReactWrapper {
               "_debugOwner": [Circular],
               "_debugSource": Object {
                 "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-                "lineNumber": 147,
+                "lineNumber": 149,
               },
               "alternate": null,
               "child": null,
@@ -722,10 +722,10 @@ ReactWrapper {
       "_reactInternalInstance": Object {},
       "animationDone": [Function],
       "animationRef": <div />,
-      "checkChangedUsers": [Function],
       "context": Object {},
       "getPrevUser": [Function],
       "isChanged": [Function],
+      "isEnrichedData": [Function],
       "props": Object {
         "firebase": [Function],
       },
@@ -785,7 +785,7 @@ ReactWrapper {
               "_debugOwner": [Circular],
               "_debugSource": Object {
                 "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-                "lineNumber": 147,
+                "lineNumber": 149,
               },
               "alternate": null,
               "child": null,
@@ -939,7 +939,7 @@ ReactWrapper {
                 "_debugOwner": [Circular],
                 "_debugSource": Object {
                   "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-                  "lineNumber": 147,
+                  "lineNumber": 149,
                 },
                 "alternate": null,
                 "child": null,
@@ -1065,7 +1065,7 @@ ReactWrapper {
             "_debugOwner": [Circular],
             "_debugSource": Object {
               "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-              "lineNumber": 147,
+              "lineNumber": 149,
             },
             "alternate": null,
             "child": null,
@@ -1100,7 +1100,7 @@ ReactWrapper {
             "_debugOwner": [Circular],
             "_debugSource": Object {
               "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-              "lineNumber": 147,
+              "lineNumber": 149,
             },
             "alternate": null,
             "child": null,
@@ -1135,7 +1135,7 @@ ReactWrapper {
             "_debugOwner": [Circular],
             "_debugSource": Object {
               "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-              "lineNumber": 147,
+              "lineNumber": 149,
             },
             "alternate": null,
             "child": null,
@@ -1192,7 +1192,7 @@ ReactWrapper {
               "_debugOwner": [Circular],
               "_debugSource": Object {
                 "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-                "lineNumber": 147,
+                "lineNumber": 149,
               },
               "alternate": null,
               "child": null,
@@ -1346,7 +1346,7 @@ ReactWrapper {
                 "_debugOwner": [Circular],
                 "_debugSource": Object {
                   "fileName": "/Users/sstraatemans/Documents/frontmen/react-pool-app/src/components/Leaderboard/index.js",
-                  "lineNumber": 147,
+                  "lineNumber": 149,
                 },
                 "alternate": null,
                 "child": null,
@@ -1473,10 +1473,10 @@ ReactWrapper {
         "_reactInternalInstance": Object {},
         "animationDone": [Function],
         "animationRef": <div />,
-        "checkChangedUsers": [Function],
         "context": Object {},
         "getPrevUser": [Function],
         "isChanged": [Function],
+        "isEnrichedData": [Function],
         "props": Object {
           "firebase": [Function],
         },

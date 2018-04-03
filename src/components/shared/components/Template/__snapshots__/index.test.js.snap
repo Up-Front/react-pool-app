@@ -20,7 +20,6 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <FirebaseConnect(Connect(AlertWrapper)) />,
         <styled.header>
           <Link
                     replace={false}
@@ -60,15 +59,6 @@ ShallowWrapper {
     },
     "ref": null,
     "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
       Object {
         "instance": null,
         "key": undefined,
@@ -230,7 +220,6 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <FirebaseConnect(Connect(AlertWrapper)) />,
           <styled.header>
             <Link
                         replace={false}
@@ -270,15 +259,6 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
         Object {
           "instance": null,
           "key": undefined,

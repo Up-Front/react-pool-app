@@ -29,16 +29,9 @@ const EnrichCompetitors = Component => {
     return <Component {...newProps} />;
   };
   return compose(
-    firebaseConnect(props => [
-      {
-        path: 'rankings',
-        queryParams: ['orderByKey', 'limitToLast=2'],
-      },
-      { path: 'presence' },
-    ]),
+    firebaseConnect(props => [{ path: 'presence' }]),
     connect(({ firebase }) => {
       return {
-        rankings: firebase.ordered.rankings,
         presence: firebase.data.presence || {},
       };
     })

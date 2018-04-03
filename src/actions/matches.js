@@ -1,7 +1,7 @@
-import store, { database } from './../store';
+import { database } from './../store';
 import matchModel from './../models/matches';
 import constants from './../components/shared/constants';
-import { calculateLeaderBoardData } from './leaderboard';
+import { calculateLeaderBoard } from './leaderboard';
 import { increaseStreak } from './competitors';
 
 // set match
@@ -28,12 +28,11 @@ export const addMatch = users => {
       console.log('Error updating data:', error);
     }
   });
-  return matchId;
 };
 
 // set the winner of the match
 // also set the winner/loser with the competitor matches
-export const declareWinner = (matchId, match, winner, declarer, users) => {
+export const declareWinner = (matchId, match, winner, declarer) => {
   const ref = database.ref('/');
   let updateData = {};
   const winners = Object.assign({}, match.winners, {
@@ -53,20 +52,12 @@ export const declareWinner = (matchId, match, winner, declarer, users) => {
     );
   }
 
-  //update the elorating of the users
-  users = users.map(user => {
-    console.log(updateData);
-    if (updateData && updateData[`users/${user.uid}/eloRating`]) {
-      console.log(11);
-      user.eloRating = updateData[`users/${user.uid}/eloRating`];
-    }
-    return user;
-  });
-
-  updateData = Object.assign({}, updateData, calculateLeaderBoardData(users));
   return ref.update(updateData, function(error) {
     if (error) {
       console.log('Error updating data:', error);
+    }
+    if (match.winner) {
+      return calculateLeaderBoard();
     }
   });
 };
@@ -126,6 +117,7 @@ export const updateWinnerData = (matchId, match) => {
       [`matches/${matchId}/finishedAt`]: match.finishedAt,
     }
   );
+
   return updateData;
 };
 

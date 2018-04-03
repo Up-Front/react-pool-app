@@ -1,4 +1,5 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import enrichMiddleware from './enrichMiddleware';
 import rootReducer from './reducer';
 import firebase from 'firebase';
 import config from './config';
@@ -17,6 +18,7 @@ export default function configureStore(initialState) {
         presence: 'presence', // where list of online users is stored in database
         sessions: 'sessions',
       }),
+      applyMiddleware(enrichMiddleware),
       // Redux Devtools
       typeof window === 'object' &&
       typeof window.devToolsExtension !== 'undefined'

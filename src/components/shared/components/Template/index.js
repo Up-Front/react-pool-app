@@ -8,7 +8,6 @@ import { logoutUser } from './../../../../actions/auth';
 
 const Template = props => (
   <Wrapper>
-    <AlertWrapper />
     <Header>
       <Link to="/">
         <HeaderLogo role="banner">FrontMen</HeaderLogo>

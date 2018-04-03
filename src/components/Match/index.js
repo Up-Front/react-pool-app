@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import constants from './../shared/constants';
 import Competitor from './../shared/components/Competitor';
 import SwipeDelete from './../shared/components/SwipeDelete';
-import EnrichCompetitors from './../shared/components/EnrichCompetitors';
 import { declareWinner, removeMatch } from './../../actions/matches';
 import { calcHead2Head } from './../../actions/competitors';
 import { MatchWrapper, Versus, Head2Head } from './styles';
@@ -21,8 +17,7 @@ class Match extends Component {
       this.props.matchId,
       this.props.match,
       competitor,
-      this.props.auth,
-      this.props.users
+      this.props.auth
     );
   };
 
@@ -133,12 +128,4 @@ Match.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-export const MatchTest = Match;
-
-export default compose(
-  firebaseConnect(props => [{ path: 'users' }, { path: 'auth' }]),
-  connect((state, props) => ({
-    users: state.firebase.ordered.users,
-    auth: state.firebase.auth,
-  }))
-)(EnrichCompetitors(Match));
+export default Match;
