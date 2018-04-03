@@ -12,7 +12,7 @@ class Leaderboard extends Component {
     super();
     this.state = {
       users: null,
-      prevUsers: [],
+      nextUsers: [],
       removeAnimationUsers: [],
       addAnimationUsers: [],
     };
@@ -46,20 +46,8 @@ class Leaderboard extends Component {
         return this.isChanged(user, prevUser);
       });
 
-      const eloChangedUsers = nextProps.users.filter(user => {
-        const prevUser = this.getPrevUser(user, this.props.users);
-        return this.isEloChanged(user, prevUser);
-      });
-
-      if (eloChangedUsers.length) {
-        this.setState({
-          changedState: true,
-        });
-      }
-
       console.log('next', nextProps);
       console.log('changes', removeAnimationUsers);
-      console.log('elo', eloChangedUsers);
 
       if (removeAnimationUsers.length) {
         console.log(1);
@@ -70,7 +58,7 @@ class Leaderboard extends Component {
           removeAnimationUsers,
           addAnimationUsers: [],
         });
-      } else if (!this.state.changedState && !eloChangedUsers.length) {
+      } else if (!this.state.changedState) {
         console.log(4);
         this.setState({
           users: nextProps.users,
@@ -81,10 +69,6 @@ class Leaderboard extends Component {
 
   isEnrichedData = users => {
     return users.length && users[0].currentRanking.ranking;
-  };
-
-  isEloChanged = (user, prevUser) => {
-    return prevUser && prevUser.eloRating !== user.eloRating;
   };
 
   isChanged = (user, prevUser) => {
@@ -109,10 +93,15 @@ class Leaderboard extends Component {
     let newRemoveAnimationUsers = [];
     let newAddAnimationUsers = [];
 
-    if (this.state.removeAnimationUsers.length) {
-      const removeUser = this.state.removeAnimationUsers
-        .filter(rUser => rUser.uid === uid)
-        .shift();
+    const removeUser = this.state.removeAnimationUsers
+      .filter(rUser => rUser.uid === uid)
+      .shift();
+    const addUser = this.state.addAnimationUsers
+      .filter(aUser => aUser.uid === uid)
+      .shift();
+
+    if (removeUser) {
+      console.log('remove');
 
       if (removeUser) {
         newRemoveAnimationUsers = this.state.removeAnimationUsers.filter(
@@ -129,13 +118,12 @@ class Leaderboard extends Component {
       if (!newRemoveAnimationUsers.length) {
         this.setState({
           users: this.state.nextUsers,
-          changedState: false,
+          nextUsers: [],
         });
       }
-    } else if (this.state.addAnimationUsers.length) {
-      const addUser = this.state.addAnimationUsers
-        .filter(aUser => aUser.uid === uid)
-        .shift();
+    } else if (addUser) {
+      console.log('add');
+
       if (addUser) {
         newAddAnimationUsers = this.state.addAnimationUsers.filter(
           aUser => aUser.uid !== uid
@@ -145,7 +133,8 @@ class Leaderboard extends Component {
           addAnimationUsers: newAddAnimationUsers,
         });
       }
-    } else {
+    } else if (!newAddAnimationUsers.length) {
+      console.log('done');
       this.setState({
         changedState: false,
       });
@@ -156,7 +145,9 @@ class Leaderboard extends Component {
     let users;
     if (this.state.users) {
       users = this.state.users
-        .sort((a, b) => -(a.eloRating - b.eloRating))
+        .sort(
+          (a, b) => -(a.currentRanking.eloRating - b.currentRanking.eloRating)
+        )
         .map((user, key) => {
           const prevUser = this.getPrevUser(
             user,
