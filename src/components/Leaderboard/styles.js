@@ -2,21 +2,21 @@ import styled from 'styled-components';
 
 export const ListUser = styled.div`
   transform: scale(1);
-  transition: all 500ms ease-in;
+  transition: transform 1500ms ease-in;
   ${props =>
     props.changedRank
       ? `
+      transition: transform 1500ms ease-in;
       transform: scale(0); 
-  background-color: green;
+
   `
       : ``};
 
   ${props =>
     props.showChangedRank
       ? `
- 
-  transform: scale(0);
-  background-color: yellow;
+      transition: transform 1500ms ease-in;
+  transform: scale(1);
   
   `
       : ``};

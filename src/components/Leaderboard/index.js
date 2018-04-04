@@ -34,23 +34,23 @@ class Leaderboard extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('staet', this.state.changedState);
     if (
       nextProps.users instanceof Array &&
       (!this.state.removeAnimationUsers.length &&
         !this.state.addAnimationUsers.length) &&
+      this.isEnrichedData(nextProps.users) &&
       this.isEnrichedData(nextProps.users)
     ) {
       const removeAnimationUsers = nextProps.users.filter(user => {
+        console.log('check users', this.props.users);
         const prevUser = this.getPrevUser(user, this.props.users);
+        console.log('asdasd', prevUser);
         return this.isChanged(user, prevUser);
       });
 
-      console.log('next', nextProps);
-      console.log('changes', removeAnimationUsers);
-
-      if (removeAnimationUsers.length) {
-        console.log(1);
+      console.log(nextProps.users, this.props, removeAnimationUsers);
+      console.log('length', removeAnimationUsers.length);
+      if (removeAnimationUsers.length > 0) {
         this.setState({
           users: this.props.users,
           nextUsers: nextProps.users,
@@ -58,10 +58,11 @@ class Leaderboard extends Component {
           removeAnimationUsers,
           addAnimationUsers: [],
         });
-      } else if (!this.state.changedState) {
+      } else {
         console.log(4);
         this.setState({
           users: nextProps.users,
+          changedState: false
         });
       }
     }
@@ -72,24 +73,27 @@ class Leaderboard extends Component {
   };
 
   isChanged = (user, prevUser) => {
-    if (!prevUser.currentRanking.eloRating) return;
-    return (
-      prevUser &&
-      prevUser.currentRanking &&
-      user.currentRanking &&
-      user.currentRanking.eloRating !== prevUser.currentRanking.eloRating &&
-      user.currentRanking.ranking !== prevUser.currentRanking.ranking
-    );
+ 
+      return (
+        prevUser &&
+        prevUser.currentRanking &&
+        prevUser.currentRanking.ranking &&
+        user.currentRanking &&
+        user.currentRanking.eloRating !== prevUser.currentRanking.eloRating &&
+        user.currentRanking.ranking !== prevUser.currentRanking.ranking
+      );
+ 
   };
 
   getPrevUser = (user, prevUsers) => {
-    if (!prevUsers) return;
+    if (prevUsers instanceof Object && !prevUsers.length) return;
     return prevUsers.filter(prevUser => prevUser.uid === user.uid).shift();
   };
 
   animationDone = event => {
     console.log('animationend');
     const uid = event.target.getAttribute('data-uid');
+    console.log(uid);
     let newRemoveAnimationUsers = [];
     let newAddAnimationUsers = [];
 
@@ -99,21 +103,18 @@ class Leaderboard extends Component {
     const addUser = this.state.addAnimationUsers
       .filter(aUser => aUser.uid === uid)
       .shift();
-
+    console.log(addUser);
     if (removeUser) {
       console.log('remove');
-
-      if (removeUser) {
-        newRemoveAnimationUsers = this.state.removeAnimationUsers.filter(
-          rUser => rUser.uid !== uid
-        );
-        newAddAnimationUsers = this.state.addAnimationUsers.slice();
-        newAddAnimationUsers.push(removeUser);
-        this.setState({
-          removeAnimationUsers: newRemoveAnimationUsers,
-          addAnimationUsers: newAddAnimationUsers,
-        });
-      }
+      newRemoveAnimationUsers = this.state.removeAnimationUsers.filter(
+        rUser => rUser.uid !== uid
+      );
+      newAddAnimationUsers = this.state.addAnimationUsers.slice();
+      newAddAnimationUsers.push(removeUser);
+      this.setState({
+        removeAnimationUsers: newRemoveAnimationUsers,
+        addAnimationUsers: newAddAnimationUsers,
+      });
 
       if (!newRemoveAnimationUsers.length) {
         this.setState({
@@ -128,13 +129,16 @@ class Leaderboard extends Component {
         newAddAnimationUsers = this.state.addAnimationUsers.filter(
           aUser => aUser.uid !== uid
         );
+        setTimeout(() => {
 
-        this.setState({
-          addAnimationUsers: newAddAnimationUsers,
-        });
+          this.setState({
+            addAnimationUsers: newAddAnimationUsers,
+          });
+        }, 500)
       }
     } else if (!newAddAnimationUsers.length) {
       console.log('done');
+
       this.setState({
         changedState: false,
       });
@@ -154,7 +158,7 @@ class Leaderboard extends Component {
             this.state.removeAnimationUsers
           );
           const nextUser = this.getPrevUser(user, this.state.addAnimationUsers);
-
+          console.log('nextuser', nextUser);
           return (
             <ListUser
               key={user.uid}
