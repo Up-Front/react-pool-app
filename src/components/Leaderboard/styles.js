@@ -16,7 +16,7 @@ export const ListUser = styled.div`
     props.showChangedRank
       ? `
       transition: transform 1500ms ease-in;
-  transform: scale(1);
+      transform: scale(1);
   
   `
       : ``};

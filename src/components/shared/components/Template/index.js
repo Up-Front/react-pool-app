@@ -3,7 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import Dashboard from './../../../Dashboard';
 import Leaderboard from './../../../Leaderboard';
 import AlertWrapper from './../../../AlertWrapper';
-import { Wrapper, Header, FullScreen, HeaderLogo } from './styles';
+import { Wrapper, Header, FullScreen, HeaderLogo, HeaderLogout } from './styles';
 import { logoutUser } from './../../../../actions/auth';
 
 const Template = props => (
@@ -12,7 +12,7 @@ const Template = props => (
       <Link to="/">
         <HeaderLogo role="banner">FrontMen</HeaderLogo>
       </Link>
-      <button onClick={logoutUser}>logout</button>
+      <HeaderLogout onClick={logoutUser}>logout</HeaderLogout>
       <Link to="/leaderboard">leaderboard</Link>
     </Header>
     <FullScreen>

@@ -43,6 +43,10 @@ export const HeaderLogo = styled.h1`
   cursor: pointer;
 `;
 
+export const HeaderLogout = styled.button`
+  
+`;
+
 export const FullScreen = styled.section`
   flex: 1;
   width: 100%;

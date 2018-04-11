@@ -6,11 +6,18 @@ export const RankingWrapper = styled.div`
 `;
 
 export const RankMovement = styled.span`
-  font-size: 16px;
+  position: relative;
+  top: -3px;
+  padding: 0 5px;
+  font-size: ${props => props.theme.smallFont};
   font-weight: normal;
+  color: rgba(255,255,255,0.5);
 `;
 
 export const RankMovementDirection = styled.span`
+  position: relative;
+  top: 4px;
+  margin-right: 2px;
   display: inline-block;
   opacity: ${props =>
     props.movement === 0 || props.movement === undefined ? '0' : '1'};

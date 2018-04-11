@@ -2,6 +2,7 @@
 export const theme = {
   fontColor: '#FFF',
   fontSize: '16px',
+  smallFont: '12px',
   background: '#243949',
   borderColor: '#FFF',
   backgroundImage: 'linear-gradient(to top, #243949 70%, #517fa4 100%)',
