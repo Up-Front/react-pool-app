@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import {MobileWrapper} from './../shared/styles';
 
 export const Login = styled.div`
   display: flex;
+  padding-top: 100px;
   flex-direction: column;
   justify-items: center;
   align-items: center;
@@ -11,7 +13,6 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   padding: 12px 12px;
-  margin: 10px;
   font-size: 120%;
   cursor: pointer;
   border: 0 none;
@@ -20,14 +21,14 @@ export const Button = styled.button`
   background: rgba(255, 255, 255, 0.5);
 
   :hover {
-    background-color: #517fa4;
+    background: rgba(255, 255, 255, 0.7);
     transition: all 150ms linear;
   }
 `;
 
-export const LoginWrapper = styled.div`
-background: url(background_small.jpg) no-repeat center center fixed; 
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
+export const LoginWrapper = styled(MobileWrapper)`
+background: url(background_small.jpg) no-repeat center center; 
+background-size: 100%;
+  width: 100%;
+  height: 100%;
 `;

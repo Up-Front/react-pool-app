@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import {MobileWrapper} from './../../../shared/styles';
 
-export const Wrapper = styled.section`
+export const Wrapper = styled(MobileWrapper)`
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;

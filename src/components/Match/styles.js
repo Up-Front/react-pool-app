@@ -17,7 +17,7 @@ export const MatchWrapper = styled.li`
 `;
 
 export const Versus = styled.div`
-  width: 50px;
+  width: 100px;
   text-align: center;
   font-weight: bold;
   font-size: 24px;
