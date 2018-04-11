@@ -16,9 +16,7 @@ const Modal = props => {
   return (
     <ModalWrapper open={props.open}>
       <ModalHeader>
-        <ModalRemoveButton className="removeButton" onClick={handleRemoveModal}>
-          x
-        </ModalRemoveButton>
+        <ModalRemoveButton className="removeButton" onClick={handleRemoveModal} aria-label="close modal"></ModalRemoveButton>
       </ModalHeader>
       <ModalBody>{props.children}</ModalBody>
       <ModalFooter className="footer">{props.footer}</ModalFooter>

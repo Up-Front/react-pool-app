@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import {MobileWrapper} from './../../../shared/styles';
+import { Link } from 'react-router-dom';
+import { MobileWrapper } from './../../../shared/styles';
+import { iconStyle } from './../../../shared/styles';
 
 export const Wrapper = styled(MobileWrapper)`
   position: relative;
@@ -20,7 +22,7 @@ export const Wrapper = styled(MobileWrapper)`
 
 export const Header = styled.header`
   display: flex;
-  justify-content: 'space-between';
+  justify-content: 'space-around';
   align-items: center;
   flex-direction: 'row';
   padding: 10px;
@@ -33,19 +35,33 @@ export const Header = styled.header`
   }
 `;
 
-export const HeaderLogo = styled.h1`
-  display: inline-block;
-  margin: 5px 0;
-  width: 40px;
-  height: 40px;
-  text-indent: -3333px;
-  background: transparent url(/logo.svg) no-repeat scroll 0% 0%;
-  cursor: pointer;
+export const HeaderButton = styled.button`
+  flex: 1;
+  border: 0;
+  background-color: transparent;
+  color: ${props => props.theme.fontColor};
+  &:hover{
+    opacity: .5;
+    cursor: pointer;
+  }
+  &:before {
+    ${props => iconStyle(props.icon) }
+  }
 `;
 
-export const HeaderLogout = styled.button`
-  
+export const HeaderLink = styled(Link)`
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  &:hover{
+    opacity: .5;
+    cursor: pointer;
+  }
+  &:before {
+    ${props => iconStyle(props.icon) }
+  }
 `;
+
 
 export const FullScreen = styled.section`
   flex: 1;

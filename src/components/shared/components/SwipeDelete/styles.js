@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { iconStyle } from './../../../shared/styles';
 
 export const SwipeWrapper = styled.div`
   position: relative;
@@ -22,20 +23,20 @@ export const DeleteLayer = styled.div`
 
 export const DeleteLayerLeft = styled.div`
   flex: 1;
-  color: white;
+  color: rgba(255,255,255,0.7);
 
-  & path {
-    fill: white;
+  &:before {
+    ${iconStyle('trash')}
   }
 `;
 
 export const DeleteLayerRight = styled.div`
   flex: 1;
   text-align: right;
-  color: white;
+  color: rgba(255,255,255,0.7);
 
-  & path {
-    fill: white;
+  &:before {
+    ${props => iconStyle('trash')}
   }
 `;
 

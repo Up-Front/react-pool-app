@@ -3,17 +3,16 @@ import { Route, Link, Switch } from 'react-router-dom';
 import Dashboard from './../../../Dashboard';
 import Leaderboard from './../../../Leaderboard';
 import AlertWrapper from './../../../AlertWrapper';
-import { Wrapper, Header, FullScreen, HeaderLogo, HeaderLogout } from './styles';
+import { Wrapper, Header, FullScreen, HeaderLogo, HeaderButton, HeaderLink, Icon } from './styles';
 import { logoutUser } from './../../../../actions/auth';
 
 const Template = props => (
   <Wrapper>
     <Header>
-      <Link to="/">
-        <HeaderLogo role="banner">FrontMen</HeaderLogo>
-      </Link>
-      <HeaderLogout onClick={logoutUser}>logout</HeaderLogout>
-      <Link to="/leaderboard">leaderboard</Link>
+      <HeaderLink icon="home" to="/" arai-label="Frontmen">
+      </HeaderLink>
+      <HeaderLink to="/leaderboard" icon="trophy" aria-label="Leaderboard"></HeaderLink>
+      <HeaderButton onClick={logoutUser} icon="sign-out-alt" aria-label="Logout"></HeaderButton>
     </Header>
     <FullScreen>
       <Switch>
