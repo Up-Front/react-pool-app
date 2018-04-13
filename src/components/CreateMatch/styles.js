@@ -6,6 +6,9 @@ export const SelectOpponent = styled.section`
   position: absolute;
   z-index: 100;
   width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: ${props => (props.show ? 'block' : 'none')};
 `;
 
 export const FloatButton = styled.button`
@@ -47,6 +50,6 @@ export const SearchClear = styled.button`
   cursor: pointer;
   background-color: transparent;
   &:before {
-    ${iconStyle('times')}
+    ${iconStyle('times')};
   }
 `;
