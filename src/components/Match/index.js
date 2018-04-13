@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import constants from './../shared/constants';
 import Competitor from './../shared/components/Competitor';
+import Head2Head from './../shared/components/Head2Head';
 import SwipeDelete from './../shared/components/SwipeDelete';
 import { declareWinner, removeMatch } from './../../actions/matches';
-import { calcHead2Head } from './../../actions/competitors';
-import { MatchWrapper, Versus, Head2Head } from './styles';
+import { MatchWrapper, Versus } from './styles';
 
 class Match extends Component {
   /**
@@ -96,7 +96,7 @@ class Match extends Component {
         {this.renderCompetitor(competitorA, constants.ALIGNLEFT)}
         <Versus>
           vs
-          <Head2Head>{calcHead2Head(competitorA, competitorB)}</Head2Head>
+          <Head2Head competitorA={competitorA} competitorB={competitorB} />
         </Versus>
         {this.renderCompetitor(competitorB, constants.ALIGNRIGHT)}
       </MatchWrapper>

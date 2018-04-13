@@ -17,7 +17,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-bwzfXH itamSO",
+      "className": "sc-ifAKCX ktqLKl",
     },
     "ref": null,
     "rendered": null,
@@ -29,7 +29,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-bwzfXH itamSO",
+        "className": "sc-ifAKCX ktqLKl",
       },
       "ref": null,
       "rendered": null,
@@ -63,7 +63,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-bdVaJa hKjQiF",
+      "className": "sc-bxivhb fKlWIm",
     },
     "ref": null,
     "rendered": null,
@@ -75,7 +75,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-bdVaJa hKjQiF",
+        "className": "sc-bxivhb fKlWIm",
       },
       "ref": null,
       "rendered": null,
@@ -96,7 +96,7 @@ exports[`LoginWrapper component renders normally 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <styled.div />,
+  Symbol(enzyme.__unrendered__): <Styled(styled.div) />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -107,25 +107,27 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
-      "className": "sc-htpNat gIzkQu",
+      "className": "sc-EHOje gBquJN",
+      "innerRef": undefined,
     },
     "ref": null,
     "rendered": null,
-    "type": "div",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
-        "className": "sc-htpNat gIzkQu",
+        "className": "sc-EHOje gBquJN",
+        "innerRef": undefined,
       },
       "ref": null,
       "rendered": null,
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

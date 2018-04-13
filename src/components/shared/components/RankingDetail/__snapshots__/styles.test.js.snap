@@ -19,7 +19,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-htpNat dcXKcN",
+      "className": "sc-htpNat kRIWDR",
     },
     "ref": null,
     "rendered": null,
@@ -31,7 +31,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-htpNat dcXKcN",
+        "className": "sc-htpNat kRIWDR",
       },
       "ref": null,
       "rendered": null,
@@ -67,7 +67,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-htpNat jLcnlU",
+      "className": "sc-htpNat iWcOLv",
     },
     "ref": null,
     "rendered": null,
@@ -79,7 +79,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-htpNat jLcnlU",
+        "className": "sc-htpNat iWcOLv",
       },
       "ref": null,
       "rendered": null,
@@ -113,7 +113,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-htpNat cQAdTY",
+      "className": "sc-htpNat jDWeLZ",
     },
     "ref": null,
     "rendered": null,
@@ -125,7 +125,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-htpNat cQAdTY",
+        "className": "sc-htpNat jDWeLZ",
       },
       "ref": null,
       "rendered": null,

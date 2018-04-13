@@ -8,6 +8,7 @@ export const UserWrapper = styled.div`
   padding: 10px;
   border-bottom: 1px solid ${props => props.theme.borderColor};
   color: ${props => props.theme.fontColor};
+  width: 100%;
 `;
 
 export const UserEloRating = styled.div`

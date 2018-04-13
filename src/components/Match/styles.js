@@ -22,8 +22,3 @@ export const Versus = styled.div`
   font-weight: bold;
   font-size: 24px;
 `;
-
-export const Head2Head = styled.div`
-  font-weight: normal;
-  font-size: 16px;
-`;

@@ -1,22 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { firebaseConnect } from 'react-redux-firebase';
 import { addMatch } from './../../actions/matches';
-import Modal from './../shared/components/Modal';
 import User from './../shared/components/User';
 import EnrichCompetitors from './../shared/components/EnrichCompetitors';
-import { SelectOpponent, FloatButton } from './styles';
-import { Button } from './../shared/styles';
+import { SelectOpponent, SearchField, SearchResult, SearchClear } from './styles';
+import { Button, InputField } from './../shared/styles';
 
 class CreateMatch extends Component {
   initialState = {
     search: '',
     filteredUsers: [],
     selectedOpponent: null,
-    selectedOpponentUid: null,
-    matchCreated: false,
-    openModal: false,
+    selectedOpponentUid: null
   };
   state = this.initialState;
 
@@ -48,67 +45,48 @@ class CreateMatch extends Component {
     });
   };
 
-  showOpponent = () => {
-    if (this.state.selectedOpponent) {
-      return <div>{this.state.selectedOpponent.displayName}</div>;
-    }
+  opponentSelected = () => {
+    return this.state.selectedOpponent;
   };
+  
+  removeOpponent = () => {
+    this.setState(this.initialState);
+  }
 
-  showUser = () => {
-    if (isLoaded(this.props.auth) || !isEmpty(this.props.auth)) {
-      return <div>{this.props.auth.displayName}</div>;
+  showOpponent = () => {
+    if(this.state.selectedOpponent){
+      return (
+        <SearchResult>
+          <User user={this.state.selectedOpponent} ></User>
+          <SearchClear onClick={this.removeOpponent} />
+        </SearchResult>);
     }
-  };
+  }
 
   createMatch = () => {
     addMatch([this.props.auth.uid, this.state.selectedOpponentUid]).then(() => {
-      this.setState({
-        matchCreated: true,
-        openModal: false,
-      });
+      this.setState(this.initialState);
       console.log('match created');
-      this.handleCloseModal();
     });
-  };
-
-  handleOpenModal = () => {
-    this.setState({
-      openModal: true,
-    });
-  };
-
-  handleCloseModal = () => {
-    this.setState(this.initialState);
   };
 
   render() {
     return (
       <Fragment>
-        <FloatButton onClick={this.handleOpenModal} key="FloatButton">
-          +
-        </FloatButton>
-        <Modal
-          open={this.state.openModal ? 'open' : false}
-          closeModal={this.handleCloseModal}
-          key="CreateMatch"
-          footer={
-            <Button
+            <SearchField>
+              { this.showOpponent() }
+              <InputField innerRef={x => this.searchInput = x } 
+                type="text" onChange={this.handleChange}
+                placeholder="Select your victim"
+                value={this.state.search} hide={this.opponentSelected()}/>
+              <Button
+              disabled={!this.opponentSelected()}
               onClick={this.createMatch}
-              disabled={!this.state.selectedOpponent}
             >
               create show down
             </Button>
-          }
-        >
-          <div>
-            {this.showUser()}
-            {this.showOpponent()}
-            <SelectOpponent matchCreated={this.state.matchCreated}>
-              <input
-                onChange={this.handleChange}
-                value={this.state.search}
-                type="text"
-              />
+            </SearchField>
+            <SelectOpponent>
               {this.state.filteredUsers &&
                 this.state.filteredUsers
                   .sort((a, b) => -(a.eloRating - b.eloRating))
@@ -122,17 +100,27 @@ class CreateMatch extends Component {
                     />
                   ))}
             </SelectOpponent>
-          </div>
-        </Modal>
+            
+
       </Fragment>
     );
   }
 }
 
 export default compose(
-  firebaseConnect(props => [{ path: 'users' }, { path: 'auth' }]),
-  connect((state, props) => ({
-    users: state.firebase.ordered.users,
-    auth: state.firebase.auth,
-  }))
+  firebaseConnect(props => [
+    { path: 'users' },
+    {
+      path: 'rankings',
+      queryParams: ['orderByKey', 'limitToLast=2'],
+    },
+    { path: 'auth' }
+  ]),
+  connect(({ firebase }) => {
+    return {
+      users: firebase.ordered.users,
+      rankings: firebase.ordered.rankings,
+      auth: firebase.auth,
+    };
+  })
 )(EnrichCompetitors(CreateMatch));

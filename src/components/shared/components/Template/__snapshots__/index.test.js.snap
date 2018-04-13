@@ -21,27 +21,21 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <styled.header>
-          <Link
-                    replace={false}
+          <Styled(Link)
+                    arai-label="Frontmen"
+                    icon="home"
                     to="/"
-          >
-                    <styled.h1
-                              role="banner"
-                    >
-                              FrontMen
-                    </styled.h1>
-          </Link>
-          <button
-                    onClick={[Function]}
-          >
-                    logout
-          </button>
-          <Link
-                    replace={false}
+          />
+          <Styled(Link)
+                    aria-label="Leaderboard"
+                    icon="trophy"
                     to="/leaderboard"
-          >
-                    leaderboard
-          </Link>
+          />
+          <styled.button
+                    aria-label="Logout"
+                    icon="sign-out-alt"
+                    onClick={[Function]}
+          />
 </styled.header>,
         <styled.section>
           <Switch>
@@ -65,27 +59,21 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <Link
-              replace={false}
+            <Styled(Link)
+              arai-label="Frontmen"
+              icon="home"
               to="/"
->
-              <styled.h1
-                            role="banner"
-              >
-                            FrontMen
-              </styled.h1>
-</Link>,
-            <button
-              onClick={[Function]}
->
-              logout
-</button>,
-            <Link
-              replace={false}
+/>,
+            <Styled(Link)
+              aria-label="Leaderboard"
+              icon="trophy"
               to="/leaderboard"
->
-              leaderboard
-</Link>,
+/>,
+            <styled.button
+              aria-label="Logout"
+              icon="sign-out-alt"
+              onClick={[Function]}
+/>,
           ],
         },
         "ref": null,
@@ -95,52 +83,38 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.h1
-                role="banner"
->
-                FrontMen
-</styled.h1>,
-              "replace": false,
+              "arai-label": "Frontmen",
+              "icon": "home",
               "to": "/",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": "FrontMen",
-                "role": "banner",
-              },
-              "ref": null,
-              "rendered": "FrontMen",
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "logout",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": "logout",
-            "type": "button",
           },
           Object {
             "instance": null,
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": "leaderboard",
-              "replace": false,
+              "aria-label": "Leaderboard",
+              "icon": "trophy",
               "to": "/leaderboard",
             },
             "ref": null,
-            "rendered": "leaderboard",
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Logout",
+              "icon": "sign-out-alt",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": null,
             "type": [Function],
           },
         ],
@@ -221,27 +195,21 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <styled.header>
-            <Link
-                        replace={false}
+            <Styled(Link)
+                        arai-label="Frontmen"
+                        icon="home"
                         to="/"
-            >
-                        <styled.h1
-                                    role="banner"
-                        >
-                                    FrontMen
-                        </styled.h1>
-            </Link>
-            <button
-                        onClick={[Function]}
-            >
-                        logout
-            </button>
-            <Link
-                        replace={false}
+            />
+            <Styled(Link)
+                        aria-label="Leaderboard"
+                        icon="trophy"
                         to="/leaderboard"
-            >
-                        leaderboard
-            </Link>
+            />
+            <styled.button
+                        aria-label="Logout"
+                        icon="sign-out-alt"
+                        onClick={[Function]}
+            />
 </styled.header>,
           <styled.section>
             <Switch>
@@ -265,27 +233,21 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <Link
-                replace={false}
+              <Styled(Link)
+                arai-label="Frontmen"
+                icon="home"
                 to="/"
->
-                <styled.h1
-                                role="banner"
-                >
-                                FrontMen
-                </styled.h1>
-</Link>,
-              <button
-                onClick={[Function]}
->
-                logout
-</button>,
-              <Link
-                replace={false}
+/>,
+              <Styled(Link)
+                aria-label="Leaderboard"
+                icon="trophy"
                 to="/leaderboard"
->
-                leaderboard
-</Link>,
+/>,
+              <styled.button
+                aria-label="Logout"
+                icon="sign-out-alt"
+                onClick={[Function]}
+/>,
             ],
           },
           "ref": null,
@@ -295,52 +257,38 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.h1
-                  role="banner"
->
-                  FrontMen
-</styled.h1>,
-                "replace": false,
+                "arai-label": "Frontmen",
+                "icon": "home",
                 "to": "/",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "FrontMen",
-                  "role": "banner",
-                },
-                "ref": null,
-                "rendered": "FrontMen",
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "logout",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": "logout",
-              "type": "button",
             },
             Object {
               "instance": null,
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": "leaderboard",
-                "replace": false,
+                "aria-label": "Leaderboard",
+                "icon": "trophy",
                 "to": "/leaderboard",
               },
               "ref": null,
-              "rendered": "leaderboard",
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Logout",
+                "icon": "sign-out-alt",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
               "type": [Function],
             },
           ],

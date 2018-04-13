@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import { iconStyle } from './../shared/styles';
 
 export const SelectOpponent = styled.section`
   display: ${props => (props.matchCreated ? 'none' : 'block')};
+  position: absolute;
+  z-index: 100;
+  width: 100%;
 `;
 
 export const FloatButton = styled.button`
@@ -19,4 +23,30 @@ export const FloatButton = styled.button`
   line-height: 24px;
 
   z-index: 998;
+`;
+
+export const SearchField = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-height: 60px;
+  overflow: hidden;
+`;
+
+export const SearchResult = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+export const SearchClear = styled.button`
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  background-color: transparent;
+  &:before {
+    ${iconStyle('times')}
+  }
 `;

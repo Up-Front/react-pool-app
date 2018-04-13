@@ -67,6 +67,7 @@ ShallowWrapper {
             "matchBackgroundColor": "#243949",
             "movementDown": "#da1418",
             "movementUp": "#66b75b",
+            "smallFont": "12px",
             "statusOfflineColor": "orange",
             "statusOnlineColor": "green",
             "statusUnknownColor": "lightgrey",

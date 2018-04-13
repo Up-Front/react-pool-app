@@ -29,6 +29,21 @@ export const Button = styled.button`
   color: ${props => props.theme.buttonFontColor};
   font-size: 16px;
   padding: 5px 10px;
+
+  &:disabled {
+    opacity: .5;
+  }
+`;
+
+export const InputField = styled.input`
+  width: 100%;
+  padding: 0 10px;
+  line-height: 60px;
+  background-color: rgba(255,255,255,.5);
+  font-size: 16px;
+  border: 1px solid ${props => props.theme.borderColor};
+
+  display: ${props => props.hide ? 'none' : 'block'};
 `;
 
 export const MobileWrapper = styled.div`
