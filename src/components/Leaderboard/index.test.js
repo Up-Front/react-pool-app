@@ -27,7 +27,7 @@ describe('Leaderboard component', () => {
     },
   ];
 
-  test('renders without crashing', () => {
+  xtest('renders without crashing', () => {
     const wrapper = mount(<LeaderboardTest firebase={firebase} />);
 
     expect(wrapper).toMatchSnapshot();
