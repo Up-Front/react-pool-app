@@ -61,9 +61,20 @@ ShallowWrapper {
         />
         <styled.div>
                 vs
-                <styled.div>
-                        0-0
-                </styled.div>
+                <Head2Head
+                        competitorA={
+                                Object {
+                                        "displayName": "Bob de Bouwer",
+                                        "uid": 1,
+                                      }
+                        }
+                        competitorB={
+                                Object {
+                                        "displayName": "Asterix",
+                                        "uid": 2,
+                                      }
+                        }
+                />
         </styled.div>
         <Competitor
                 align="right"
@@ -121,9 +132,20 @@ ShallowWrapper {
 />,
           <styled.div>
             vs
-            <styled.div>
-                        0-0
-            </styled.div>
+            <Head2Head
+                        competitorA={
+                                    Object {
+                                                "displayName": "Bob de Bouwer",
+                                                "uid": 1,
+                                              }
+                        }
+                        competitorB={
+                                    Object {
+                                                "displayName": "Asterix",
+                                                "uid": 2,
+                                              }
+                        }
+            />
 </styled.div>,
           <Competitor
             align="right"
@@ -182,9 +204,20 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               "vs",
-              <styled.div>
-                0-0
-</styled.div>,
+              <Head2Head
+                competitorA={
+                                Object {
+                                                "displayName": "Bob de Bouwer",
+                                                "uid": 1,
+                                              }
+                }
+                competitorB={
+                                Object {
+                                                "displayName": "Asterix",
+                                                "uid": 2,
+                                              }
+                }
+/>,
             ],
           },
           "ref": null,
@@ -193,12 +226,19 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "children": "0-0",
+                "competitorA": Object {
+                  "displayName": "Bob de Bouwer",
+                  "uid": 1,
+                },
+                "competitorB": Object {
+                  "displayName": "Asterix",
+                  "uid": 2,
+                },
               },
               "ref": null,
-              "rendered": "0-0",
+              "rendered": null,
               "type": [Function],
             },
           ],
@@ -256,9 +296,20 @@ ShallowWrapper {
           />
           <styled.div>
                     vs
-                    <styled.div>
-                              0-0
-                    </styled.div>
+                    <Head2Head
+                              competitorA={
+                                        Object {
+                                                  "displayName": "Bob de Bouwer",
+                                                  "uid": 1,
+                                                }
+                              }
+                              competitorB={
+                                        Object {
+                                                  "displayName": "Asterix",
+                                                  "uid": 2,
+                                                }
+                              }
+                    />
           </styled.div>
           <Competitor
                     align="right"
@@ -316,9 +367,20 @@ ShallowWrapper {
 />,
             <styled.div>
               vs
-              <styled.div>
-                            0-0
-              </styled.div>
+              <Head2Head
+                            competitorA={
+                                          Object {
+                                                        "displayName": "Bob de Bouwer",
+                                                        "uid": 1,
+                                                      }
+                            }
+                            competitorB={
+                                          Object {
+                                                        "displayName": "Asterix",
+                                                        "uid": 2,
+                                                      }
+                            }
+              />
 </styled.div>,
             <Competitor
               align="right"
@@ -377,9 +439,20 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 "vs",
-                <styled.div>
-                  0-0
-</styled.div>,
+                <Head2Head
+                  competitorA={
+                                    Object {
+                                                      "displayName": "Bob de Bouwer",
+                                                      "uid": 1,
+                                                    }
+                  }
+                  competitorB={
+                                    Object {
+                                                      "displayName": "Asterix",
+                                                      "uid": 2,
+                                                    }
+                  }
+/>,
               ],
             },
             "ref": null,
@@ -388,12 +461,19 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "class",
+                "nodeType": "function",
                 "props": Object {
-                  "children": "0-0",
+                  "competitorA": Object {
+                    "displayName": "Bob de Bouwer",
+                    "uid": 1,
+                  },
+                  "competitorB": Object {
+                    "displayName": "Asterix",
+                    "uid": 2,
+                  },
                 },
                 "ref": null,
-                "rendered": "0-0",
+                "rendered": null,
                 "type": [Function],
               },
             ],

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { MatchTest as Match } from './';
+import Match from './';
 
 describe('Match component', () => {
   let match;
@@ -27,7 +27,7 @@ describe('Match component', () => {
     };
   });
 
-  xtest('renders without crashing', () => {
+  test('renders without crashing', () => {
     const wrapper = shallow(
       <Match matchId={matchId} auth={auth} match={match} />
     );
@@ -36,7 +36,7 @@ describe('Match component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  xtest('when there is a winner, there is no delete button', () => {
+  test('when there is a winner, there is no delete button', () => {
     match = {
       uid: '1',
       winner: '2',
@@ -62,7 +62,7 @@ describe('Match component', () => {
     expect(wrapper.find('SwipeDelete').length).toEqual(0);
   });
 
-  xtest('check that auth has voted', () => {
+  test('check that auth has voted', () => {
     match = {
       uid: '1',
       competitors: {

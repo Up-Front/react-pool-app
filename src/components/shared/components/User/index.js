@@ -20,7 +20,9 @@ const User = ({ user, ...props }) => {
       <Avatar user={user} />
       <div>
         <strong>{user.displayName}</strong>
-        <UserEloRating data-test="elorating">points: {user.currentRanking.eloRating}</UserEloRating>
+        <UserEloRating data-test="elorating">
+          points: <span>{user.currentRanking.eloRating}</span>
+        </UserEloRating>
       </div>
     </UserWrapper>
   );

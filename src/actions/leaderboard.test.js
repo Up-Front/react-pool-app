@@ -16,16 +16,22 @@ describe('calculateLeaderBoard', () => {
     clock = sinon.useFakeTimers({ now: now.getTime() });
     startOfWeek = getStartOfWeek();
 
-    const users = {
-      abc: {
-        uid: 'abc',
-        rank: 2,
-      },
-      xyz: {
-        uid: 'xyz',
-        rank: 1,
-      },
-    };
+    const users = [
+      [
+        'abc',
+        {
+          uid: 'abc',
+          rank: 2,
+        },
+      ],
+      [
+        'xyz',
+        {
+          uid: 'xyz',
+          rank: 1,
+        },
+      ],
+    ];
     sinon.stub(funcs, 'getUserData').returns({
       then: () => users,
     });
@@ -38,22 +44,23 @@ describe('calculateLeaderBoard', () => {
   });
 
   describe('calculateLeaderBoardData', () => {
-    xtest('order users by ranking', () => {
+    test('order users by ranking', () => {
       const users = [
-        {
-          uid: 'abc',
-          rank: 2,
-          currentRanking: {
+        [
+          'abc',
+          {
+            uid: 'abc',
             eloRating: 800,
+            rank: 2,
           },
-        },
-        {
-          uid: 'xyz',
-          rank: 1,
-          currentRanking: {
-            eloRating: 1000,
+        ],
+        [
+          'xyz',
+          {
+            uid: 'xyz',
+            rank: 1,
           },
-        },
+        ],
       ];
       const expectedResult = {
         [`rankings/${startOfWeek.getTime()}/abc`]: {

@@ -27,13 +27,13 @@ describe('Leaderboard component', () => {
     },
   ];
 
-  xtest('renders without crashing', () => {
+  test('renders without crashing', () => {
     const wrapper = mount(<LeaderboardTest firebase={firebase} />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
-  xtest('showing users', () => {
+  test('showing users', () => {
     const wrapper = mount(
       <LeaderboardTest users={users} firebase={firebase} />
     );
@@ -50,17 +50,18 @@ describe('Leaderboard component', () => {
     expect(wrapper.find('User').length).toBe(2);
   });
 
-  xtest('sort users by ranking', () => {
+  test('sort users by ranking', () => {
     const wrapper = mount(
       <LeaderboardTest users={users} firebase={firebase} />
     );
+
     const firstResult = wrapper
-      .find('div[data-test="elorating"]')
+      .find('div[data-test="elorating"] span')
       .first()
       .text();
 
     const lastResult = wrapper
-      .find('div[data-test="elorating"]')
+      .find('div[data-test="elorating"] span')
       .last()
       .text();
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import { theme } from './../../theme';
-import { Wrapper, Header, HeaderLogo, FullScreen } from './styles';
+import { Wrapper, Header, FullScreen } from './styles';
 
 describe('Wrapper component', () => {
   test('renders normally', () => {
@@ -15,13 +15,6 @@ describe('Wrapper component', () => {
 describe('Header component', () => {
   test('renders normally', () => {
     const wrapper = shallow(<Header theme={theme} />);
-    expect(wrapper).toMatchSnapshot();
-  });
-});
-
-describe('HeaderLogo component', () => {
-  xtest('renders normally', () => {
-    const wrapper = shallow(<HeaderLogo theme={theme} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

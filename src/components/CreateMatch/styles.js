@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { iconStyle } from './../shared/styles';
 
 export const SelectOpponent = styled.section`
-  display: ${props => (props.matchCreated ? 'none' : 'block')};
   position: absolute;
   z-index: 100;
   width: 100%;

@@ -50,6 +50,7 @@ ShallowWrapper {
                     data-test="elorating"
           >
                     points: 
+                    <span />
           </styled.div>
 </div>,
       ],
@@ -98,6 +99,7 @@ ShallowWrapper {
               data-test="elorating"
 >
               points: 
+              <span />
 </styled.div>,
           ],
         },
@@ -121,14 +123,24 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 "points: ",
-                undefined,
+                <span />,
               ],
               "data-test": "elorating",
             },
             "ref": null,
             "rendered": Array [
               "points: ",
-              undefined,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "span",
+              },
             ],
             "type": [Function],
           },
@@ -167,6 +179,7 @@ ShallowWrapper {
                         data-test="elorating"
             >
                         points: 
+                        <span />
             </styled.div>
 </div>,
         ],
@@ -215,6 +228,7 @@ ShallowWrapper {
                 data-test="elorating"
 >
                 points: 
+                <span />
 </styled.div>,
             ],
           },
@@ -238,14 +252,24 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   "points: ",
-                  undefined,
+                  <span />,
                 ],
                 "data-test": "elorating",
               },
               "ref": null,
               "rendered": Array [
                 "points: ",
-                undefined,
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "span",
+                },
               ],
               "type": [Function],
             },
