@@ -9,6 +9,7 @@ ShallowWrapper {
     user={
         Object {
             "avatarUrl": "http://image",
+            "currentRanking": Object {},
             "displayName": "Bob de Bouwer",
             "uid": 1,
           }
@@ -35,6 +36,7 @@ ShallowWrapper {
           user={
                     Object {
                               "avatarUrl": "http://image",
+                              "currentRanking": Object {},
                               "displayName": "Bob de Bouwer",
                               "uid": 1,
                             }
@@ -46,7 +48,9 @@ ShallowWrapper {
           </strong>
           <styled.div
                     data-test="elorating"
-          />
+          >
+                    points: 
+          </styled.div>
 </div>,
       ],
       "onClick": [Function],
@@ -72,6 +76,7 @@ ShallowWrapper {
         "props": Object {
           "user": Object {
             "avatarUrl": "http://image",
+            "currentRanking": Object {},
             "displayName": "Bob de Bouwer",
             "uid": 1,
           },
@@ -91,7 +96,9 @@ ShallowWrapper {
 </strong>,
             <styled.div
               data-test="elorating"
-/>,
+>
+              points: 
+</styled.div>,
           ],
         },
         "ref": null,
@@ -112,11 +119,17 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": undefined,
+              "children": Array [
+                "points: ",
+                undefined,
+              ],
               "data-test": "elorating",
             },
             "ref": null,
-            "rendered": null,
+            "rendered": Array [
+              "points: ",
+              undefined,
+            ],
             "type": [Function],
           },
         ],
@@ -140,6 +153,7 @@ ShallowWrapper {
             user={
                         Object {
                                     "avatarUrl": "http://image",
+                                    "currentRanking": Object {},
                                     "displayName": "Bob de Bouwer",
                                     "uid": 1,
                                   }
@@ -151,7 +165,9 @@ ShallowWrapper {
             </strong>
             <styled.div
                         data-test="elorating"
-            />
+            >
+                        points: 
+            </styled.div>
 </div>,
         ],
         "onClick": [Function],
@@ -177,6 +193,7 @@ ShallowWrapper {
           "props": Object {
             "user": Object {
               "avatarUrl": "http://image",
+              "currentRanking": Object {},
               "displayName": "Bob de Bouwer",
               "uid": 1,
             },
@@ -196,7 +213,9 @@ ShallowWrapper {
 </strong>,
               <styled.div
                 data-test="elorating"
-/>,
+>
+                points: 
+</styled.div>,
             ],
           },
           "ref": null,
@@ -217,11 +236,17 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": undefined,
+                "children": Array [
+                  "points: ",
+                  undefined,
+                ],
                 "data-test": "elorating",
               },
               "ref": null,
-              "rendered": null,
+              "rendered": Array [
+                "points: ",
+                undefined,
+              ],
               "type": [Function],
             },
           ],

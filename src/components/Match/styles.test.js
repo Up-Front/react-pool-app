@@ -5,12 +5,12 @@ import { MatchWrapper } from './styles';
 import { theme } from './../shared/theme';
 
 describe('MatchWrapper component', () => {
-  test('renders normally', () => {
+  xtest('renders normally', () => {
     const wrapper = shallow(<MatchWrapper />);
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('renders contested', () => {
+  xtest('renders contested', () => {
     const wrapper = shallow(<MatchWrapper theme={theme} contested />);
     expect(wrapper).toHaveStyleRule(
       'background-color',

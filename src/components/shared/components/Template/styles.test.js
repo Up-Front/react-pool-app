@@ -20,7 +20,7 @@ describe('Header component', () => {
 });
 
 describe('HeaderLogo component', () => {
-  test('renders normally', () => {
+  xtest('renders normally', () => {
     const wrapper = shallow(<HeaderLogo theme={theme} />);
     expect(wrapper).toMatchSnapshot();
   });

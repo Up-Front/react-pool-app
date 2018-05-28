@@ -12,6 +12,7 @@ describe('User component', () => {
       uid: 1,
       displayName: 'Bob de Bouwer',
       avatarUrl: 'http://image',
+      currentRanking: {},
     };
 
     handleClick = jest.fn();

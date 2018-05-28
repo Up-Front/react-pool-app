@@ -27,7 +27,7 @@ describe('Match component', () => {
     };
   });
 
-  test('renders without crashing', () => {
+  xtest('renders without crashing', () => {
     const wrapper = shallow(
       <Match matchId={matchId} auth={auth} match={match} />
     );
@@ -36,7 +36,7 @@ describe('Match component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('when there is a winner, there is no delete button', () => {
+  xtest('when there is a winner, there is no delete button', () => {
     match = {
       uid: '1',
       winner: '2',
@@ -62,7 +62,7 @@ describe('Match component', () => {
     expect(wrapper.find('SwipeDelete').length).toEqual(0);
   });
 
-  test('check that auth has voted', () => {
+  xtest('check that auth has voted', () => {
     match = {
       uid: '1',
       competitors: {
