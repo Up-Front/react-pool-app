@@ -51,6 +51,7 @@ const MatchList = props => {
         );
       });
 
+    console.log(matches);
     return (
       <MatchListWrapper>
         <TransitionGroup>{matches}</TransitionGroup>

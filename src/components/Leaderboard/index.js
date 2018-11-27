@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
+import FlipMove from 'react-flip-move';
 import User from './../shared/components/User';
 import EnrichCompetitors from './../shared/components/EnrichCompetitors';
 
@@ -10,25 +11,20 @@ class Leaderboard extends Component {
     super();
   }
 
-  componentDidMount() {
-    // bugfix in react-redux-firebase
-    // the watchers have a problem
-    // https://github.com/prescottprue/react-redux-firebase/issues/368#issuecomment-357917044
-    this.props.firebase.watchEvent('value', `/users`);
-  }
-
   render() {
     let users;
     if (this.props.users instanceof Array) {
       users = this.props.users
-        .sort(
-          (a, b) => -(a.currentRanking.eloRating - b.currentRanking.eloRating)
-        )
+        .sort((a, b) => -(a.eloRating - b.eloRating))
         .map((user, key) => {
           return <User key={user.uid} user={user} />;
         });
     }
-    return <div>{users}</div>;
+    return (
+      <div>
+        <FlipMove>{users}</FlipMove>
+      </div>
+    );
   }
 }
 
@@ -38,7 +34,7 @@ export default compose(
   firebaseConnect(props => [
     { path: '/users' },
     {
-      path: 'rankings',
+      path: '/rankings',
       queryParams: ['orderByKey', 'limitToLast=2'],
     },
   ]),

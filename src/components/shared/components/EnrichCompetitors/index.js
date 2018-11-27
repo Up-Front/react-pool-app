@@ -12,6 +12,8 @@ const EnrichCompetitors = Component => {
         user.value.uid = user.key;
         user.value.eloRating =
           user.value.eloRating || constants.DEFAULTELORATING;
+
+        console.log('rank', props.rankings);
         return enrichCompetitor({
           competitor: user.value,
           presence: props.presence,
